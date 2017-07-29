@@ -12,10 +12,10 @@ defmodule WhoWeb.APIService.ProPublica.Base do
     @api_key_header
   end
 
-  @spec make_request(String.t, list()) :: map()
   @doc """
     Take in the concatenated API request URL and API key header string, returns result
   """
+  @spec make_request(String.t, list()) :: map()
   def make_request(url, api_key) do
     case get(url, api_key) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
