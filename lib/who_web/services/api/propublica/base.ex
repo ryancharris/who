@@ -2,6 +2,8 @@ defmodule WhoWeb.APIService.ProPublica.Base do
   use HTTPoison.Base
 
   @endpoint "https://api.propublica.org/congress/v1/"
+
+  # TODO: Make API key an environment variable
   @api_key_header ["X-API-KEY": "iKBYwU1Ngx5sKpZpez7eOax7Tr4o7dekaZ4Wz8wu"]
 
   def get_api_endpoint do

@@ -17,7 +17,7 @@ defmodule WhoWeb.APIService.ProPublica.Member do
   end
 
   @doc """
-    Query the API for members from a specific s
+    Query the API for members from a specific chamber by state and/or
 
     EX:
       get_member_by_state("senate", "NJ")
@@ -30,6 +30,10 @@ defmodule WhoWeb.APIService.ProPublica.Member do
   end
 
   @spec get_member_by_state(String.t(), String.t(), non_neg_integer()) :: map()
+  def get_member_by_state("senate", _, _) do
+    IO.puts :stderr, ~s(Did you mean "house"? There are no districts in the senate...)
+  end
+
   def get_member_by_state("house", state, district) do
     get_api_endpoint() <> "members/house/#{state}/#{district}/current.json"
       |> make_request(get_api_header())
