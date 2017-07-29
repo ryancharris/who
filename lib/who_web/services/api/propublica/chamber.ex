@@ -6,12 +6,12 @@ defmodule WhoWeb.APIService.ProPublica.Chamber do
 
   import WhoWeb.APIService.ProPublica.Base
 
-  @spec get_members_by_chamber(String.t) :: map()
   @doc """
       Get a list of current members in either the House or Senate
     """
+  @spec get_members_by_chamber(String.t) :: map()
   def get_members_by_chamber(chamber) do
-      WhoWeb.APIService.ProPublica.Base.get_api_endpoint() <> "115/#{chamber}/members.json"
-        |> WhoWeb.APIService.ProPublica.Base.make_request(WhoWeb.APIService.ProPublica.Base.get_api_header())
+    get_api_endpoint() <> "115/#{chamber}/members.json"
+      |> make_request(get_api_header())
   end
 end
