@@ -1,5 +1,9 @@
 # Who
 
+Attempt to port ["Who Speaks for Us?"](https://github.com/ryancharris/who-speaks-for-us) over from React and expand upon its scope.
+
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
