@@ -9,7 +9,6 @@ defmodule Who.Member do
     field :bills_cosponsored, :integer
     field :bills_sponsored, :integer
     field :chamber, :string
-    field :committees, {:map, :string}
     field :contact_form, :string
     field :current_party, :string
     field :date_of_birth, :date
