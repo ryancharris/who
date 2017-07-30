@@ -7,7 +7,7 @@ defmodule Who.Member do
       chamber
       current_party
       date_of_birth
-      disctict
+      district
       end_date
       first_name
       last_name
@@ -44,7 +44,7 @@ defmodule Who.Member do
     field :contact_form, :string
     field :current_party, :string
     field :date_of_birth, :date
-    field :disctict, :integer
+    field :district, :integer
     field :end_date, :date
     field :facebook_account, :string
     field :fax, :string
@@ -68,13 +68,9 @@ defmodule Who.Member do
   end
 
   @doc false
-  def changeset(%Member{} = member, attrs) do
+  def changeset(%Member{} = member, attrs \\ %{}) do
     member
-    |> cast(attrs, [:first_name, :middle_name, :last_name, :date_of_birth, :url, :twitter_account, :facebook_account, :youtube_account, :current_party, :most_recent_vote, :chamber, :title, :state, :disctict, :at_large, :start_date, :end_date, :office, :phone, :fax, :contact_form, :bills_sponsored, :bills_cosponsored, :missed_votes_pct, :votes_with_party_pct, :committees])
-    |> validate_required([:first_name, :middle_name, :last_name, :date_of_birth, :url, :twitter_account, :facebook_account, :youtube_account, :current_party, :most_recent_vote, :chamber, :title, :state, :disctict, :at_large, :start_date, :end_date, :office, :phone, :fax, :contact_form, :bills_sponsored, :bills_cosponsored, :missed_votes_pct, :votes_with_party_pct, :committees])
-  end
-
-  def changeset(member_) do
-    
+    |> cast(attrs, @required_fields ++ @optional_fields)
+    |> validate_required([@required_fields])
   end
 end
