@@ -1,6 +1,6 @@
 defmodule WhoWeb.APIService.ProPublica.Chamber do
   @moduledoc """
-    This service defines methods for querying the ProPublica API
+    This module defines methods for querying the ProPublica API
     based on chamber of Congress (i.e. House or Senate)
   """
 

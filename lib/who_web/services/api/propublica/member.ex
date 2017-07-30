@@ -1,6 +1,6 @@
 defmodule WhoWeb.APIService.ProPublica.Member do
   @moduledoc """
-    This service defines methods for querying the ProPublica API
+    This module defines methods for querying the ProPublica API
     for individual member (i.e. Representative or Sentaor) information
   """
   import WhoWeb.APIService.ProPublica.Base

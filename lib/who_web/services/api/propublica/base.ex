@@ -1,4 +1,11 @@
 defmodule WhoWeb.APIService.ProPublica.Base do
+  @moduledoc """
+    This module acts as the base for all other WhoWeb.APIService.ProPublica
+    modules.
+
+    The functions and attributes below are imported into those additional modules.
+  """
+
   use HTTPoison.Base
 
   @endpoint "https://api.propublica.org/congress/v1/"
