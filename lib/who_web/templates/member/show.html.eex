@@ -1,0 +1,5 @@
+<div class="jumbotron">
+  <h2>Members #show</h2>
+  <p>Member ID#<%= @id %></p>
+  <p><%= @member["first_name"] %> <%= @member["last_name"] %></p>
+</div>
