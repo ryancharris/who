@@ -31,10 +31,12 @@ defmodule Who.ProPublicaAPI.Member do
     get_api_endpoint() <> "members/#{chamber}/#{state}/current.json"
       |> make_request(get_api_header())
   end
+
   def get_member_by_state("house", state, district) do
     get_api_endpoint() <> "members/house/#{state}/#{district}/current.json"
       |> make_request(get_api_header())
   end
+    
   def get_member_by_state("senate", _, _) do
     IO.puts :stderr, ~s(Did you mean "house"? There are no districts in the senate...)
   end
