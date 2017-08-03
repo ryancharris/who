@@ -1,4 +1,4 @@
-defmodule WhoWeb.APIService.ProPublica.Base do
+defmodule Who.ProPublicaAPI.Base do
   @moduledoc """
     This module acts as the base for all other WhoWeb.APIService.ProPublica modules.
   """

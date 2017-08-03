@@ -1,9 +1,9 @@
-defmodule WhoWeb.APIService.ProPublica.Member do
+defmodule Who.ProPublicaAPI.Member do
   @moduledoc """
     This module defines methods for querying the ProPublica API
     for individual member (i.e. Representative or Sentaor) information
   """
-  import WhoWeb.APIService.ProPublica.Base
+  import Who.ProPublicaAPI.Base
 
   @doc """
       Query the API based on member_id assigned by the Biographical Directory of the United States Congress

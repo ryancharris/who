@@ -1,10 +1,10 @@
-defmodule WhoWeb.APIService.ProPublica.Chamber do
+defmodule Who.ProPublicaAPI.Chamber do
   @moduledoc """
     This module defines methods for querying the ProPublica API
     based on chamber of Congress (i.e. House or Senate)
   """
 
-  import WhoWeb.APIService.ProPublica.Base
+  import Who.ProPublicaAPI.Base
 
   @doc """
       Get a list of current members in either the House or Senate
