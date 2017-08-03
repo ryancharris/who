@@ -8,7 +8,9 @@ defmodule WhoWeb.MemberController do
   end
 
   def show(conn, %{"id" => id}) do
-    [member] = Member.get_member_by_id(id)
-    render conn, "show.html", id: id, member: member
+    member = Enum.fetch!(Member.get_member_by_id(id), 0)
+    votes = Enum.fetch!(Member.get_member_votes(id), 0)
+
+    render conn, "show.html", id: id, member: member, votes: votes
   end
 end
