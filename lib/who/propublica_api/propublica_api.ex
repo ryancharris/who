@@ -1,6 +1,8 @@
 defmodule Who.ProPublicaAPI.Base do
   @moduledoc """
-    This module acts as the base for all other WhoWeb.APIService.ProPublica modules.
+    This module acts as the base for all other Who.ProPublicaAPI modules.
+
+    Contains the ProPublica API key and its base URL endpoint.
   """
 
   use HTTPoison.Base
@@ -36,7 +38,7 @@ defmodule Who.ProPublicaAPI.Base do
         IO.inspect reason
     end
   end
-  
+
   @doc """
     When used, dispatch to the appropriate controller/view/etc.
   """
