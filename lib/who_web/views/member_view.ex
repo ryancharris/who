@@ -54,15 +54,11 @@ defmodule WhoWeb.MemberView do
   """
   @spec parse_member_name(String.t()) :: String.t()
   def parse_member_name(member) do
-    first_name = Map.get(member, "first_name")
-    middle_name = Map.get(member, "middle_name")
-    last_name = Map.get(member, "last_name")
-
-    case middle_name != nil do
+    case Map.get(member, "middle_name") != nil do
       true ->
-        ~s(#{first_name} #{middle_name} #{last_name})
+        ~s(#{Map.get(member, "first_name")} #{Map.get(member, "middle_name")} #{Map.get(member, "last_name")})
       false ->
-        ~s(#{first_name} #{last_name})
+        ~s(#{Map.get(member, "first_name")} #{Map.get(member, "last_name")})
     end
   end
 
