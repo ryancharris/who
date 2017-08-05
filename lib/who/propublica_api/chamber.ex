@@ -7,8 +7,12 @@ defmodule Who.ProPublicaAPI.Chamber do
   import Who.ProPublicaAPI.Base
 
   @doc """
-      Get a list of current members in either the House or Senate
-    """
+    Get a list of current members in either the House or Senate
+
+    EX:
+      get_members_by_chamber("house")
+      get_members_by_chamber("senate")
+  """
   @spec get_members_by_chamber(String.t) :: map()
   def get_members_by_chamber(chamber) do
     get_api_endpoint() <> "115/#{chamber}/members.json"
