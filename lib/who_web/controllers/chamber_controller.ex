@@ -9,17 +9,16 @@ defmodule WhoWeb.ChamberController do
     [bills_passed | _tail] = Bill.get_recent_bills(chamber, "passed")
     [bills_introduced | _tail] = Bill.get_recent_bills(chamber, "introduced")
 
-    case chamber do
-      "house" ->
+    case chamber == "house" || chamber == "senate" do
+      true ->
         render conn, "show.html",
-          members: members,
-          bills_passed: bills_passed,
-          bills_introduced: bills_introduced
-      "senate" ->
-        render conn, "show.html",
-          members: members,
-          bills_passed: bills_passed,
-          bills_introduced: bills_introduced
+          members: members["members"],
+          chamber: members["chamber"],
+          bills_passed: bills_passed["bills"],
+          bills_introduced: bills_introduced["bills"]
+      false ->
+        # TODO: send this to fallback router path
+        IO.puts "There is no such chamber of Congress!"
     end
   end
 end

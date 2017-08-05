@@ -1,6 +1,23 @@
 <div>
   <h1>
-    <%= @members["chamber"] %>
-    <%= @members["congress"] %>
+    <%= @chamber %>
   </h1>
+</div>
+
+<div>
+  <h3>Recent Bills Passed</h3>
+  <%= for bill <- @bills_passed do %>
+    <p>
+      <a href="<%= bill["congressdotgov_url"] %>">
+        <%= bill["title"] %>
+      </a>
+    </p>
+  <% end %>
+</div>
+
+<div>
+  <h3>Members</h3>
+  <%= for member <- @members do %>
+    <p><%= member["first_name"] %> <%= member["last_name"] %></p>
+  <% end %>
 </div>
