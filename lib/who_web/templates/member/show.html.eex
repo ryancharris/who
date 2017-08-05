@@ -1,6 +1,10 @@
 <div class="jumbotron">
-  <h2>Members #show</h2>
-  <p>Member ID#<%= @id %></p>
+  <p><%= @id %></p>
+  <p><%= @chamber %></p>
   <p><%= @member["first_name"] %> <%= @member["last_name"] %></p>
-  <p>Total votes: <%= @votes["total_votes"] %></p>
+  <%= for vote <- @vote_list do %>
+
+    <p><%= vote["description"] %></p>
+    <p><%= vote["position"] %></p>
+  <% end %>
 </div>

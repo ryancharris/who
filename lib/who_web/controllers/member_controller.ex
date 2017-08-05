@@ -1,6 +1,8 @@
 defmodule WhoWeb.MemberController do
   use WhoWeb, :controller
 
+  alias WhoWeb.MemberView
+
   alias Who.ProPublicaAPI.Member
 
   def index(conn, _params) do
@@ -11,12 +13,17 @@ defmodule WhoWeb.MemberController do
     [member | tail] = Member.get_member_by_id(id)
     [votes | tail] = Member.get_member_votes(id)
 
+    id = MemberView.parse_member_id(member)
+    chamber = MemberView.parse_member_chamber(member)
+    vote_list = MemberView.parse_member_votes(votes)
+
     render(
       conn,
       "show.html",
-      id: member["member_id"],
+      id: id,
       member: member,
-      votes: votes["votes"]
+      vote_list: vote_list,
+      chamber: chamber
     )
   end
 end
