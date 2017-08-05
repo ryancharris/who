@@ -12,7 +12,21 @@
         <%= bill["title"] %>
       </a>
     </p>
+    <p>
+      <%= gettext("%{title} %{sponsor_name} (%{party} - %{state})", title: bill["sponsor_title"], sponsor_name: bill["sponsor_name"], party: bill["sponsor_party"] , state: bill["sponsor_state"]) %>
+    </p>
   <% end %>
+</div>
+
+<div>
+  <h3>Recent Bills Introduced</h3>
+  <%= for bill <- @bills_introduced do %>
+    <p>
+      <a href="<%= bill[" congressdotgov_url "] %>">
+        <%= bill["title"] %>
+      </a>
+    </p>
+    <% end %>
 </div>
 
 <div>
