@@ -1,6 +1,6 @@
 <div>
   <h1>
-    <%= @chamber %>
-    <%= @members %>
+    <%= @members["chamber"] %>
+    <%= @members["congress"] %>
   </h1>
 </div>
