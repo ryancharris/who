@@ -28,8 +28,8 @@ defmodule Who.ProPublicaAPI.Base do
     case get(url, api_key) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         # Return map of decoded JSON blob
-        member = Poison.decode!(body)
-        [member_map] = member["results"]
+        res = Poison.decode!(body)
+        [response_map] = res["results"]
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         # When API call fails
         IO.puts "Not found :("

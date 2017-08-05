@@ -1,5 +1,6 @@
 <div>
   <h1>
     <%= @chamber %>
+    <%= @members %>
   </h1>
 </div>

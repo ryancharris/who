@@ -12,6 +12,6 @@ defmodule Who.ProPublicaAPI.Chamber do
   @spec get_members_by_chamber(String.t) :: map()
   def get_members_by_chamber(chamber) do
     get_api_endpoint() <> "115/#{chamber}/members.json"
-      |> make_request(get_api_header())
+    |> make_request(get_api_header())
   end
 end
