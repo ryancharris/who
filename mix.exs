@@ -21,8 +21,8 @@ defmodule Who.Mixfile do
     [
       mod: {Who.Application, []},
       extra_applications: [
-        :logger, 
-        :runtime_tools, 
+        :logger,
+        :runtime_tools,
         :httpoison
       ]
     ]
@@ -46,7 +46,8 @@ defmodule Who.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:poison, "~> 3.1"},
-      {:httpoison, "~> 0.12"}
+      {:httpoison, "~> 0.12"},
+      {:ex_doc, "~> 0.14", only: :dev, runtime: false}
     ]
   end
 
