@@ -21,7 +21,7 @@ defmodule Who.ProPublicaAPI.Member do
   def get_member_by_id(member_id) do
     [member] =
       get_api_endpoint() <> "members/#{member_id}.json"
-        |> make_request(get_api_header())
+      |> make_request(get_api_header())
   end
 
   @doc """
@@ -38,13 +38,13 @@ defmodule Who.ProPublicaAPI.Member do
   def get_member_by_state(chamber, state) do
     [member] =
       get_api_endpoint() <> "members/#{chamber}/#{state}/current.json"
-        |> make_request(get_api_header())
+      |> make_request(get_api_header())
   end
 
   def get_member_by_state("house", state, district) do
     member =
       get_api_endpoint() <> "members/house/#{state}/#{district}/current.json"
-        |> make_request(get_api_header())
+      |> make_request(get_api_header())
   end
 
   def get_member_by_state("senate", _, _) do
@@ -62,6 +62,6 @@ defmodule Who.ProPublicaAPI.Member do
   def get_member_votes(member_id) do
     votes =
       get_api_endpoint() <> "members/#{member_id}/votes.json"
-        |> make_request(get_api_header())
+      |> make_request(get_api_header())
   end
 end
