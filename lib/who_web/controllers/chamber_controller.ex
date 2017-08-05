@@ -6,6 +6,8 @@ defmodule WhoWeb.ChamberController do
 
   def show(conn, %{"chamber" => chamber}) do
     [members | _tail] = Chamber.get_members_by_chamber(chamber)
+    [floor_actions | _tail] = Chamber.get_recent_chamber_actions(chamber)
+
     [bills_passed | _tail] = Bill.get_recent_bills(chamber, "passed")
     [bills_introduced | _tail] = Bill.get_recent_bills(chamber, "introduced")
 
@@ -17,7 +19,8 @@ defmodule WhoWeb.ChamberController do
           members: members["members"],
           chamber: members["chamber"],
           bills_passed: bills_passed["bills"],
-          bills_introduced: bills_introduced["bills"]
+          bills_introduced: bills_introduced["bills"],
+          floor_actions: floor_actions["floor_actions"]
     end
   end
 end

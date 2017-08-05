@@ -18,4 +18,17 @@ defmodule Who.ProPublicaAPI.Chamber do
     get_api_endpoint() <> "115/#{chamber}/members.json"
     |> make_request(get_api_header())
   end
+
+  @doc """
+    Get a list of recent floor actions by chamber
+
+    EX:
+      get_recent_chamber_actions("house")
+      get_recent_chamber_actions("senate")
+  """
+  @spec get_recent_chamber_actions(String.t()) :: map()
+  def get_recent_chamber_actions(chamber) do
+    get_api_endpoint() <> "115/#{chamber}/floor_updates.json"
+    |> make_request(get_api_header())
+  end
 end

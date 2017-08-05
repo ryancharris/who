@@ -30,6 +30,17 @@
 </div>
 
 <div>
+  <h3>Recent Floor Actions</h3>
+  <%= for action <- @floor_actions do %>
+    <p><%= action["description"] %></p>
+    <p>
+      <%= action["timestamp"] %>
+    </p>
+
+  <% end %>
+</div>
+
+<div>
   <h3>Members</h3>
   <%= for member <- @members do %>
     <p><%= member["first_name"] %> <%= member["last_name"] %></p>
