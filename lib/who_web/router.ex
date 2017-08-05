@@ -19,7 +19,9 @@ defmodule WhoWeb.Router do
     get "/", PageController, :index
 
     get "/member", MemberController, :index
-    get "/member/:id", MemberController, :show 
+    get "/member/:id", MemberController, :show
+
+    get "/chamber/:chamber", ChamberController, :show
 
   end
 
