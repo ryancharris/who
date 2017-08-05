@@ -13,17 +13,13 @@ defmodule WhoWeb.MemberController do
     [member | tail] = Member.get_member_by_id(id)
     [votes | tail] = Member.get_member_votes(id)
 
-    id = MemberView.parse_member_id(member)
-    chamber = MemberView.parse_member_chamber(member)
-    vote_list = MemberView.parse_member_votes(votes)
-
     render(
       conn,
       "show.html",
-      id: id,
+      id: MemberView.parse_member_id(member),
       member: member,
-      vote_list: vote_list,
-      chamber: chamber
+      vote_list: MemberView.parse_member_votes(votes),
+      chamber: MemberView.parse_member_chamber(member)
     )
   end
 end
