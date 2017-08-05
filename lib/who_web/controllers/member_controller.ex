@@ -2,7 +2,7 @@ defmodule WhoWeb.MemberController do
   use WhoWeb, :controller
 
   alias WhoWeb.MemberView
-
+  alias WhoWeb.MemberPresenter
   alias Who.ProPublicaAPI.Member
 
   def index(conn, _params) do
@@ -17,7 +17,7 @@ defmodule WhoWeb.MemberController do
       conn,
       "show.html",
       id: MemberView.parse_member_id(member),
-      member: member,
+      member: MemberPresenter.new(member),
       vote_list: MemberView.parse_member_votes(votes),
       chamber: MemberView.parse_member_chamber(member)
     )
