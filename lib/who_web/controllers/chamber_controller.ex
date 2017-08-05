@@ -5,16 +5,16 @@ defmodule WhoWeb.ChamberController do
   alias Who.ProPublicaAPI.Chamber
 
   def show(conn, %{"chamber" => chamber}) do
-    [members | _tail] = Chamber.get_members_by_chamber(chamber)
-    [floor_actions | _tail] = Chamber.get_recent_chamber_actions(chamber)
-
-    [bills_passed | _tail] = Bill.get_recent_bills(chamber, "passed")
-    [bills_introduced | _tail] = Bill.get_recent_bills(chamber, "introduced")
 
     case chamber == "house" || chamber == "senate" do
       false ->
         render conn, WhoWeb.ErrorView, "404.html"
       true ->
+        [members | _tail] = Chamber.get_members_by_chamber(chamber)
+        [floor_actions | _tail] = Chamber.get_recent_chamber_actions(chamber)
+        [bills_passed | _tail] = Bill.get_recent_bills(chamber, "passed")
+        [bills_introduced | _tail] = Bill.get_recent_bills(chamber, "introduced")
+
         render conn, "show.html",
           members: members["members"],
           chamber: members["chamber"],
