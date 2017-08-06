@@ -45,7 +45,7 @@ defmodule WhoWeb.MemberPresenter do
     youtube: nil
   ]
 
-  @spec new(String.t()) :: t()
+  @spec new(map()) :: t()
   def new(nil), do: nil
   def new(member) do
     chamber = MemberView.parse_member_field(member, "roles", "chamber")
@@ -61,7 +61,7 @@ defmodule WhoWeb.MemberPresenter do
       start_date: MemberView.parse_member_start_date(member),
       end_date: MemberView.parse_member_end_date(member),
       member_id: MemberView.parse_member_field(member, "member_id"),
-      votes_with_party: MemberView.build_party_vote_pct(member),
+      votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       committees: MemberView.build_current_session_committee_list(member),
 
       website: MemberView.parse_member_field(member, "domain"),

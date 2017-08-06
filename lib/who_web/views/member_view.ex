@@ -191,12 +191,12 @@ defmodule WhoWeb.MemberView do
     they've served in.
 
     EX:
-      WhoWeb.MemberView.build_party_vote_pct(member)
+      WhoWeb.MemberView.build_aggregate_party_vote_pct(member)
       (98.53 + 96.15) / 2 = 97.34
       >>> 97.34
   """
-  @spec build_party_vote_pct(map()) :: float()
-  def build_party_vote_pct(member) do
+  @spec build_aggregate_party_vote_pct(map()) :: float()
+  def build_aggregate_party_vote_pct(member) do
     num_of_sessions =
       Map.get(member, "roles")
       |> Enum.count
