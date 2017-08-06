@@ -13,8 +13,6 @@ defmodule WhoWeb.MemberController do
     [member | tail] = Member.get_member_by_id(id)
     [votes | tail] = Member.get_member_votes(id)
 
-    # raise inspect member
-
     render(
       conn,
       "show.html",

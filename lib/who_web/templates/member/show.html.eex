@@ -6,4 +6,6 @@
   <p>YouTube: <%= @member.youtube %></p>
   <p>Website: <%= @member.website %></p>
   <p>Party: <%= @member.party %></p>
+  <p>State: <%= @member.state %></p>
+  <p>District: <%= @member.district %></p>
 </div>

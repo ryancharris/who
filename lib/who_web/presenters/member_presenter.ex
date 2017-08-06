@@ -49,10 +49,10 @@ defmodule WhoWeb.MemberPresenter do
     %__MODULE__{
       name: MemberView.parse_member_name(member),
       title: MemberView.build_member_title(chamber),
-      state: nil,
+      state: MemberView.build_state_name(member),
       party: MemberView.build_member_party(member),
       chamber: chamber,
-      district: nil,
+      district: MemberView.parse_member_district(member, chamber),
 
       start_date: nil,
       end_date: nil,

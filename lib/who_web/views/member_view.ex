@@ -90,11 +90,77 @@ defmodule WhoWeb.MemberView do
     end
   end
 
+  @doc """
+    Takes the "R" or "D" party flag from the Member JSON blob and
+    returns the full party name as a string.
+
+    EX:
+      WhoWeb.MemberView.build_member_party("K000383")
+      >>> "Independent"
+
+      WhoWeb.MemberView.build_member_party("C001035")
+      >>> "Republican"
+  """
+  @spec build_member_party(String.t()) :: String.t()
   def build_member_party(member) do
     cond do
       String.upcase(Map.get(member, "current_party")) == "R" -> "Republican"
       String.upcase(Map.get(member, "current_party")) == "D" -> "Democrat"
-      true -> nil
+      true -> "Independent"
+    end
+  end
+
+  @doc """
+    Returns the Member's state affiliation as a two character String.
+
+    TODO: Compare this to a map of state abbreviations/names and return
+          the full state name instead
+
+    EX:
+      WhoWeb.MemberView.build_state_name("C001035")
+      >>> "ME"
+  """
+  @spec build_state_name(String.t()) :: String.t()
+  def build_state_name(member) do
+    state =
+      member
+      |> Map.get("roles")
+      |> Enum.fetch!(0)
+      |> Map.get("state")
+  end
+
+  @doc """
+    For all Members in the House, this function will return the Member's district number
+    (or "At Large" for states with only one Representative).
+
+    For Senators, the return value will be nil.
+
+    EX:
+      WhoWeb.MemberView.parse_member_district(_, "Senate")
+      >>> nil
+
+      WhoWeb.MemberView.parse_member_district("C001109", "House")
+      >>> "At Large"
+
+      WhoWeb.MemberView.parse_member_district("B001300", "House")
+      >>> "44"
+  """
+  @spec parse_member_district(String.t(), String.t()) :: String.t()
+  def parse_member_district(member, "Senate"), do: nil
+  def parse_member_district(member, "House") do
+    at_large =
+      member
+      |> Map.get("roles")
+      |> Enum.fetch!(0)
+      |> Map.get("at_large")
+
+    case at_large do
+      true -> "At Large"
+      false ->
+        member
+        |> Map.get("roles")
+        |> Enum.fetch!(0)
+        |> Map.get("district")
     end
   end
 
