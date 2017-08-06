@@ -254,21 +254,18 @@ defmodule WhoWeb.MemberView do
     for vote <- vote_list do
       vote_info =
         %{
-          description: vote["description"],
-          position: vote["position"],
-          date: vote["date"],
-          time: vote["time"]
+          "description" => vote["description"],
+          "position" => vote["position"],
+          "date" => vote["date"],
+          "time" => vote["time"]
         }
 
-      unless is_nil(vote["bill"]) do
-        bill = vote["bill"]
-        bill_map =
-          %{
-            is_bill: true,
-            title: bill["title"],
-            number: bill["number"]
-          }
-        Map.merge(vote_info, bill_map)
+      if Map.has_key?(vote, "bill") do
+        bill_info =
+          vote["bill"]
+          |> Map.merge(%{"is_bill" => true})
+
+        Map.merge(vote_info, bill_info)
       end
     end
   end

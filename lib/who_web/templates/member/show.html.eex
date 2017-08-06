@@ -1,4 +1,5 @@
-<div class="jumbotron">
+<div>
+  <h1>Bio:</h1>
   <p><%= @member.title %> <%= @member.name %></p>
   <p>Member ID# <%= @member.member_id %></p>
   <p>Facebook: <%= @member.facebook %></p>
@@ -14,7 +15,7 @@
   <p>End Date: <%= @member.end_date %></p>
   <p>Vote w/ party <%= @member.votes_with_party %>%</p>
   <p>
-    Committees:
+    <h1>Committees:</h1>
     <ul>
       <%= for committee <- @member.committees do %>
         <li><%= committee %></li>
@@ -22,10 +23,11 @@
     </ul>
   </p>
   <p>
+    <h1>Votes:</h1>
     <%= for vote <- @member.votes do %>
-      <p>Bill: <%= if vote.is_bill, do: ~s(#{vote.title} \(#{vote.number}\)) %></p>
-      <p>Desc: <%= vote.description %></p>
-      <p>Vote: <%= vote.position %></p>
+      <p>TITLE: <%= vote["title"] %></p>
+      <p>DESC: <%= vote["description"] %></p>
+      <p>POSITION: <%= vote["position"] %></p>
     <% end %>
   </p>
 </div>

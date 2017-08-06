@@ -70,7 +70,7 @@ defmodule WhoWeb.MemberPresenter do
       member_id: MemberView.parse_member_field(member, "member_id"),
       committees: MemberView.build_current_session_committee_list(member),
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
-      votes: MemberView.build_votes_list(vote_list),
+      votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
       website: MemberView.parse_member_field(member, "domain"),
       facebook: MemberView.parse_member_social_account(member, "facebook"),
