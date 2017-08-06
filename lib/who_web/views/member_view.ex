@@ -204,7 +204,7 @@ defmodule WhoWeb.MemberView do
     pct_by_session_list =
       for session <- Map.get(member, "roles"), do: session["votes_with_party_pct"]
 
-    Enum.sum(pct_by_session_list) / 2
+    Enum.sum(pct_by_session_list) / num_of_sessions |> Float.round(2)
   end
 
   @doc """
