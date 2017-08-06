@@ -16,6 +16,7 @@ defmodule WhoWeb.MemberPresenter do
     start_date: String.t(),
     end_date: String. t(),
     member_id: String.t(),
+    votes_with_party: float(),
 
     website: String.t(),
     facebook: String.t(),
@@ -34,6 +35,7 @@ defmodule WhoWeb.MemberPresenter do
     start_date: nil,
     end_date: nil,
     member_id: nil,
+    votes_with_party: nil,
 
     website: nil,
     facebook: nil,
@@ -57,6 +59,7 @@ defmodule WhoWeb.MemberPresenter do
       start_date: MemberView.parse_member_start_date(member),
       end_date: MemberView.parse_member_end_date(member),
       member_id: MemberView.parse_member_field(member, "member_id"),
+      votes_with_party: MemberView.build_party_vote_pct(member),
 
       website: MemberView.parse_member_field(member, "domain"),
       facebook: MemberView.parse_member_social_account(member, "facebook"),

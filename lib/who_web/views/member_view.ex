@@ -201,4 +201,26 @@ defmodule WhoWeb.MemberView do
     |> Map.get("end_date")
   end
 
+  @doc """
+    Calculates the percentage of times a Member has voted with their given
+    party by averaging this statistic from each Congressional session
+    they've served in.
+
+    EX:
+      WhoWeb.MemberView.build_party_vote_pct("K000388")
+      (98.53 + 96.15) / 2 = 97.34
+      >>> 97.34
+  """
+  @spec build_party_vote_pct(String.t()) :: float()
+  def build_party_vote_pct(member) do
+    num_of_sessions =
+      Map.get(member, "roles")
+      |> Enum.count
+
+    pct_by_session_list =
+      for session <- Map.get(member, "roles"), do: session["votes_with_party_pct"]
+
+    Enum.sum(pct_by_session_list) / 2
+  end
+
 end
