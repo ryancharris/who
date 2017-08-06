@@ -14,10 +14,13 @@ defmodule WhoWeb.MemberPresenter do
     district: non_neg_integer(),
 
     start_date: String.t(),
+    end_date: String. t(),
     member_id: String.t(),
 
     website: String.t(),
-    facebook_name: String.t(),
+    facebook: String.t(),
+    twitter: String.t(),
+    youtube: String.t()
   }
 
   defstruct [
@@ -25,34 +28,39 @@ defmodule WhoWeb.MemberPresenter do
     title: nil,
     state: nil,
     party: nil,
+    chamber: nil,
+    district: nil,
 
     start_date: nil,
     end_date: nil,
     member_id: nil,
 
     website: nil,
-    facebook_name: nil,
-    chamber: nil,
-    district: nil,
+    facebook: nil,
+    twitter: nil,
+    youtube: nil
   ]
 
   @spec new(String.t()) :: t()
   def new(nil), do: nil
   def new(member) do
+    chamber = MemberView.parse_member_chamber(member)
     %__MODULE__{
       name: MemberView.parse_member_name(member),
-      title: nil,
+      title: MemberView.parse_member_title(chamber),
       state: nil,
       party: nil,
-      chamber: MemberView.parse_member_chamber(member),
+      chamber: chamber,
       district: nil,
 
       start_date: nil,
       end_date: nil,
       member_id: MemberView.parse_member_id(member),
 
-      website: nil,
-      facebook_name: nil
+      website: MemberView.parse_member_website(member),
+      facebook: MemberView.parse_member_social_account(member, "facebook"),
+      twitter: MemberView.parse_member_social_account(member, "twitter"),
+      youtube: MemberView.parse_member_social_account(member, "youtube")
     }
   end
 end

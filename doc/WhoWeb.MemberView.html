@@ -8,7 +8,7 @@
     <title>WhoWeb.MemberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-97d1b4d2de.js"></script>
+    <script src="dist/sidebar_items-523fa2a5ff.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -141,11 +141,38 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#parse_member_social_account/2">parse_member_social_account(member, social_network)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns a Member’s handle for a given social media network</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_member_title/1">parse_member_title(chamber)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Based on the Member’s chamber, this function returns the Member’s title</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#parse_member_votes/1">parse_member_votes(member)</a>
   </div>
   
     <div class="summary-synopsis"><p>Pulls out a list of the Member’s votes from the API call
   JSON body</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_member_website/1">parse_member_website(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the URL to a Member’s official website</p>
 </div>
   
 </div>
@@ -261,7 +288,8 @@ to render a particular template</p>
   <section class="docstring">
     <p>  Parses out the Member’s chamber from the Member JSON blob.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_chamber()</code></pre>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_chamber(&quot;C001070&quot;)
+&gt;&gt;&gt; &quot;Senate&quot;</code></pre>
 
   </section>
 </div>
@@ -286,7 +314,8 @@ to render a particular template</p>
   <section class="docstring">
     <p>  Parses out the member_id from the Member JSON blob.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_id(&quot;C001070&quot;)</code></pre>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_id(&quot;C001070&quot;)
+&gt;&gt;&gt; &quot;C001070&quot;</code></pre>
 
   </section>
 </div>
@@ -313,10 +342,71 @@ to render a particular template</p>
   a concatenated string.</p>
 <p>  EX:</p>
 <pre><code class="elixir">WhoWeb.MemberView.parse_member_name(&quot;B001227&quot;)
-&gt;&gt;&gt; Robert A. Brady
+&gt;&gt;&gt; &quot;Robert A. Brady&quot;
 
 WhoWeb.MemberView.parse_member_name(&quot;C001070&quot;)
-&gt;&gt;&gt; Bob Casey</code></pre>
+&gt;&gt;&gt; &quot;Bob Casey&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="parse_member_social_account/2">
+  
+  <div class="detail-header">
+    <a href="#parse_member_social_account/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">parse_member_social_account(member, social_network)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>parse_member_social_account(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Returns a Member’s handle for a given social media network.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;facebook&quot;)
+&gt;&gt;&gt; &quot;RepRobertBrady&quot;
+
+WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;twitter&quot;)
+&gt;&gt;&gt; &quot;RepBrady&quot;
+
+WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;youtube&quot;)
+&gt;&gt;&gt; &quot;BradyPA01&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="parse_member_title/1">
+  
+  <div class="detail-header">
+    <a href="#parse_member_title/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">parse_member_title(chamber)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>parse_member_title(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Based on the Member’s chamber, this function returns the Member’s title</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_title(&quot;House&quot;)
+&gt;&gt;&gt; &quot;Representative&quot;
+
+WhoWeb.MemberView.parse_member_title(&quot;Senate&quot;)
+&gt;&gt;&gt; &quot;Senator&quot;</code></pre>
 
   </section>
 </div>
@@ -343,6 +433,32 @@ WhoWeb.MemberView.parse_member_name(&quot;C001070&quot;)
   JSON body.</p>
 <p>  EX:</p>
 <pre><code class="elixir">WhoWeb.MemberView.parse_member_votes(&quot;C001070&quot;)</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="parse_member_website/1">
+  
+  <div class="detail-header">
+    <a href="#parse_member_website/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">parse_member_website(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>parse_member_website(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Returns the URL to a Member’s official website.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_website(&quot;B001227&quot;)
+&gt;&gt;&gt; &quot;www.brady.house.gov&quot;</code></pre>
 
   </section>
 </div>
