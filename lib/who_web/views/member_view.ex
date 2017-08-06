@@ -192,7 +192,7 @@ defmodule WhoWeb.MemberView do
 
     EX:
       WhoWeb.MemberView.build_aggregate_party_vote_pct(member)
-      (98.53 + 96.15) / 2 = 97.34
+      # (98.53 + 96.15) / 2 = 97.34
       >>> 97.34
   """
   @spec build_aggregate_party_vote_pct(map()) :: float()
