@@ -224,9 +224,16 @@ defmodule WhoWeb.MemberView do
   end
 
   @doc """
+    For a given member, return a list of Committee names they're serving on in the
+    current session.
 
+    EX:
+      WhoWeb.MemberView.build_current_session_committee_list("K000388")
+      >>> ["Committee on Agriculture", "Committee on Armed Services", "Committee on Small Business"]
   """
-  def build_committee_list(member) do
+  @spec build_current_session_committee_list(String.t()) :: nil | list(String.t())
+  def build_current_session_committee_list(nil), do: nil
+  def build_current_session_committee_list(member) do
     list_of_committees =
       member
       |> Map.get("roles")

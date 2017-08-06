@@ -62,7 +62,7 @@ defmodule WhoWeb.MemberPresenter do
       end_date: MemberView.parse_member_end_date(member),
       member_id: MemberView.parse_member_field(member, "member_id"),
       votes_with_party: MemberView.build_party_vote_pct(member),
-      committees: MemberView.build_committee_list(member),
+      committees: MemberView.build_current_session_committee_list(member),
 
       website: MemberView.parse_member_field(member, "domain"),
       facebook: MemberView.parse_member_social_account(member, "facebook"),
