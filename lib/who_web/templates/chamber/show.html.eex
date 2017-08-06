@@ -22,7 +22,7 @@
   <h3>Recent Bills Introduced</h3>
   <%= for bill <- @bills_introduced do %>
     <p>
-      <a href="<%= bill[" congressdotgov_url "] %>">
+      <a href="<%= bill["congressdotgov_url"] %>">
         <%= bill["title"] %>
       </a>
     </p>
