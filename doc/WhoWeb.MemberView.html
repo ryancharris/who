@@ -8,7 +8,7 @@
     <title>WhoWeb.MemberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-8ed5fb76a6.js"></script>
+    <script src="dist/sidebar_items-1406a56d09.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -67,6 +67,11 @@
       </h1>
 
       
+        <section id="moduledoc">
+          <p>  Helper methods to parse and populate %MemberPresenter{} fields.</p>
+
+        </section>
+      
 
       
         <section id="summary" class="details-list">
@@ -113,6 +118,16 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#build_current_session_committee_list/1">build_current_session_committee_list(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>For a given member, return a list of Committee names they’re serving on in the
+  current session</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#build_member_party/1">build_member_party(member)</a>
   </div>
   
@@ -127,6 +142,17 @@
   </div>
   
     <div class="summary-synopsis"><p>Based on the Member’s chamber, this function returns the Member’s title</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_party_vote_pct/1">build_party_vote_pct(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Calculates the percentage of times a Member has voted with their given
+  party by averaging this statistic from each Congressional session
+  they’ve served in</p>
 </div>
   
 </div>
@@ -295,6 +321,33 @@ to render a particular template</p>
 
   </section>
 </div>
+<div class="detail" id="build_current_session_committee_list/1">
+  
+  <div class="detail-header">
+    <a href="#build_current_session_committee_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_current_session_committee_list(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_current_session_committee_list(map) :: nil | [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>]</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  For a given member, return a list of Committee names they’re serving on in the
+  current session.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.build_current_session_committee_list(member)
+&gt;&gt;&gt; [&quot;Committee on Agriculture&quot;, &quot;Committee on Armed Services&quot;, &quot;Committee on Small Business&quot;]</code></pre>
+
+  </section>
+</div>
 <div class="detail" id="build_member_party/1">
   
   <div class="detail-header">
@@ -308,7 +361,7 @@ to render a particular template</p>
     
       <div class="specs">
         
-          <pre>build_member_party(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>build_member_party(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -317,10 +370,10 @@ to render a particular template</p>
     <p>  Takes the “R” or “D” party flag from the Member JSON blob and
   returns the full party name as a string.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.build_member_party(&quot;K000383&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.build_member_party(member)
 &gt;&gt;&gt; &quot;Independent&quot;
 
-WhoWeb.MemberView.build_member_party(&quot;C001035&quot;)
+WhoWeb.MemberView.build_member_party(member)
 &gt;&gt;&gt; &quot;Republican&quot;</code></pre>
 
   </section>
@@ -338,7 +391,7 @@ WhoWeb.MemberView.build_member_party(&quot;C001035&quot;)
     
       <div class="specs">
         
-          <pre>build_member_title(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>build_member_title(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a> | nil</pre>
         
       </div>
     
@@ -351,6 +404,35 @@ WhoWeb.MemberView.build_member_party(&quot;C001035&quot;)
 
 WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
 &gt;&gt;&gt; &quot;Senator&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="build_party_vote_pct/1">
+  
+  <div class="detail-header">
+    <a href="#build_party_vote_pct/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_party_vote_pct(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_party_vote_pct(map) :: float</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Calculates the percentage of times a Member has voted with their given
+  party by averaging this statistic from each Congressional session
+  they’ve served in.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.build_party_vote_pct(member)
+(98.53 + 96.15) / 2 = 97.34
+&gt;&gt;&gt; 97.34</code></pre>
 
   </section>
 </div>
@@ -367,7 +449,7 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
     
       <div class="specs">
         
-          <pre>build_state_name(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>build_state_name(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -377,7 +459,7 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
 <p>  TODO: Compare this to a map of state abbreviations/names and return</p>
 <pre><code class="elixir">    the full state name instead</code></pre>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.build_state_name(&quot;C001035&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.build_state_name(member)
 &gt;&gt;&gt; &quot;ME&quot;</code></pre>
 
   </section>
@@ -395,7 +477,7 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
     
       <div class="specs">
         
-          <pre>parse_member_chamber(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_chamber(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -403,7 +485,7 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
   <section class="docstring">
     <p>  Parses out the Member’s chamber from the Member JSON blob.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_chamber(&quot;C001070&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_chamber(member)
 &gt;&gt;&gt; &quot;Senate&quot;</code></pre>
 
   </section>
@@ -421,7 +503,10 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
     
       <div class="specs">
         
-          <pre>parse_member_district(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_district(map, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) ::
+  nil |
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a> |
+  non_neg_integer</pre>
         
       </div>
     
@@ -431,13 +516,13 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
   (or “At Large” for states with only one Representative).</p>
 <p>  For Senators, the return value will be nil.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_district(_, &quot;Senate&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_district(member, &quot;Senate&quot;)
 &gt;&gt;&gt; nil
 
-WhoWeb.MemberView.parse_member_district(&quot;C001109&quot;, &quot;House&quot;)
+WhoWeb.MemberView.parse_member_district(member, &quot;House&quot;)
 &gt;&gt;&gt; &quot;At Large&quot;
 
-WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
+WhoWeb.MemberView.parse_member_district(member, &quot;House&quot;)
 &gt;&gt;&gt; &quot;44&quot;</code></pre>
 
   </section>
@@ -455,7 +540,7 @@ WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
     
       <div class="specs">
         
-          <pre>parse_member_end_date(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_end_date(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -463,7 +548,7 @@ WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
   <section class="docstring">
     <p>  Returns the end date for a given Member’s current session in Congress.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_end_date(&quot;K000388&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_end_date(member)
 &gt;&gt;&gt; &quot;2019-01-03&quot;</code></pre>
 
   </section>
@@ -481,7 +566,7 @@ WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
     
       <div class="specs">
         
-          <pre>parse_member_field(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_field(map, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -489,7 +574,7 @@ WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
   <section class="docstring">
     <p>  Extracts a given value from the top level of a Member’s JSON blob.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_field(&quot;C001070&quot;, &quot;domain&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_field(member, &quot;domain&quot;)
 &gt;&gt;&gt; &quot;www.casey.senate.gov&quot;</code></pre>
 
   </section>
@@ -507,7 +592,7 @@ WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
     
       <div class="specs">
         
-          <pre>parse_member_name(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_name(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -516,10 +601,10 @@ WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
     <p>  Takes a Member’s first, middle and last name, returns them as
   a concatenated string.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_name(&quot;B001227&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_name(member)
 &gt;&gt;&gt; &quot;Robert A. Brady&quot;
 
-WhoWeb.MemberView.parse_member_name(&quot;C001070&quot;)
+WhoWeb.MemberView.parse_member_name(member)
 &gt;&gt;&gt; &quot;Bob Casey&quot;</code></pre>
 
   </section>
@@ -537,7 +622,7 @@ WhoWeb.MemberView.parse_member_name(&quot;C001070&quot;)
     
       <div class="specs">
         
-          <pre>parse_member_social_account(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_social_account(map, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -545,13 +630,13 @@ WhoWeb.MemberView.parse_member_name(&quot;C001070&quot;)
   <section class="docstring">
     <p>  Returns a Member’s handle for a given social media network.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;facebook&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_social_account(member, &quot;facebook&quot;)
 &gt;&gt;&gt; &quot;RepRobertBrady&quot;
 
-WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;twitter&quot;)
+WhoWeb.MemberView.parse_member_social_account(member, &quot;twitter&quot;)
 &gt;&gt;&gt; &quot;RepBrady&quot;
 
-WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;youtube&quot;)
+WhoWeb.MemberView.parse_member_social_account(member, &quot;youtube&quot;)
 &gt;&gt;&gt; &quot;BradyPA01&quot;</code></pre>
 
   </section>
@@ -569,7 +654,7 @@ WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;youtube
     
       <div class="specs">
         
-          <pre>parse_member_start_date(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_start_date(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
@@ -577,7 +662,7 @@ WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;youtube
   <section class="docstring">
     <p>  Returns the start date from a given Member’s first session in Congress.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_start_date(&quot;K000388&quot;)
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_start_date(member)
 &gt;&gt;&gt; &quot;2015-06-09&quot;</code></pre>
 
   </section>

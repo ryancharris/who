@@ -2,17 +2,16 @@ defmodule WhoWeb.MemberView do
   @moduledoc """
     Helper methods to parse and populate %MemberPresenter{} fields.
   """
-
   use WhoWeb, :view
 
   @doc """
     Extracts a given value from the top level of a Member's JSON blob.
 
     EX:
-      WhoWeb.MemberView.parse_member_field("C001070", "domain")
+      WhoWeb.MemberView.parse_member_field(member, "domain")
       >>> "www.casey.senate.gov"
   """
-  @spec parse_member_field(String.t(), String.t()) :: String.t()
+  @spec parse_member_field(map(), String.t()) :: String.t()
   def parse_member_field(member, field) do
     Map.get(member, to_string(field))
   end
@@ -21,10 +20,10 @@ defmodule WhoWeb.MemberView do
     Parses out the Member's chamber from the Member JSON blob.
 
     EX:
-      WhoWeb.MemberView.parse_member_chamber("C001070")
+      WhoWeb.MemberView.parse_member_chamber(member)
       >>> "Senate"
   """
-  @spec parse_member_chamber(String.t()) :: String.t()
+  @spec parse_member_chamber(map()) :: nil | String.t()
   def parse_member_chamber(nil), do: nil
   def parse_member_chamber(member) do
     chamber =
@@ -39,13 +38,13 @@ defmodule WhoWeb.MemberView do
     a concatenated string.
 
     EX:
-      WhoWeb.MemberView.parse_member_name("B001227")
+      WhoWeb.MemberView.parse_member_name(member)
       >>> "Robert A. Brady"
 
-      WhoWeb.MemberView.parse_member_name("C001070")
+      WhoWeb.MemberView.parse_member_name(member)
       >>> "Bob Casey"
   """
-  @spec parse_member_name(String.t()) :: String.t()
+  @spec parse_member_name(map()) :: nil | String.t()
   def parse_member_name(nil), do: nil
   def parse_member_name(member) do
     case Map.get(member, "middle_name") != nil do
@@ -60,16 +59,16 @@ defmodule WhoWeb.MemberView do
     Returns a Member's handle for a given social media network.
 
     EX:
-      WhoWeb.MemberView.parse_member_social_account("B001227", "facebook")
+      WhoWeb.MemberView.parse_member_social_account(member, "facebook")
       >>> "RepRobertBrady"
 
-      WhoWeb.MemberView.parse_member_social_account("B001227", "twitter")
+      WhoWeb.MemberView.parse_member_social_account(member, "twitter")
       >>> "RepBrady"
 
-      WhoWeb.MemberView.parse_member_social_account("B001227", "youtube")
+      WhoWeb.MemberView.parse_member_social_account(member, "youtube")
       >>> "BradyPA01"
   """
-  @spec parse_member_social_account(String.t(), String.t()) :: String.t()
+  @spec parse_member_social_account(map(), String.t()) :: nil | String.t()
   def parse_member_social_account(nil, _), do: nil
   def parse_member_social_account(member, social_network) do
     Map.get(member, "#{social_network}_account")
@@ -85,7 +84,7 @@ defmodule WhoWeb.MemberView do
       WhoWeb.MemberView.build_member_title("Senate")
       >>> "Senator"
   """
-  @spec build_member_title(String.t()) :: String.t()
+  @spec build_member_title(String.t()) :: String.t() | nil
   def build_member_title(chamber) do
     cond do
       String.downcase(chamber) == "house" -> "Representative"
@@ -99,13 +98,14 @@ defmodule WhoWeb.MemberView do
     returns the full party name as a string.
 
     EX:
-      WhoWeb.MemberView.build_member_party("K000383")
+      WhoWeb.MemberView.build_member_party(member)
       >>> "Independent"
 
-      WhoWeb.MemberView.build_member_party("C001035")
+      WhoWeb.MemberView.build_member_party(member)
       >>> "Republican"
   """
-  @spec build_member_party(String.t()) :: String.t()
+  @spec build_member_party(map()) :: nil | String.t()
+  def build_member_party(nil), do: nil
   def build_member_party(member) do
     cond do
       String.upcase(Map.get(member, "current_party")) == "R" -> "Republican"
@@ -121,10 +121,11 @@ defmodule WhoWeb.MemberView do
           the full state name instead
 
     EX:
-      WhoWeb.MemberView.build_state_name("C001035")
+      WhoWeb.MemberView.build_state_name(member)
       >>> "ME"
   """
-  @spec build_state_name(String.t()) :: String.t()
+  @spec build_state_name(map()) :: nil | String.t()
+  def build_state_name(nil), do: nil
   def build_state_name(member) do
     state =
       member
@@ -140,16 +141,16 @@ defmodule WhoWeb.MemberView do
     For Senators, the return value will be nil.
 
     EX:
-      WhoWeb.MemberView.parse_member_district("C001109", "Senate")
+      WhoWeb.MemberView.parse_member_district(member, "Senate")
       >>> nil
 
-      WhoWeb.MemberView.parse_member_district("C001109", "House")
+      WhoWeb.MemberView.parse_member_district(member, "House")
       >>> "At Large"
 
-      WhoWeb.MemberView.parse_member_district("B001300", "House")
+      WhoWeb.MemberView.parse_member_district(member, "House")
       >>> "44"
   """
-  @spec parse_member_district(String.t(), String.t()) :: nil | non_neg_integer
+  @spec parse_member_district(map(), String.t()) :: nil | String.t() | non_neg_integer
   def parse_member_district(member, "Senate"), do: nil
   def parse_member_district(member, "House") do
     at_large =
@@ -173,10 +174,10 @@ defmodule WhoWeb.MemberView do
     Returns the start date from a given Member's first session in Congress.
 
     EX:
-      WhoWeb.MemberView.parse_member_start_date("K000388")
+      WhoWeb.MemberView.parse_member_start_date(member)
       >>> "2015-06-09"
   """
-  @spec parse_member_start_date(String.t()) :: String.t()
+  @spec parse_member_start_date(map()) :: nil | String.t()
   def parse_member_start_date(nil), do: nil
   def parse_member_start_date(member) do
     member
@@ -189,10 +190,10 @@ defmodule WhoWeb.MemberView do
     Returns the end date for a given Member's current session in Congress.
 
     EX:
-      WhoWeb.MemberView.parse_member_end_date("K000388")
+      WhoWeb.MemberView.parse_member_end_date(member)
       >>> "2019-01-03"
   """
-  @spec parse_member_end_date(String.t()) :: String.t()
+  @spec parse_member_end_date(map()) :: nil | String.t()
   def parse_member_end_date(nil), do: nil
   def parse_member_end_date(member) do
     member
@@ -207,11 +208,11 @@ defmodule WhoWeb.MemberView do
     they've served in.
 
     EX:
-      WhoWeb.MemberView.build_party_vote_pct("K000388")
+      WhoWeb.MemberView.build_party_vote_pct(member)
       (98.53 + 96.15) / 2 = 97.34
       >>> 97.34
   """
-  @spec build_party_vote_pct(String.t()) :: float()
+  @spec build_party_vote_pct(map()) :: float()
   def build_party_vote_pct(member) do
     num_of_sessions =
       Map.get(member, "roles")
@@ -228,10 +229,10 @@ defmodule WhoWeb.MemberView do
     current session.
 
     EX:
-      WhoWeb.MemberView.build_current_session_committee_list("K000388")
+      WhoWeb.MemberView.build_current_session_committee_list(member)
       >>> ["Committee on Agriculture", "Committee on Armed Services", "Committee on Small Business"]
   """
-  @spec build_current_session_committee_list(String.t()) :: nil | list(String.t())
+  @spec build_current_session_committee_list(map()) :: nil | list(String.t())
   def build_current_session_committee_list(nil), do: nil
   def build_current_session_committee_list(member) do
     list_of_committees =
