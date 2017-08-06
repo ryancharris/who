@@ -8,4 +8,6 @@
   <p>Party: <%= @member.party %></p>
   <p>State: <%= @member.state %></p>
   <p>District: <%= @member.district %></p>
+  <p>Start Date: <%= @member.start_date %></p>
+  <p>End Date: <%= @member.end_date %></p>
 </div>

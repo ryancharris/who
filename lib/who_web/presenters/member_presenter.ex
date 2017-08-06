@@ -54,8 +54,8 @@ defmodule WhoWeb.MemberPresenter do
       chamber: chamber,
       district: MemberView.parse_member_district(member, chamber),
 
-      start_date: nil,
-      end_date: nil,
+      start_date: MemberView.parse_member_start_date(member),
+      end_date: MemberView.parse_member_end_date(member),
       member_id: MemberView.parse_member_field(member, "member_id"),
 
       website: MemberView.parse_member_field(member, "domain"),

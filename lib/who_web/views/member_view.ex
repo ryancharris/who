@@ -164,4 +164,36 @@ defmodule WhoWeb.MemberView do
     end
   end
 
+  @doc """
+    Returns the start date from a given Member's first session in Congress.
+
+    EX:
+      WhoWeb.MemberView.parse_member_start_date("K000388")
+      >>> "2015-06-09"
+  """
+  @spec parse_member_start_date(String.t()) :: String.t()
+  def parse_member_start_date(nil), do: nil
+  def parse_member_start_date(member) do
+    member
+    |> Map.get("roles")
+    |> Enum.fetch!(-1)
+    |> Map.get("start_date")
+  end
+
+  @doc """
+    Returns the end date for a given Member's current session in Congress.
+
+    EX:
+      WhoWeb.MemberView.parse_member_end_date("K000388")
+      >>> "2019-01-03"
+  """
+  @spec parse_member_end_date(String.t()) :: String.t()
+  def parse_member_end_date(nil), do: nil
+  def parse_member_end_date(member) do
+    member
+    |> Map.get("roles")
+    |> Enum.fetch!(0)
+    |> Map.get("end_date")
+  end
+
 end

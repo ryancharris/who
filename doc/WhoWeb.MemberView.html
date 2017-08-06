@@ -8,7 +8,7 @@
     <title>WhoWeb.MemberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-523fa2a5ff.js"></script>
+    <script src="dist/sidebar_items-8ed5fb76a6.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -113,6 +113,34 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#build_member_party/1">build_member_party(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Takes the “R” or “D” party flag from the Member JSON blob and
+  returns the full party name as a string</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_member_title/1">build_member_title(chamber)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Based on the Member’s chamber, this function returns the Member’s title</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_state_name/1">build_state_name(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the Member’s state affiliation as a two character String</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#parse_member_chamber/1">parse_member_chamber(member)</a>
   </div>
   
@@ -122,10 +150,29 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#parse_member_id/1">parse_member_id(member)</a>
+    <a href="#parse_member_district/2">parse_member_district(member, binary)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Parses out the member_id from the Member JSON blob</p>
+    <div class="summary-synopsis"><p>For all Members in the House, this function will return the Member’s district number
+  (or “At Large” for states with only one Representative)</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_member_end_date/1">parse_member_end_date(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the end date for a given Member’s current session in Congress</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_member_field/2">parse_member_field(member, field)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Extracts a given value from the top level of a Member’s JSON blob</p>
 </div>
   
 </div>
@@ -150,29 +197,10 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#parse_member_title/1">parse_member_title(chamber)</a>
+    <a href="#parse_member_start_date/1">parse_member_start_date(member)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Based on the Member’s chamber, this function returns the Member’s title</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#parse_member_votes/1">parse_member_votes(member)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Pulls out a list of the Member’s votes from the API call
-  JSON body</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#parse_member_website/1">parse_member_website(member)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Returns the URL to a Member’s official website</p>
+    <div class="summary-synopsis"><p>Returns the start date from a given Member’s first session in Congress</p>
 </div>
   
 </div>
@@ -267,6 +295,93 @@ to render a particular template</p>
 
   </section>
 </div>
+<div class="detail" id="build_member_party/1">
+  
+  <div class="detail-header">
+    <a href="#build_member_party/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_member_party(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_member_party(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Takes the “R” or “D” party flag from the Member JSON blob and
+  returns the full party name as a string.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.build_member_party(&quot;K000383&quot;)
+&gt;&gt;&gt; &quot;Independent&quot;
+
+WhoWeb.MemberView.build_member_party(&quot;C001035&quot;)
+&gt;&gt;&gt; &quot;Republican&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="build_member_title/1">
+  
+  <div class="detail-header">
+    <a href="#build_member_title/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_member_title(chamber)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_member_title(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Based on the Member’s chamber, this function returns the Member’s title</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.build_member_title(&quot;House&quot;)
+&gt;&gt;&gt; &quot;Representative&quot;
+
+WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
+&gt;&gt;&gt; &quot;Senator&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="build_state_name/1">
+  
+  <div class="detail-header">
+    <a href="#build_state_name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_state_name(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_state_name(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Returns the Member’s state affiliation as a two character String.</p>
+<p>  TODO: Compare this to a map of state abbreviations/names and return</p>
+<pre><code class="elixir">    the full state name instead</code></pre>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.build_state_name(&quot;C001035&quot;)
+&gt;&gt;&gt; &quot;ME&quot;</code></pre>
+
+  </section>
+</div>
 <div class="detail" id="parse_member_chamber/1">
   
   <div class="detail-header">
@@ -293,29 +408,89 @@ to render a particular template</p>
 
   </section>
 </div>
-<div class="detail" id="parse_member_id/1">
+<div class="detail" id="parse_member_district/2">
   
   <div class="detail-header">
-    <a href="#parse_member_id/1" class="detail-link" title="Link to this function">
+    <a href="#parse_member_district/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">parse_member_id(member)</span>
+    <span class="signature">parse_member_district(member, binary)</span>
     
     
     
       <div class="specs">
         
-          <pre>parse_member_id(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_district(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
   </div>
   <section class="docstring">
-    <p>  Parses out the member_id from the Member JSON blob.</p>
+    <p>  For all Members in the House, this function will return the Member’s district number
+  (or “At Large” for states with only one Representative).</p>
+<p>  For Senators, the return value will be nil.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_id(&quot;C001070&quot;)
-&gt;&gt;&gt; &quot;C001070&quot;</code></pre>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_district(_, &quot;Senate&quot;)
+&gt;&gt;&gt; nil
+
+WhoWeb.MemberView.parse_member_district(&quot;C001109&quot;, &quot;House&quot;)
+&gt;&gt;&gt; &quot;At Large&quot;
+
+WhoWeb.MemberView.parse_member_district(&quot;B001300&quot;, &quot;House&quot;)
+&gt;&gt;&gt; &quot;44&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="parse_member_end_date/1">
+  
+  <div class="detail-header">
+    <a href="#parse_member_end_date/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">parse_member_end_date(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>parse_member_end_date(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Returns the end date for a given Member’s current session in Congress.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_end_date(&quot;K000388&quot;)
+&gt;&gt;&gt; &quot;2019-01-03&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="parse_member_field/2">
+  
+  <div class="detail-header">
+    <a href="#parse_member_field/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">parse_member_field(member, field)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>parse_member_field(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Extracts a given value from the top level of a Member’s JSON blob.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_field(&quot;C001070&quot;, &quot;domain&quot;)
+&gt;&gt;&gt; &quot;www.casey.senate.gov&quot;</code></pre>
 
   </section>
 </div>
@@ -381,84 +556,29 @@ WhoWeb.MemberView.parse_member_social_account(&quot;B001227&quot;, &quot;youtube
 
   </section>
 </div>
-<div class="detail" id="parse_member_title/1">
+<div class="detail" id="parse_member_start_date/1">
   
   <div class="detail-header">
-    <a href="#parse_member_title/1" class="detail-link" title="Link to this function">
+    <a href="#parse_member_start_date/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">parse_member_title(chamber)</span>
+    <span class="signature">parse_member_start_date(member)</span>
     
     
     
       <div class="specs">
         
-          <pre>parse_member_title(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+          <pre>parse_member_start_date(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
         
       </div>
     
   </div>
   <section class="docstring">
-    <p>  Based on the Member’s chamber, this function returns the Member’s title</p>
+    <p>  Returns the start date from a given Member’s first session in Congress.</p>
 <p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_title(&quot;House&quot;)
-&gt;&gt;&gt; &quot;Representative&quot;
-
-WhoWeb.MemberView.parse_member_title(&quot;Senate&quot;)
-&gt;&gt;&gt; &quot;Senator&quot;</code></pre>
-
-  </section>
-</div>
-<div class="detail" id="parse_member_votes/1">
-  
-  <div class="detail-header">
-    <a href="#parse_member_votes/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">parse_member_votes(member)</span>
-    
-    
-    
-      <div class="specs">
-        
-          <pre>parse_member_votes(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: list</pre>
-        
-      </div>
-    
-  </div>
-  <section class="docstring">
-    <p>  Pulls out a list of the Member’s votes from the API call
-  JSON body.</p>
-<p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_votes(&quot;C001070&quot;)</code></pre>
-
-  </section>
-</div>
-<div class="detail" id="parse_member_website/1">
-  
-  <div class="detail-header">
-    <a href="#parse_member_website/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">parse_member_website(member)</span>
-    
-    
-    
-      <div class="specs">
-        
-          <pre>parse_member_website(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
-        
-      </div>
-    
-  </div>
-  <section class="docstring">
-    <p>  Returns the URL to a Member’s official website.</p>
-<p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_website(&quot;B001227&quot;)
-&gt;&gt;&gt; &quot;www.brady.house.gov&quot;</code></pre>
+<pre><code class="elixir">WhoWeb.MemberView.parse_member_start_date(&quot;K000388&quot;)
+&gt;&gt;&gt; &quot;2015-06-09&quot;</code></pre>
 
   </section>
 </div>
