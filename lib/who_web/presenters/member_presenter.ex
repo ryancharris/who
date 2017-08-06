@@ -45,19 +45,20 @@ defmodule WhoWeb.MemberPresenter do
   def new(nil), do: nil
   def new(member) do
     chamber = MemberView.parse_member_chamber(member)
+
     %__MODULE__{
       name: MemberView.parse_member_name(member),
-      title: MemberView.parse_member_title(chamber),
+      title: MemberView.build_member_title(chamber),
       state: nil,
-      party: nil,
+      party: MemberView.build_member_party(member),
       chamber: chamber,
       district: nil,
 
       start_date: nil,
       end_date: nil,
-      member_id: MemberView.parse_member_id(member),
+      member_id: MemberView.parse_member_field(member, "member_id"),
 
-      website: MemberView.parse_member_website(member),
+      website: MemberView.parse_member_field(member, "domain"),
       facebook: MemberView.parse_member_social_account(member, "facebook"),
       twitter: MemberView.parse_member_social_account(member, "twitter"),
       youtube: MemberView.parse_member_social_account(member, "youtube")

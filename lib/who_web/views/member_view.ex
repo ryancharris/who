@@ -2,6 +2,18 @@ defmodule WhoWeb.MemberView do
   use WhoWeb, :view
 
   @doc """
+    Extracts a given value from the top level of a Member's JSON blob.
+
+    EX:
+      WhoWeb.MemberView.parse_member_field("C001070", "domain")
+      >>> "www.casey.senate.gov"
+  """
+  @spec parse_member_field(String.t(), String.t()) :: String.t()
+  def parse_member_field(member, field) do
+    Map.get(member, to_string(field))
+  end
+
+  @doc """
     Parses out the Member's chamber from the Member JSON blob.
 
     EX:
@@ -16,34 +28,6 @@ defmodule WhoWeb.MemberView do
       |> Map.get("roles")
       |> Enum.fetch!(0)
       |> Map.get("chamber")
-  end
-
-  @doc """
-    Parses out the member_id from the Member JSON blob.
-
-    EX:
-      WhoWeb.MemberView.parse_member_id("C001070")
-      >>> "C001070"
-  """
-  @spec parse_member_id(String.t()) :: String.t()
-  def parse_member_id(nil), do: nil
-  def parse_member_id(member) do
-    member
-    |> Map.get("member_id")
-  end
-
-  @doc """
-    Pulls out a list of the Member's votes from the API call
-    JSON body.
-
-    EX:
-      WhoWeb.MemberView.parse_member_votes("C001070")
-  """
-  @spec parse_member_votes(String.t()) :: list()
-  def parse_member_votes(nil), do: nil
-  def parse_member_votes(member) do
-    member
-    |> Map.get("votes")
   end
 
   @doc """
@@ -88,33 +72,28 @@ defmodule WhoWeb.MemberView do
   end
 
   @doc """
-    Returns the URL to a Member's official website.
-
-    EX:
-      WhoWeb.MemberView.parse_member_website("B001227")
-      >>> "www.brady.house.gov"
-  """
-  @spec parse_member_website(String.t()) :: String.t()
-  def parse_member_website(nil), do: nil
-  def parse_member_website(member) do
-    Map.get(member, "domain")
-  end
-
-  @doc """
     Based on the Member's chamber, this function returns the Member's title
 
     EX:
-      WhoWeb.MemberView.parse_member_title("House")
+      WhoWeb.MemberView.build_member_title("House")
       >>> "Representative"
 
-      WhoWeb.MemberView.parse_member_title("Senate")
+      WhoWeb.MemberView.build_member_title("Senate")
       >>> "Senator"
   """
-  @spec parse_member_title(String.t()) :: String.t()
-  def parse_member_title(chamber) do
+  @spec build_member_title(String.t()) :: String.t()
+  def build_member_title(chamber) do
     cond do
       String.downcase(chamber) == "house" -> "Representative"
       String.downcase(chamber) == "senate" -> "Senator"
+      true -> nil
+    end
+  end
+
+  def build_member_party(member) do
+    cond do
+      String.upcase(Map.get(member, "current_party")) == "R" -> "Republican"
+      String.upcase(Map.get(member, "current_party")) == "D" -> "Democrat"
       true -> nil
     end
   end

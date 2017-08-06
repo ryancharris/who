@@ -1,11 +1,9 @@
 <div class="jumbotron">
   <p><%= @member.title %> <%= @member.name %></p>
+  <p>Member ID# <%= @member.member_id %></p>
   <p>Facebook: <%= @member.facebook %></p>
   <p>Twitter: <%= @member.twitter %></p>
   <p>YouTube: <%= @member.youtube %></p>
   <p>Website: <%= @member.website %></p>
-  <!-- <%= for vote <- @vote_list do %>
-    <p><%= vote["description"] %></p>
-    <p><%= vote["position"] %></p>
-  <% end %> -->
+  <p>Party: <%= @member.party %></p>
 </div>
