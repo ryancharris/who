@@ -11,4 +11,12 @@
   <p>Start Date: <%= @member.start_date %></p>
   <p>End Date: <%= @member.end_date %></p>
   <p>Vote w/ party <%= @member.votes_with_party %>%</p>
+  <p>
+    Committees:
+    <ul>
+      <%= for committee <- @member.committees do %>
+        <li><%= committee %></li>
+      <% end %>
+    </ul>
+  </p>
 </div>
