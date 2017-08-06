@@ -1,4 +1,8 @@
 defmodule WhoWeb.MemberView do
+  @moduledoc """
+    Helper methods to parse and populate %MemberPresenter{} fields.
+  """
+
   use WhoWeb, :view
 
   @doc """
@@ -136,7 +140,7 @@ defmodule WhoWeb.MemberView do
     For Senators, the return value will be nil.
 
     EX:
-      WhoWeb.MemberView.parse_member_district(_, "Senate")
+      WhoWeb.MemberView.parse_member_district("C001109", "Senate")
       >>> nil
 
       WhoWeb.MemberView.parse_member_district("C001109", "House")
@@ -145,7 +149,7 @@ defmodule WhoWeb.MemberView do
       WhoWeb.MemberView.parse_member_district("B001300", "House")
       >>> "44"
   """
-  @spec parse_member_district(String.t(), String.t()) :: String.t()
+  @spec parse_member_district(String.t(), String.t()) :: nil | non_neg_integer
   def parse_member_district(member, "Senate"), do: nil
   def parse_member_district(member, "House") do
     at_large =
@@ -161,6 +165,7 @@ defmodule WhoWeb.MemberView do
         |> Map.get("roles")
         |> Enum.fetch!(0)
         |> Map.get("district")
+        |> String.to_integer
     end
   end
 
