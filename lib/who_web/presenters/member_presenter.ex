@@ -1,6 +1,6 @@
 defmodule WhoWeb.MemberPresenter do
   @typedoc """
-    This Presenter creates a data object containing all the
+    Creates a data object containing all the
     important information regarding a Member.
   """
   alias WhoWeb.MemberView
