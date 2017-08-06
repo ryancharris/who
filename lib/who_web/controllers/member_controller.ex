@@ -19,7 +19,6 @@ defmodule WhoWeb.MemberController do
       id: MemberView.parse_member_field(member, "member_id"),
       member: MemberPresenter.new(member),
       vote_list: MemberView.parse_member_field(member, "votes"),
-      chamber: MemberView.parse_member_chamber(member)
     )
   end
 end

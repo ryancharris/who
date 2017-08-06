@@ -10,27 +10,21 @@ defmodule WhoWeb.MemberView do
     EX:
       WhoWeb.MemberView.parse_member_field(member, "domain")
       >>> "www.casey.senate.gov"
+
+      WhoWeb.MemberView.parse_member_field(member, "roles", "state")
+      >>> "PA"
   """
   @spec parse_member_field(map(), String.t()) :: String.t()
-  def parse_member_field(member, field) do
-    Map.get(member, to_string(field))
+  def parse_member_field(member, key) do
+    Map.get(member, to_string(key))
   end
 
-  @doc """
-    Parses out the Member's chamber from the Member JSON blob.
-
-    EX:
-      WhoWeb.MemberView.parse_member_chamber(member)
-      >>> "Senate"
-  """
-  @spec parse_member_chamber(map()) :: nil | String.t()
-  def parse_member_chamber(nil), do: nil
-  def parse_member_chamber(member) do
-    chamber =
-      member
-      |> Map.get("roles")
-      |> Enum.fetch!(0)
-      |> Map.get("chamber")
+  @spec parse_member_field(map(), String.t(), String.t()) :: String.t()
+  def parse_member_field(member, parent_key, nested_key) do
+    member
+    |> Map.get(parent_key)
+    |> Enum.fetch!(0)
+    |> Map.get(nested_key)
   end
 
   @doc """
@@ -71,7 +65,7 @@ defmodule WhoWeb.MemberView do
   @spec parse_member_social_account(map(), String.t()) :: nil | String.t()
   def parse_member_social_account(nil, _), do: nil
   def parse_member_social_account(member, social_network) do
-    Map.get(member, "#{social_network}_account")
+    parse_member_field(member, "#{social_network}_account")
   end
 
   @doc """
@@ -127,11 +121,7 @@ defmodule WhoWeb.MemberView do
   @spec build_state_name(map()) :: nil | String.t()
   def build_state_name(nil), do: nil
   def build_state_name(member) do
-    state =
-      member
-      |> Map.get("roles")
-      |> Enum.fetch!(0)
-      |> Map.get("state")
+    parse_member_field(member, "roles", "state")
   end
 
   @doc """
@@ -153,11 +143,7 @@ defmodule WhoWeb.MemberView do
   @spec parse_member_district(map(), String.t()) :: nil | String.t() | non_neg_integer
   def parse_member_district(member, "Senate"), do: nil
   def parse_member_district(member, "House") do
-    at_large =
-      member
-      |> Map.get("roles")
-      |> Enum.fetch!(0)
-      |> Map.get("at_large")
+    at_large = parse_member_field(member, "roles", "at_large")
 
     case at_large do
       true -> "At Large"
@@ -196,10 +182,7 @@ defmodule WhoWeb.MemberView do
   @spec parse_member_end_date(map()) :: nil | String.t()
   def parse_member_end_date(nil), do: nil
   def parse_member_end_date(member) do
-    member
-    |> Map.get("roles")
-    |> Enum.fetch!(0)
-    |> Map.get("end_date")
+    parse_member_field(member, "roles", "end_date")
   end
 
   @doc """

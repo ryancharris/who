@@ -48,7 +48,7 @@ defmodule WhoWeb.MemberPresenter do
   @spec new(String.t()) :: t()
   def new(nil), do: nil
   def new(member) do
-    chamber = MemberView.parse_member_chamber(member)
+    chamber = MemberView.parse_member_field(member, "roles", "chamber")
 
     %__MODULE__{
       name: MemberView.parse_member_name(member),
