@@ -8,7 +8,7 @@
     <title>WhoWeb.MemberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-1406a56d09.js"></script>
+    <script src="dist/sidebar_items-d57f1fd01f.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -118,6 +118,17 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#build_aggregate_party_vote_pct/1">build_aggregate_party_vote_pct(member)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Calculates the percentage of times a Member has voted with their given
+  party by averaging this statistic from each Congressional session
+  they’ve served in</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#build_current_session_committee_list/1">build_current_session_committee_list(member)</a>
   </div>
   
@@ -147,30 +158,10 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#build_party_vote_pct/1">build_party_vote_pct(member)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Calculates the percentage of times a Member has voted with their given
-  party by averaging this statistic from each Congressional session
-  they’ve served in</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#build_state_name/1">build_state_name(member)</a>
   </div>
   
     <div class="summary-synopsis"><p>Returns the Member’s state affiliation as a two character String</p>
-</div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#parse_member_chamber/1">parse_member_chamber(member)</a>
-  </div>
-  
-    <div class="summary-synopsis"><p>Parses out the Member’s chamber from the Member JSON blob</p>
 </div>
   
 </div>
@@ -195,11 +186,17 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#parse_member_field/2">parse_member_field(member, field)</a>
+    <a href="#parse_member_field/2">parse_member_field(member, key)</a>
   </div>
   
     <div class="summary-synopsis"><p>Extracts a given value from the top level of a Member’s JSON blob</p>
 </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#parse_member_field/3">parse_member_field(member, parent_key, nested_key)</a>
+  </div>
   
 </div>
 <div class="summary-row">
@@ -321,6 +318,35 @@ to render a particular template</p>
 
   </section>
 </div>
+<div class="detail" id="build_aggregate_party_vote_pct/1">
+  
+  <div class="detail-header">
+    <a href="#build_aggregate_party_vote_pct/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_aggregate_party_vote_pct(member)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_aggregate_party_vote_pct(map) :: float</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Calculates the percentage of times a Member has voted with their given
+  party by averaging this statistic from each Congressional session
+  they’ve served in.</p>
+<p>  EX:</p>
+<pre><code class="elixir">WhoWeb.MemberView.build_aggregate_party_vote_pct(member)
+(98.53 + 96.15) / 2 = 97.34
+&gt;&gt;&gt; 97.34</code></pre>
+
+  </section>
+</div>
 <div class="detail" id="build_current_session_committee_list/1">
   
   <div class="detail-header">
@@ -407,35 +433,6 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
 
   </section>
 </div>
-<div class="detail" id="build_party_vote_pct/1">
-  
-  <div class="detail-header">
-    <a href="#build_party_vote_pct/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">build_party_vote_pct(member)</span>
-    
-    
-    
-      <div class="specs">
-        
-          <pre>build_party_vote_pct(map) :: float</pre>
-        
-      </div>
-    
-  </div>
-  <section class="docstring">
-    <p>  Calculates the percentage of times a Member has voted with their given
-  party by averaging this statistic from each Congressional session
-  they’ve served in.</p>
-<p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.build_party_vote_pct(member)
-(98.53 + 96.15) / 2 = 97.34
-&gt;&gt;&gt; 97.34</code></pre>
-
-  </section>
-</div>
 <div class="detail" id="build_state_name/1">
   
   <div class="detail-header">
@@ -461,32 +458,6 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
 <p>  EX:</p>
 <pre><code class="elixir">WhoWeb.MemberView.build_state_name(member)
 &gt;&gt;&gt; &quot;ME&quot;</code></pre>
-
-  </section>
-</div>
-<div class="detail" id="parse_member_chamber/1">
-  
-  <div class="detail-header">
-    <a href="#parse_member_chamber/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">parse_member_chamber(member)</span>
-    
-    
-    
-      <div class="specs">
-        
-          <pre>parse_member_chamber(map) :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
-        
-      </div>
-    
-  </div>
-  <section class="docstring">
-    <p>  Parses out the Member’s chamber from the Member JSON blob.</p>
-<p>  EX:</p>
-<pre><code class="elixir">WhoWeb.MemberView.parse_member_chamber(member)
-&gt;&gt;&gt; &quot;Senate&quot;</code></pre>
 
   </section>
 </div>
@@ -560,7 +531,7 @@ WhoWeb.MemberView.parse_member_district(member, &quot;House&quot;)
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">parse_member_field(member, field)</span>
+    <span class="signature">parse_member_field(member, key)</span>
     
     
     
@@ -575,8 +546,33 @@ WhoWeb.MemberView.parse_member_district(member, &quot;House&quot;)
     <p>  Extracts a given value from the top level of a Member’s JSON blob.</p>
 <p>  EX:</p>
 <pre><code class="elixir">WhoWeb.MemberView.parse_member_field(member, &quot;domain&quot;)
-&gt;&gt;&gt; &quot;www.casey.senate.gov&quot;</code></pre>
+&gt;&gt;&gt; &quot;www.casey.senate.gov&quot;
 
+WhoWeb.MemberView.parse_member_field(member, &quot;roles&quot;, &quot;state&quot;)
+&gt;&gt;&gt; &quot;PA&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="parse_member_field/3">
+  
+  <div class="detail-header">
+    <a href="#parse_member_field/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">parse_member_field(member, parent_key, nested_key)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>parse_member_field(map, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
   </section>
 </div>
 <div class="detail" id="parse_member_name/1">

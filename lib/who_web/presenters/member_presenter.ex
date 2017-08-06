@@ -17,7 +17,7 @@ defmodule WhoWeb.MemberPresenter do
     end_date: String. t(),
     member_id: String.t(),
     votes_with_party: float(),
-    committees: list(map()),
+    committees: list(String.t()),
 
     website: String.t(),
     facebook: String.t(),
