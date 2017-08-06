@@ -22,7 +22,8 @@ defmodule WhoWeb.MemberPresenter do
     website: String.t(),
     facebook: String.t(),
     twitter: String.t(),
-    youtube: String.t()
+    youtube: String.t(),
+    phone: String.t()
   }
 
   defstruct [
@@ -42,7 +43,8 @@ defmodule WhoWeb.MemberPresenter do
     website: nil,
     facebook: nil,
     twitter: nil,
-    youtube: nil
+    youtube: nil,
+    phone: nil
   ]
 
   @spec new(map()) :: t()
@@ -67,7 +69,8 @@ defmodule WhoWeb.MemberPresenter do
       website: MemberView.parse_member_field(member, "domain"),
       facebook: MemberView.parse_member_social_account(member, "facebook"),
       twitter: MemberView.parse_member_social_account(member, "twitter"),
-      youtube: MemberView.parse_member_social_account(member, "youtube")
+      youtube: MemberView.parse_member_social_account(member, "youtube"),
+      phone: MemberView.parse_member_field(member, "roles", "phone")
     }
   end
 end

@@ -5,6 +5,7 @@
   <p>Twitter: <%= @member.twitter %></p>
   <p>YouTube: <%= @member.youtube %></p>
   <p>Website: <%= @member.website %></p>
+  <p>Phone: <%= @member.phone %></p>
   <p>Party: <%= @member.party %></p>
   <p>State: <%= @member.state %></p>
   <p>District: <%= @member.district %></p>
