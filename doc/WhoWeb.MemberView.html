@@ -8,7 +8,7 @@
     <title>WhoWeb.MemberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-d57f1fd01f.js"></script>
+    <script src="dist/sidebar_items-c36f223ec4.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -162,6 +162,15 @@
   </div>
   
     <div class="summary-synopsis"><p>Returns the Member’s state affiliation as a two character String</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_votes_list/1">build_votes_list(vote_list)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Extracts a list of maps from the Member’s votes JSON blob</p>
 </div>
   
 </div>
@@ -342,7 +351,7 @@ to render a particular template</p>
   they’ve served in.</p>
 <p>  EX:</p>
 <pre><code class="elixir">WhoWeb.MemberView.build_aggregate_party_vote_pct(member)
-(98.53 + 96.15) / 2 = 97.34
+# (98.53 + 96.15) / 2 = 97.34
 &gt;&gt;&gt; 97.34</code></pre>
 
   </section>
@@ -458,6 +467,43 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
 <p>  EX:</p>
 <pre><code class="elixir">WhoWeb.MemberView.build_state_name(member)
 &gt;&gt;&gt; &quot;ME&quot;</code></pre>
+
+  </section>
+</div>
+<div class="detail" id="build_votes_list/1">
+  
+  <div class="detail-header">
+    <a href="#build_votes_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_votes_list(vote_list)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_votes_list(list) :: [map]</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>  Extracts a list of maps from the Member’s votes JSON blob.</p>
+<p>  EX:</p>
+<pre><code class="elixir">MemberView.build_votes_list(vote_list)
+&gt;&gt;&gt; %{
+      date: &quot;2017-07-28&quot;,
+      description: &quot;Department of Veterans Affairs Bonus Transparency Act&quot;,
+      is_bill: true,
+      number: &quot;S 114&quot;,
+      position: &quot;Yes&quot;,
+      time: &quot;12:52:00&quot;,
+      title: &quot;To authorize appropriations and to appropriate amounts for the
+      Veterans Choice Program of the Department of Veterans Affairs, to improve
+      hiring authorities of the Department, to authorize major medical facility
+      leases, and for other purposes.&quot;
+    }</code></pre>
 
   </section>
 </div>

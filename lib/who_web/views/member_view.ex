@@ -230,6 +230,25 @@ defmodule WhoWeb.MemberView do
     end
   end
 
+  @doc """
+    Extracts a list of maps from the Member's votes JSON blob.
+
+    EX:
+      MemberView.build_votes_list(vote_list)
+      >>> %{
+            date: "2017-07-28",
+            description: "Department of Veterans Affairs Bonus Transparency Act",
+            is_bill: true,
+            number: "S 114",
+            position: "Yes",
+            time: "12:52:00",
+            title: "To authorize appropriations and to appropriate amounts for the
+            Veterans Choice Program of the Department of Veterans Affairs, to improve
+            hiring authorities of the Department, to authorize major medical facility
+            leases, and for other purposes."
+          }
+
+  """
   @spec build_votes_list(list()) :: list(map())
   def build_votes_list(vote_list) do
     for vote <- vote_list do
