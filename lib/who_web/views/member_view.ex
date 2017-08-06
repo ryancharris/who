@@ -228,7 +228,29 @@ defmodule WhoWeb.MemberView do
     for committee <- list_of_committees do
       committee["name"]
     end
-
   end
 
+  @spec build_votes_list(list()) :: list(map())
+  def build_votes_list(vote_list) do
+    for vote <- vote_list do
+      vote_info =
+        %{
+          description: vote["description"],
+          position: vote["position"],
+          date: vote["date"],
+          time: vote["time"]
+        }
+
+      unless is_nil(vote["bill"]) do
+        bill = vote["bill"]
+        bill_map =
+          %{
+            is_bill: true,
+            title: bill["title"],
+            number: bill["number"]
+          }
+        Map.merge(vote_info, bill_map)
+      end
+    end
+  end
 end

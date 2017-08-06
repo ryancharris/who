@@ -16,8 +16,9 @@ defmodule WhoWeb.MemberPresenter do
     start_date: String.t(),
     end_date: String. t(),
     member_id: String.t(),
-    votes_with_party: float(),
     committees: list(String.t()),
+    votes_with_party: float(),
+    votes: list(map()),
 
     website: String.t(),
     facebook: String.t(),
@@ -38,8 +39,9 @@ defmodule WhoWeb.MemberPresenter do
     start_date: nil,
     end_date: nil,
     member_id: nil,
-    votes_with_party: nil,
     committees: [],
+    votes_with_party: nil,
+    votes: [],
 
     website: nil,
     facebook: nil,
@@ -51,8 +53,9 @@ defmodule WhoWeb.MemberPresenter do
 
   @spec new(map()) :: t()
   def new(nil), do: nil
-  def new(member) do
+  def new(member, member_votes_map) do
     chamber = MemberView.parse_member_field(member, "roles", "chamber")
+    vote_list = MemberView.parse_member_field(member_votes_map, "votes")
 
     %__MODULE__{
       name: MemberView.parse_member_name(member),
@@ -65,8 +68,9 @@ defmodule WhoWeb.MemberPresenter do
       start_date: MemberView.parse_member_start_date(member),
       end_date: MemberView.parse_member_end_date(member),
       member_id: MemberView.parse_member_field(member, "member_id"),
-      votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       committees: MemberView.build_current_session_committee_list(member),
+      votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
+      votes: MemberView.build_votes_list(vote_list),
 
       website: MemberView.parse_member_field(member, "domain"),
       facebook: MemberView.parse_member_social_account(member, "facebook"),

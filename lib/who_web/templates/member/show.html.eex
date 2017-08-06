@@ -21,4 +21,11 @@
       <% end %>
     </ul>
   </p>
+  <p>
+    <%= for vote <- @member.votes do %>
+      <p>Bill: <%= if vote.is_bill, do: ~s(#{vote.title} \(#{vote.number}\)) %></p>
+      <p>Desc: <%= vote.description %></p>
+      <p>Vote: <%= vote.position %></p>
+    <% end %>
+  </p>
 </div>

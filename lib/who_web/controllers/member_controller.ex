@@ -11,13 +11,12 @@ defmodule WhoWeb.MemberController do
 
   def show(conn, %{"id" => id}) do
     [member | tail] = Member.get_member_by_id(id)
-    [votes | tail] = Member.get_member_votes(id)
+    [member_votes_map | tail] = Member.get_member_votes(id)
 
     render(
       conn,
       "show.html",
-      member: MemberPresenter.new(member),
-      vote_list: MemberView.parse_member_field(member, "votes"),
+      member: MemberPresenter.new(member, member_votes_map),
     )
   end
 end
