@@ -13,7 +13,8 @@ defmodule WhoWeb.BillPresenter do
     summary: String.t(),
     committees: list(String.t()),
     url: String.t(),
-    date: String.t(),
+    date_introduced: String.t(),
+    history: list(map()),
 
     sponsor_name: String.t(),
     sponsor_title: String.t(),
@@ -32,9 +33,10 @@ defmodule WhoWeb.BillPresenter do
     number: nil,
     title: nil,
     summary: nil,
-    committees: nil,
+    committees: [],
     url: nil,
-    date: nil,
+    date_introduced: nil,
+    history: [],
 
     sponsor_name: nil,
     sponsor_title: nil,
@@ -58,7 +60,8 @@ defmodule WhoWeb.BillPresenter do
       summary: Map.get(bill, "summary"),
       committees: Map.get(bill, "committees"),
       url: Map.get(bill, "congressdotgov_url"),
-      date: Map.get(bill, "introduced_date"),
+      date_introduced: Map.get(bill, "introduced_date"),
+      history: Map.get(bill, "actions") |> Enum.slice(1..5),
 
       sponsor_name: Map.get(bill, "sponsor"),
       sponsor_title: Map.get(bill, "sponsor_title"),
