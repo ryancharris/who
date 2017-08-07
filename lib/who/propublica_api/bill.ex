@@ -20,4 +20,10 @@ defmodule Who.ProPublicaAPI.Bill do
     get_api_endpoint() <> "115/#{chamber}/bills/#{type}.json"
     |> make_request(get_api_header())
   end
+
+  @spec get_bill_by_id(String.t()) :: map()
+  def get_bill_by_id(id) do
+    get_api_endpoint() <> "115/bills/#{id}.json"
+    |> make_request(get_api_header())
+  end
 end

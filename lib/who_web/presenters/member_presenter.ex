@@ -1,5 +1,5 @@
 defmodule WhoWeb.MemberPresenter do
-  @typedoc """
+  @moduledoc """
     Creates a data object containing all the
     important information regarding a Member.
   """
