@@ -5,7 +5,7 @@ fonts/icomoon.eot
 fonts/icomoon.svg
 fonts/icomoon.ttf
 fonts/icomoon.woff
-dist/sidebar_items-c36f223ec4.js
+dist/sidebar_items-d907b1700e.js
 api-reference.html
 404.html
 Who.html
@@ -18,6 +18,9 @@ Who.ProPublicaAPI.Chamber.html
 Who.ProPublicaAPI.Member.html
 Who.Repo.html
 WhoWeb.html
+WhoWeb.BillController.html
+WhoWeb.BillPresenter.html
+WhoWeb.BillView.html
 WhoWeb.ChamberController.html
 WhoWeb.ChamberView.html
 WhoWeb.Endpoint.html

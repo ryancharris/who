@@ -1,3 +1,14 @@
 <div class="jumbotron">
   <h1>Bill #show</h1>
+  <p>Title: <%= @bill.title %></p>
+  <p>Introduced: <%= @bill.date %></p>
+  <p>Summary: <%= @bill.summary %></p>
+  <p>Sponsor: <%= @bill.sponsor_title %> <%= @bill.sponsor_name %> (<%= @bill.sponsor_party %>)</p>
+  <%= if @bill.has_cosponsors do %>
+    <p>Number of Cosponsors: <%= @bill.num_of_cosponsors %></p>
+  <% end %>
+  <p>URL: <%= @bill.url %></p>
+  <p>Committees: <%= @bill.committees %></p>
+  <p>Last Action: <%= @bill.latest_action %></p>
+  <p>Last Action Date: <%= @bill.latest_action_date %></p>
 </div>

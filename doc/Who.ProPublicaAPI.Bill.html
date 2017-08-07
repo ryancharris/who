@@ -8,7 +8,7 @@
     <title>Who.ProPublicaAPI.Bill – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-c36f223ec4.js"></script>
+    <script src="dist/sidebar_items-d907b1700e.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -92,8 +92,18 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
+    <a href="#get_bill_by_id/1">get_bill_by_id(id)</a>
+  </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#get_recent_bills/2">get_recent_bills(chamber, type)</a>
   </div>
+  
+    <div class="summary-synopsis"><p>Returns a JSON blob representing the last 20 votes in a given
+ chamber of Congress by type</p>
+</div>
   
 </div>
 
@@ -116,7 +126,29 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="get_recent_bills/2">
+          <div class="detail" id="get_bill_by_id/1">
+  
+  <div class="detail-header">
+    <a href="#get_bill_by_id/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_bill_by_id(id)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>get_bill_by_id(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: map</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+<div class="detail" id="get_recent_bills/2">
   
   <div class="detail-header">
     <a href="#get_recent_bills/2" class="detail-link" title="Link to this function">
@@ -135,7 +167,13 @@
     
   </div>
   <section class="docstring">
-    
+    <p> Returns a JSON blob representing the last 20 votes in a given
+ chamber of Congress by type.</p>
+<p> EX:
+  Who.ProPublicaAPI.Bill.get_recent_bills(“both”, “enacted”)
+  Who.ProPublicaAPI.Bill.get_recent_bills(“senate”, “introduced”)
+  Who.ProPublicaAPI.Bill.get_recent_bills(“house”, “passed”)</p>
+
   </section>
 </div>
 

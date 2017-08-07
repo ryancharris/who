@@ -15,8 +15,6 @@ defmodule WhoWeb.BillController do
       |> Enum.fetch!(0)
       |> BillPresenter.new
 
-    raise inspect bill
-
     render conn, "show.html", bill: bill
   end
 
