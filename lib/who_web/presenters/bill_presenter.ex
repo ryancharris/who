@@ -50,6 +50,9 @@ defmodule WhoWeb.BillPresenter do
     latest_action_date: nil
   ]
 
+  @doc """
+    Creates a new %BillPresenter{} named struct.
+  """
   @spec new(map()) :: nil | t()
   def new(nil), do: nil
   def new(bill) do

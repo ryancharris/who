@@ -51,6 +51,9 @@ defmodule WhoWeb.MemberPresenter do
     office: nil
   ]
 
+  @doc """
+    Creates a new %MemberPresenter{} named struct.
+  """
   @spec new(map()) :: t()
   def new(nil), do: nil
   def new(member, member_votes_map) do
