@@ -40,9 +40,24 @@
   <% end %>
 </div>
 
-<div>
-  <h3>Members</h3>
-  <%= for member <- @members do %>
-    <p><%= member["first_name"] %> <%= member["last_name"] %></p>
-  <% end %>
+<div class="test" style="display: none;">
+  <%= @members |> Poison.encode! %>
 </div>
+
+<div id="test">
+  <li v-for="member in members">
+    {{ member.first_name }} {{ member.last_name }}
+  </li>
+</div>
+
+<!-- <script src="https://unpkg.com/vue"></script> -->
+<script type="text/javascript">
+  members = JSON.parse(document.querySelectorAll('.test')[0].innerHTML)
+
+  var test = new Vue({
+    el: '#test',
+    data: {
+      members: members
+    }
+  });
+</script>
