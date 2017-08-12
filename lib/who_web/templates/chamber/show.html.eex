@@ -44,20 +44,30 @@
   <%= @members |> Poison.encode! %>
 </div>
 
-<div id="test">
-  <li v-for="member in members">
-    {{ member.first_name }} {{ member.last_name }}
-  </li>
+<div id="members">
+  <member v-for="member in members" v-bind:member="member" v-bind:key="member.id"></member>
 </div>
 
-<!-- <script src="https://unpkg.com/vue"></script> -->
 <script type="text/javascript">
-  members = JSON.parse(document.querySelectorAll('.test')[0].innerHTML)
+  members = JSON.parse(document.querySelectorAll('.test')[0].innerHTML).slice(0, 5)
+
+  // Vue.component('member', {
+  //   props: ['member'],
+  //   template: '<div>{{ member.first_name }} {{ member.last_name }} - ({{ member.party }})</div>'
+  // })
+
+  var t = {
+    props: ['member'],
+    template: '<div>{{ member.first_name }} {{ member.last_name }} - ({{ member.party }})</div>'
+  }
 
   var test = new Vue({
-    el: '#test',
+    el: '#members',
     data: {
       members: members
+    },
+    components: {
+      'member': t
     }
   });
 </script>
