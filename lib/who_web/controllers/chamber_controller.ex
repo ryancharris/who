@@ -18,8 +18,6 @@ defmodule WhoWeb.ChamberController do
         [bills_passed | _tail] = Bill.get_recent_bills(chamber, "passed")
         [bills_introduced | _tail] = Bill.get_recent_bills(chamber, "introduced")
 
-        raise inspect bills_introduced
-
         render conn,
           "show.html",
           members: members["members"],
