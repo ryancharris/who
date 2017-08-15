@@ -14,7 +14,6 @@ config :who, WhoWeb.Endpoint,
   # watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
   #                   cd: Path.expand("../assets", __DIR__)]]
   watchers: [
-    npm: ["run", "config", cd: Path.expand("../assets", __DIR__)],
     npm: ["run", "watch", cd: Path.expand("../assets", __DIR__)]
   ]
 
