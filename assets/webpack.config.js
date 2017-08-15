@@ -1,10 +1,10 @@
 const path = require('path');
 
 const config = {
-  entry: '../assets/js/app.js',
+  entry: './js/app.js',
 
   output: {
-    path: path.resolve(__dirname, '../priv/static/js'),
+    path: path.resolve('../priv/static/js'),
     filename: 'app.js'
   },
 
@@ -12,29 +12,38 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'assets/'),
-        loader: 'babel-loader',
-        options: {
-          presets: ['es2015', 'react']
-        }
+        include: [
+          path.resolve('assets/js')
+        ],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react']
+            }
+          }
+        ]
       },
 
       {
         test: /\.scss$/,
-        use: [{
-          loader: 'sass-loader',
-          options: {
-            includePaths: path.resolve(__dirname, 'assets/scss')
-          }
-        }]
+        // include: [
+        //   path.resolve('assets/scss')
+        // ],
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "sass-loader"}
+        ]
       }
     ]
   },
 
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.scss'],
     modules: [
-      'node_modules'
+      'node_modules',
+      '../assets'
     ]
   }
 }
