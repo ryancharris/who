@@ -25,7 +25,9 @@ defmodule WhoWeb.MemberPresenter do
     twitter: String.t(),
     youtube: String.t(),
     phone: String.t(),
-    office: String.t()
+    office: String.t(),
+
+    profile_link: String.t()
   }
 
   defstruct [
@@ -48,7 +50,8 @@ defmodule WhoWeb.MemberPresenter do
     twitter: nil,
     youtube: nil,
     phone: nil,
-    office: nil
+    office: nil,
+    profile_link: nil
   ]
 
   @doc """
@@ -59,6 +62,7 @@ defmodule WhoWeb.MemberPresenter do
   def new(member, member_votes_map) do
     chamber = MemberView.parse_member_field(member, "roles", "chamber")
     vote_list = MemberView.parse_member_field(member_votes_map, "votes")
+    member_id = MemberView.parse_member_field(member, "member_id")
 
     %__MODULE__{
       name: MemberView.parse_member_name(member),
@@ -70,7 +74,7 @@ defmodule WhoWeb.MemberPresenter do
 
       start_date: MemberView.parse_member_start_date(member),
       end_date: MemberView.parse_member_end_date(member),
-      member_id: MemberView.parse_member_field(member, "member_id"),
+      member_id: member_id,
       committees: MemberView.build_current_session_committee_list(member),
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
@@ -80,7 +84,9 @@ defmodule WhoWeb.MemberPresenter do
       twitter: MemberView.parse_member_social_account(member, "twitter"),
       youtube: MemberView.parse_member_social_account(member, "youtube"),
       phone: MemberView.parse_member_field(member, "roles", "phone"),
-      office: MemberView.parse_member_field(member, "roles", "office")
+      office: MemberView.parse_member_field(member, "roles", "office"),
+
+      profile_link: ~s(/member/#{member_id})
     }
   end
 end
