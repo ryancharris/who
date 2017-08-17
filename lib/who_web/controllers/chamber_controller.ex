@@ -4,6 +4,8 @@ defmodule WhoWeb.ChamberController do
   alias Who.ProPublicaAPI.Bill
   alias Who.ProPublicaAPI.Chamber
 
+  alias WhoWeb.ChamberPresenter
+
   def index(conn, _params) do
     render conn, "index.html"
   end
@@ -20,8 +22,7 @@ defmodule WhoWeb.ChamberController do
 
         render conn,
           "show.html",
-          members: members["members"],
-          chamber: members["chamber"],
+          chamber_presenter: ChamberPresenter.new(members["chamber"], members, floor_actions, bills_passed, bills_introduced),
           bills_passed: bills_passed["bills"],
           bills_introduced: bills_introduced["bills"],
           floor_actions: floor_actions["floor_actions"]

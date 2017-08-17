@@ -1,6 +1,6 @@
 <div>
   <h1>
-    <%= @chamber %>
+    <%= @chamber_presenter.chamber %>
   </h1>
 </div>
 
@@ -42,7 +42,7 @@
 
 <div>
   <h3>Members</h3>
-  <%= for member <- Enum.slice(@members, 0, 5) do %>
+  <%= for member <- Enum.slice(@chamber_presenter.chamber_members, 0, 5) do %>
     <p><%= member["first_name"] %> <%= member["last_name"] %></p>
   <% end %>
 </div>

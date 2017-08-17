@@ -6,19 +6,25 @@ defmodule WhoWeb.ChamberPresenter do
   alias WhoWeb.ChamberView
 
   @type t :: %__MODULE__{
+    chamber_members: list(map),
+    chamber: String.t
   }
 
   defstruct [
+    chamber_members: [],
+    chamber: ""
   ]
 
   @doc """
     Creates a new %ChamberPresenter{} named struct.
   """
-  @spec new() :: t()
-  def new(nil), do: nil
-  def new() do
+  @spec new(String.t, map, map, map, map) :: t()
+  def new(nil, _, _, _, _), do: nil
+  def new(chamber, members, bills_passed, bills_introduced, floor_actions) do
 
     %__MODULE__{
+      chamber_members: ChamberView.build_members_list(members),
+      chamber: chamber
     }
   end
 end
