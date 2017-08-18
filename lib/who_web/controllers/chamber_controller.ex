@@ -28,10 +28,7 @@ defmodule WhoWeb.ChamberController do
             bills_passed,
             bills_introduced,
             floor_actions
-          ),
-          bills_passed: bills_passed["bills"],
-          bills_introduced: bills_introduced["bills"],
-          floor_actions: floor_actions["floor_actions"]
+          )
     end
   end
 end

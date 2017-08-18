@@ -27,7 +27,6 @@ defmodule WhoWeb.ChamberPresenter do
   @spec new(String.t, map, map, map, map) :: t()
   def new(nil, _, _, _, _), do: nil
   def new(chamber, members, bills_passed, bills_introduced, floor_actions) do
-
     %__MODULE__{
       chamber_members: ChamberView.build_members_list(members),
       chamber: chamber,

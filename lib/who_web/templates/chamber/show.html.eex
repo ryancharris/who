@@ -20,7 +20,7 @@
 
 <div>
   <h3>Recent Bills Introduced</h3>
-  <%= for bill <- Enum.slice(@bills_introduced, 0, 5) do %>
+  <%= for bill <- Enum.slice(@chamber_presenter.bills_introduced, 0, 5) do %>
     <p>
       <a href="<%= bill["congressdotgov_url"] %>">
         <%= bill["title"] %>
@@ -31,7 +31,7 @@
 
 <div>
   <h3>Recent Floor Actions</h3>
-  <%= for action <- Enum.slice(@floor_actions, 0, 5) do %>
+  <%= for action <- Enum.slice(@chamber_presenter.floor_actions, 0, 5) do %>
     <p><%= action["description"] %></p>
     <p>
       <%= action["timestamp"] %>
