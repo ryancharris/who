@@ -6,7 +6,7 @@
 
 <div>
   <h3>Recent Bills Passed</h3>
-  <%= for bill <- Enum.slice(@bills_passed, 0, 5) do %>
+  <%= for bill <- Enum.slice(@chamber_presenter.bills_passed, 0, 5) do %>
     <p>
       <a href="<%= bill["congressdotgov_url"] %>">
         <%= bill["title"] %>

@@ -22,7 +22,13 @@ defmodule WhoWeb.ChamberController do
 
         render conn,
           "show.html",
-          chamber_presenter: ChamberPresenter.new(members["chamber"], members, floor_actions, bills_passed, bills_introduced),
+          chamber_presenter: ChamberPresenter.new(
+            members["chamber"],
+            members,
+            bills_passed,
+            bills_introduced,
+            floor_actions
+          ),
           bills_passed: bills_passed["bills"],
           bills_introduced: bills_introduced["bills"],
           floor_actions: floor_actions["floor_actions"]
