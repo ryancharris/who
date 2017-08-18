@@ -21,6 +21,13 @@ defmodule Who.ProPublicaAPI.Bill do
     |> make_request(get_api_header())
   end
 
+  @doc """
+  Returns a JSON blob representing a specific bill's (selected by
+  bill_id or "slug") content, history, status, etc.
+
+  EX:
+    Who.ProPublicaAPI.Bill.get_bill_by_id("hr21")
+  """
   @spec get_bill_by_id(String.t()) :: map()
   def get_bill_by_id(id) do
     get_api_endpoint() <> "115/bills/#{id}.json"
