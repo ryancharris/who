@@ -19,4 +19,15 @@
       <li><%= action["description"]%> in <%= action["chamber"] %> on <%= action["datetime"] %></li>
     <% end %>
   </ul>
+  <p>Votes</p>
+  <%= if !is_nil(@bill.votes) do %>
+    <%= for vote <- @bill.votes do %>
+      <p>Date: <%= vote["date"] %></p>
+      <p>Result <%= vote["result"] %></p>
+      <p>Total Votes: <%= vote["roll_call"] %></p>
+      <p>No: <%= vote["total_no"] %></p>
+      <p>Yes: <%= vote["total_yes"] %></p>
+      <p>Maybe: <%= vote["total_not_voting"] %></p>
+    <% end %>
+  <% end %>
 </div>

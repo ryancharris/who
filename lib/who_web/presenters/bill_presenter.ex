@@ -25,7 +25,9 @@ defmodule WhoWeb.BillPresenter do
     num_of_cosponsors: integer(),
 
     latest_action: String.t(),
-    latest_action_date: String.t()
+    latest_action_date: String.t(),
+
+    votes: list(map)
   }
 
   defstruct [
@@ -47,7 +49,9 @@ defmodule WhoWeb.BillPresenter do
     num_of_cosponsors: nil,
 
     latest_action: nil,
-    latest_action_date: nil
+    latest_action_date: nil,
+
+    votes: []
   ]
 
   @doc """
@@ -75,7 +79,9 @@ defmodule WhoWeb.BillPresenter do
       num_of_cosponsors: Map.get(bill, "cosponsors"),
 
       latest_action: Map.get(bill, "latest_major_action"),
-      latest_action_date: Map.get(bill, "latest_major_action_date")
+      latest_action_date: Map.get(bill, "latest_major_action_date"),
+
+      votes: Map.get(bill, "votes")
     }
   end
 
