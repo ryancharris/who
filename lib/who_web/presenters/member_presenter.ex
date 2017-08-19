@@ -80,9 +80,15 @@ defmodule WhoWeb.MemberPresenter do
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
       website: MemberView.parse_member_field(member, "domain"),
-      facebook: MemberView.parse_member_social_account(member, "facebook"),
-      twitter: MemberView.parse_member_social_account(member, "twitter"),
-      youtube: MemberView.parse_member_social_account(member, "youtube"),
+      facebook: member
+                |> MemberView.parse_member_social_account("facebook")
+                |> MemberView.build_social_profile_url("facebook"),
+      twitter:  member
+                |> MemberView.parse_member_social_account("twitter")
+                |> MemberView.build_social_profile_url("twitter"),
+      youtube:  member
+                |> MemberView.parse_member_social_account("youtube")
+                |> MemberView.build_social_profile_url("youtube"),
       phone: MemberView.parse_member_field(member, "roles", "phone"),
       office: MemberView.parse_member_field(member, "roles", "office"),
 

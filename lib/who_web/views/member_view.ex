@@ -234,7 +234,7 @@ defmodule WhoWeb.MemberView do
     Extracts a list of maps from the Member's votes JSON blob.
 
     EX:
-      MemberView.build_votes_list(vote_list)
+      WhoWeb.MemberView.build_votes_list(vote_list)
       >>> %{
             date: "2017-07-28",
             description: "Department of Veterans Affairs Bonus Transparency Act",
@@ -268,5 +268,23 @@ defmodule WhoWeb.MemberView do
         Map.merge(vote_info, bill_info)
       end
     end
+  end
+
+  @doc """
+  Takes in the name of a social network and the Member's username, returns the
+  URL to their user profile.
+
+  EX:
+    WhoWeb.MemberView.build_social_profile_url("SenSanders", "twitter")
+    >>>
+  """
+  @spec build_social_profile_url(String.t, String.t) :: String.t
+  def build_social_profile_url(user_name, network) do
+    case String.downcase(network) do
+      "facebook" -> ~s(https://www.facebook.com/#{user_name})
+      "twitter" -> ~s(https://www.twitter.com/#{user_name})
+      "youtube" -> ~s(https://www.youtube.com/#{user_name})
+    end
+
   end
 end
