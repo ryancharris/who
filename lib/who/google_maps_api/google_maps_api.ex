@@ -17,6 +17,6 @@ defmodule Who.GoogleMapsAPI.Base do
   end
 
   def build_embed_src_url(address) do
-    ~s(https://www.google.com/maps/embed/v1/place?key=#{@api_key}&zoom=15&q=#{address})
+    ~s(https://www.google.com/maps/embed/v1/place?key=#{@api_key}&zoom=15&center=38.8898344,-77.0090765&q=#{address})
   end
 end
