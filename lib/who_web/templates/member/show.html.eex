@@ -23,14 +23,19 @@
     </ul>
   </p>
   <p>
+    <%= unless is_nil(@member.votes) do %>
     <h1>Votes:</h1>
-    <%= for vote <- @member.votes do %>
-      <a href="<%= WhoWeb.RoutesHelper.bill_id_path(Regex.replace(~r/\W/, vote["number"], "")) %>">
-        <p>TITLE: <%= vote["title"] %></p>
-      </a>
-      <p>DESC: <%= vote["description"] %></p>
-      <p>POSITION: <%= vote["position"] %></p>
-      <p>NUMBER: <%= vote["number"] %></p>
+      <%= for vote <- @member.votes do %>
+        <%= if vote["number"] do %>
+          <%= link vote["title"],
+              to: WhoWeb.RoutesHelper.bill_id_path(Regex.replace(~r/\W/, vote["number"], ""))
+          %>
+        <% end %>
+
+        <p>DESC: <%= vote["description"] %></p>
+        <p>POSITION: <%= vote["position"] %></p>
+        <p>NUMBER: <%= vote["number"] %></p>
+      <% end %>
     <% end %>
   </p>
 </div>
