@@ -43,6 +43,8 @@
 <div>
   <h3>Members</h3>
   <%= for member <- Enum.slice(@chamber_presenter.chamber_members, 0, 5) do %>
-    <p><%= member["first_name"] %> <%= member["last_name"] %></p>
+    <a href=<%= WhoWeb.RoutesHelper.member_id_path(member["id"]) %>>
+      <p><%= member["first_name"] %> <%= member["last_name"] %></p>
+    </a>
   <% end %>
 </div>
