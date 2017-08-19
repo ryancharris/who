@@ -3,6 +3,8 @@ const path = require('path');
 const config = {
   entry: './js/app.js',
 
+  devtool: 'inline-source-map',
+
   output: {
     path: path.resolve('../priv/static/js'),
     filename: 'app.js'
@@ -31,9 +33,9 @@ const config = {
         //   path.resolve('assets/scss')
         // ],
         use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          { loader: "sass-loader"}
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader'}
         ]
       }
     ]
@@ -46,6 +48,6 @@ const config = {
       '../assets'
     ]
   }
-}
+};
 
 module.exports = config;

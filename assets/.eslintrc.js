@@ -1,0 +1,83 @@
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true
+    },
+  },
+  env: {
+    jquery: true,
+    prototypejs: true,
+    browser: true
+  },
+  rules: {
+    curly: ["error", "all"],
+    'no-multi-spaces': ["error",
+      {
+        "exceptions": {
+          "Property": true,
+          "VariableDeclarator": true,
+          "ImportDeclaration": true
+        }
+      }
+    ],
+    'no-multi-str': "error",
+    'max-len': ["error", { "code": 120 }],
+    'wrap-iife': "error",
+    'camelcase': "error",
+    'quote-props': ["error", 'as-needed'],
+    'brace-style': ["error", "1tbs", { "allowSingleLine": true }],
+    'comma-dangle': "error",
+    'comma-spacing': ["error", { 'before': false, 'after': true }],
+    'comma-style': "error",
+    'quotes': ["error", 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+    'prefer-template': "error",
+    'func-call-spacing': "error",
+    'key-spacing': ["error", { 'beforeColon': false, 'afterColon': true, "mode": "minimum" }],
+    'keyword-spacing': ["error", { 'before': true, 'after': true }],
+    'no-mixed-operators': "error",
+    'one-var': ["error", 'never'],
+    'semi': "error",
+    'space-in-parens': "error",
+    'space-before-function-paren': ["error"],
+    'space-before-blocks': "error",
+    'space-infix-ops': "error",
+    'no-extra-bind': "error",
+    'yoda': ["error", 'never'],
+    'no-loop-func': "error",
+    'prefer-arrow-callback': ["error", { "allowNamedFunctions": true }],
+    'no-proto': "error",
+    'no-redeclare': "error",
+    'no-self-assign': "error",
+    'no-useless-return': "error",
+    'no-useless-constructor': "error",
+    'no-undefined': "error",
+    'no-undef-init': "error",
+    'no-unused-vars': "error",
+    'no-use-before-define': "error",
+    'no-lonely-if': "error",
+    'no-mixed-spaces-and-tabs': "error",
+    'no-multi-assign': "error",
+    'no-nested-ternary': "error",
+    'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }],
+    'no-trailing-spaces': "error",
+    'block-scoped-var': "error",
+    'no-eval': "error",
+    'no-cond-assign': "error",
+    'no-bitwise': "error",
+    'valid-typeof': "error",
+    'no-shadow': "error",
+    'no-param-reassign': "error",
+    'no-eq-null': "error",
+    'dot-notation': "error",
+    'array-callback-return': "error",
+    'no-array-constructor': "error",
+    'array-bracket-spacing': "error",
+    'no-new-object': "error",
+    'object-shorthand': "error",
+    'radix': "error",
+    'id-length': ["error", { "properties": "never" }],
+    'no-duplicate-imports': "error"
+  }
+}
