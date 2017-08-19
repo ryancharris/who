@@ -26,6 +26,7 @@ defmodule WhoWeb.MemberPresenter do
     youtube_url: String.t(),
     phone_url: String.t(),
     office: String.t(),
+    map_src_url: String.t,
 
     profile_link: String.t()
   }
@@ -51,6 +52,8 @@ defmodule WhoWeb.MemberPresenter do
     youtube_url: nil,
     phone_url: nil,
     office: nil,
+    map_src_url: nil,
+
     profile_link: nil
   ]
 
@@ -63,6 +66,7 @@ defmodule WhoWeb.MemberPresenter do
     chamber = MemberView.parse_member_field(member, "roles", "chamber")
     vote_list = MemberView.parse_member_field(member_votes_map, "votes")
     member_id = MemberView.parse_member_field(member, "member_id")
+    office = MemberView.parse_member_field(member, "roles", "office")
 
     %__MODULE__{
       name: MemberView.parse_member_name(member),
@@ -90,7 +94,8 @@ defmodule WhoWeb.MemberPresenter do
                     |> MemberView.parse_member_social_account("youtube")
                     |> MemberView.build_social_profile_url("youtube"),
       phone_url: "tel:1" <> MemberView.parse_member_field(member, "roles", "phone"),
-      office: MemberView.parse_member_field(member, "roles", "office"),
+      office: office,
+      map_src_url: Who.GoogleMapsAPI.Base.build_embed_src_url(office),
 
       profile_link: ~s(/member/#{member_id})
     }

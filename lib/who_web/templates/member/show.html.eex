@@ -48,4 +48,7 @@
       <% end %>
     <% end %>
   </p>
+
+  <iframe width="100%" height="350" frameborder="0" style="border:0" src="<%= @member.map_src_url %>">
+  </iframe>
 </div>
