@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = {
   entry: './js/app.js',
 
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   output: {
     path: path.resolve('../priv/static/js'),
@@ -29,6 +29,11 @@ const config = {
       },
 
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -42,7 +47,7 @@ const config = {
   plugins: [
     new ExtractTextPlugin({
       filename: () => {
-        return '../css/app.css'
+        return '../css/styles.css'
       }
     })
   ],
