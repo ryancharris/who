@@ -3,7 +3,9 @@
   <p>Title: <%= @bill.title %></p>
   <p>Introduced: <%= @bill.date_introduced %></p>
   <p>Summary: <%= @bill.summary %></p>
-  <p>Sponsor: <%= @bill.sponsor_title %> <%= @bill.sponsor_name %> (<%= @bill.sponsor_party %>)</p>
+  <a href="<%= WhoWeb.RoutesHelper.member_id_path(@bill.sponsor_id) %>">
+    <p>Sponsor: <%= @bill.sponsor_title %> <%= @bill.sponsor_name %> (<%= @bill.sponsor_party %>)</p>
+  </a>
   <%= if @bill.has_cosponsors do %>
     <p>Number of Cosponsors: <%= @bill.num_of_cosponsors %></p>
   <% end %>
