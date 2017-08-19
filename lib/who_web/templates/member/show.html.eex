@@ -14,7 +14,9 @@
   <p>
     <a href="<%= @member.website_url %>">Website</a>
   </p>
-  <p>Phone: <%= @member.phone %></p>
+  <p>
+    <a href="<%= @member.phone_url %>">Phone</a>
+  </p>
   <p>Office: <%= @member.office %></p>
   <p>Party: <%= @member.party %></p>
   <p>State: <%= @member.state %></p>

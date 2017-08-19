@@ -24,7 +24,7 @@ defmodule WhoWeb.MemberPresenter do
     facebook_url: String.t(),
     twitter_url: String.t(),
     youtube_url: String.t(),
-    phone: String.t(),
+    phone_url: String.t(),
     office: String.t(),
 
     profile_link: String.t()
@@ -49,7 +49,7 @@ defmodule WhoWeb.MemberPresenter do
     facebook_url: nil,
     twitter_url: nil,
     youtube_url: nil,
-    phone: nil,
+    phone_url: nil,
     office: nil,
     profile_link: nil
   ]
@@ -89,7 +89,7 @@ defmodule WhoWeb.MemberPresenter do
       youtube_url:  member
                     |> MemberView.parse_member_social_account("youtube")
                     |> MemberView.build_social_profile_url("youtube"),
-      phone: MemberView.parse_member_field(member, "roles", "phone"),
+      phone_url: "tel:1" <> MemberView.parse_member_field(member, "roles", "phone"),
       office: MemberView.parse_member_field(member, "roles", "office"),
 
       profile_link: ~s(/member/#{member_id})
