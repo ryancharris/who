@@ -5,7 +5,7 @@ fonts/icomoon.eot
 fonts/icomoon.svg
 fonts/icomoon.ttf
 fonts/icomoon.woff
-dist/sidebar_items-d907b1700e.js
+dist/sidebar_items-c2afa912c1.js
 api-reference.html
 404.html
 Who.html
@@ -22,6 +22,7 @@ WhoWeb.BillController.html
 WhoWeb.BillPresenter.html
 WhoWeb.BillView.html
 WhoWeb.ChamberController.html
+WhoWeb.ChamberPresenter.html
 WhoWeb.ChamberView.html
 WhoWeb.Endpoint.html
 WhoWeb.ErrorHelpers.html
@@ -35,5 +36,6 @@ WhoWeb.PageController.html
 WhoWeb.PageView.html
 WhoWeb.Router.html
 WhoWeb.Router.Helpers.html
+WhoWeb.RoutesHelper.html
 WhoWeb.UserSocket.html
 index.html

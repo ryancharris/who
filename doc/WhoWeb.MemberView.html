@@ -8,7 +8,7 @@
     <title>WhoWeb.MemberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-d907b1700e.js"></script>
+    <script src="dist/sidebar_items-c2afa912c1.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -153,6 +153,16 @@
   </div>
   
     <div class="summary-synopsis"><p>Based on the Member’s chamber, this function returns the Member’s title</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_social_profile_url/2">build_social_profile_url(user_name, network)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Takes in the name of a social network and the Member’s username, returns the
+URL to their user profile</p>
 </div>
   
 </div>
@@ -442,6 +452,33 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
 
   </section>
 </div>
+<div class="detail" id="build_social_profile_url/2">
+  
+  <div class="detail-header">
+    <a href="#build_social_profile_url/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_social_profile_url(user_name, network)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_social_profile_url(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a></pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Takes in the name of a social network and the Member’s username, returns the
+URL to their user profile.</p>
+<p>EX:
+  WhoWeb.MemberView.build_social_profile_url(“SenSanders”, “twitter”)
+  &gt;&gt;&gt;</p>
+
+  </section>
+</div>
 <div class="detail" id="build_state_name/1">
   
   <div class="detail-header">
@@ -491,7 +528,7 @@ WhoWeb.MemberView.build_member_title(&quot;Senate&quot;)
   <section class="docstring">
     <p>  Extracts a list of maps from the Member’s votes JSON blob.</p>
 <p>  EX:</p>
-<pre><code class="elixir">MemberView.build_votes_list(vote_list)
+<pre><code class="elixir">WhoWeb.MemberView.build_votes_list(vote_list)
 &gt;&gt;&gt; %{
       date: &quot;2017-07-28&quot;,
       description: &quot;Department of Veterans Affairs Bonus Transparency Act&quot;,

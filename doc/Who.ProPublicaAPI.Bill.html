@@ -8,7 +8,7 @@
     <title>Who.ProPublicaAPI.Bill – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-d907b1700e.js"></script>
+    <script src="dist/sidebar_items-c2afa912c1.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -95,6 +95,10 @@
     <a href="#get_bill_by_id/1">get_bill_by_id(id)</a>
   </div>
   
+    <div class="summary-synopsis"><p>Returns a JSON blob representing a specific bill’s (selected by
+bill_id or “slug”) content, history, status, etc</p>
+</div>
+  
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -145,7 +149,11 @@
     
   </div>
   <section class="docstring">
-    
+    <p>Returns a JSON blob representing a specific bill’s (selected by
+bill_id or “slug”) content, history, status, etc.</p>
+<p>EX:
+  Who.ProPublicaAPI.Bill.get_bill_by_id(“hr21”)</p>
+
   </section>
 </div>
 <div class="detail" id="get_recent_bills/2">

@@ -8,7 +8,7 @@
     <title>WhoWeb.ChamberView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-d907b1700e.js"></script>
+    <script src="dist/sidebar_items-c2afa912c1.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -67,6 +67,11 @@
       </h1>
 
       
+        <section id="moduledoc">
+          <p>  Helper methods to parse and populate %ChamberPresenter{} fields.</p>
+
+        </section>
+      
 
       
         <section id="summary" class="details-list">
@@ -108,6 +113,16 @@
   </div>
   
     <div class="summary-synopsis"><p>Returns the template root alongside all templates</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#build_members_list/1">build_members_list(members)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Takes in member information for a given Chamber, parses it and
+returns a list of maps representing Members of the Chamber</p>
 </div>
   
 </div>
@@ -199,6 +214,32 @@ to render a particular template</p>
   </div>
   <section class="docstring">
     <p>Returns the template root alongside all templates.</p>
+
+  </section>
+</div>
+<div class="detail" id="build_members_list/1">
+  
+  <div class="detail-header">
+    <a href="#build_members_list/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">build_members_list(members)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>build_members_list(map) :: [map]</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Takes in member information for a given Chamber, parses it and
+returns a list of maps representing Members of the Chamber</p>
+<p>EX:
+  build_members_list()</p>
 
   </section>
 </div>
