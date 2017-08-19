@@ -25,7 +25,9 @@
   <p>
     <h1>Votes:</h1>
     <%= for vote <- @member.votes do %>
-      <p>TITLE: <%= vote["title"] %></p>
+      <a href="<%= WhoWeb.RoutesHelper.bill_id_path(Regex.replace(~r/\W/, vote["number"], "")) %>">
+        <p>TITLE: <%= vote["title"] %></p>
+      </a>
       <p>DESC: <%= vote["description"] %></p>
       <p>POSITION: <%= vote["position"] %></p>
       <p>NUMBER: <%= vote["number"] %></p>
