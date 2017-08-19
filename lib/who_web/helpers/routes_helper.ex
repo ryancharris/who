@@ -15,4 +15,15 @@ defmodule WhoWeb.RoutesHelper do
     ~s(/member/#{member_id})
   end
 
+  @doc """
+  Creates a relative path to a Bill #show page based on bill_id.
+
+  EX:
+    WhoWeb.RoutesHelper.bill_id_path("s114")
+    >>> /bill/S114
+  """
+  def bill_id_path(bill_id) do
+    ~s(/bill/#{bill_id})
+  end
+
 end
