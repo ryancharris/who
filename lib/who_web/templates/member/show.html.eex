@@ -2,10 +2,18 @@
   <h1>Bio:</h1>
   <p><%= @member.title %> <%= @member.name %></p>
   <p>Member ID# <%= @member.member_id %></p>
-  <p>Facebook: <%= @member.facebook %></p>
-  <p>Twitter: <%= @member.twitter %></p>
-  <p>YouTube: <%= @member.youtube %></p>
-  <p>Website: <%= @member.website %></p>
+  <p>
+    <a href="<%= @member.facebook_url %>">Facebook</a>
+  </p>
+  <p>
+    <a href="<%= @member.twitter_url %>">Twitter</a>
+  </p>
+  <p>
+    <a href="<%= @member.youtube_url %>">YouTube</a>
+  </p>
+  <p>
+    <a href="<%= @member.website_url %>">Website</a>
+  </p>
   <p>Phone: <%= @member.phone %></p>
   <p>Office: <%= @member.office %></p>
   <p>Party: <%= @member.party %></p>

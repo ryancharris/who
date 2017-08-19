@@ -20,10 +20,10 @@ defmodule WhoWeb.MemberPresenter do
     votes_with_party: float(),
     votes: list(map()),
 
-    website: String.t(),
-    facebook: String.t(),
-    twitter: String.t(),
-    youtube: String.t(),
+    website_url: String.t(),
+    facebook_url: String.t(),
+    twitter_url: String.t(),
+    youtube_url: String.t(),
     phone: String.t(),
     office: String.t(),
 
@@ -45,10 +45,10 @@ defmodule WhoWeb.MemberPresenter do
     votes_with_party: nil,
     votes: [],
 
-    website: nil,
-    facebook: nil,
-    twitter: nil,
-    youtube: nil,
+    website_url: nil,
+    facebook_url: nil,
+    twitter_url: nil,
+    youtube_url: nil,
     phone: nil,
     office: nil,
     profile_link: nil
@@ -79,16 +79,16 @@ defmodule WhoWeb.MemberPresenter do
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
-      website: MemberView.parse_member_field(member, "domain"),
-      facebook: member
-                |> MemberView.parse_member_social_account("facebook")
-                |> MemberView.build_social_profile_url("facebook"),
-      twitter:  member
-                |> MemberView.parse_member_social_account("twitter")
-                |> MemberView.build_social_profile_url("twitter"),
-      youtube:  member
-                |> MemberView.parse_member_social_account("youtube")
-                |> MemberView.build_social_profile_url("youtube"),
+      website_url: "https://" <> MemberView.parse_member_field(member, "domain"),
+      facebook_url: member
+                    |> MemberView.parse_member_social_account("facebook")
+                    |> MemberView.build_social_profile_url("facebook"),
+      twitter_url:  member
+                    |> MemberView.parse_member_social_account("twitter")
+                    |> MemberView.build_social_profile_url("twitter"),
+      youtube_url:  member
+                    |> MemberView.parse_member_social_account("youtube")
+                    |> MemberView.build_social_profile_url("youtube"),
       phone: MemberView.parse_member_field(member, "roles", "phone"),
       office: MemberView.parse_member_field(member, "roles", "office"),
 
