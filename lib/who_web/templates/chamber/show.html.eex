@@ -8,7 +8,7 @@
   <h3>Recent Bills Passed</h3>
   <%= for bill <- Enum.slice(@chamber_presenter.bills_passed, 0, 5) do %>
     <p>
-      <a href="<%= bill["congressdotgov_url"] %>">
+      <a href="<%= WhoWeb.RoutesHelper.bill_id_path(bill["bill_slug"]) %>">
         <%= bill["title"] %>
       </a>
     </p>
