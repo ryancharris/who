@@ -1,16 +1,16 @@
-.header {
+.footer {
   width: 100%;
 
-  background-color: plum;
+  background-color: skyblue;
 
   @media screen
     and (max-width: 767px) {
-      height: 55px;
+      height: 300px;
     }
 
   @media screen
     and (min-width: 768px)
     and (max-width: 1023px) {
-      height: 85px;
+      height: 375px;
   }
 }

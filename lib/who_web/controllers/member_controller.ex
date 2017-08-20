@@ -3,6 +3,7 @@ defmodule WhoWeb.MemberController do
 
   alias WhoWeb.MemberView
   alias WhoWeb.MemberPresenter
+
   alias Who.ProPublicaAPI.Member
 
   def index(conn, _params) do
@@ -17,6 +18,7 @@ defmodule WhoWeb.MemberController do
       conn,
       "show.html",
       member: MemberPresenter.new(member, member_votes_map),
+      member_pic: Who.UsProjectAPI.Base.get_member_picture(id, '450')
     )
   end
 end

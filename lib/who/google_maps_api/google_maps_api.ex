@@ -21,6 +21,9 @@ defmodule Who.GoogleMapsAPI.Base do
   the Google Maps Embed API and populate an <iframe> embed on the
   Member #show page.
 
+  If the address passed in is nil, return a string to embed a map of
+  the Unite State Capitol.
+
   EX:
     Who.GoogleMapsAPI.Base.build_embed_src_url()
     >>> "https://www.google.com/maps/embed/v1/place?key=
@@ -28,7 +31,9 @@ defmodule Who.GoogleMapsAPI.Base do
         38.8898344,-77.0090765&q=2004 Rayburn House Office Building"
   """
   @spec build_embed_src_url(String.t) :: String.t
-  def build_embed_src_url(nil), do: nil
+  def build_embed_src_url(nil) do
+    ~s(https://www.google.com/maps/embed/v1/place?key=#{@api_key}&zoom=15&center=38.8898344,-77.0090765&q=United+States+Capitol)
+  end
   def build_embed_src_url(address) do
     ~s(https://www.google.com/maps/embed/v1/place?key=#{@api_key}&zoom=15&center=38.8898344,-77.0090765&q=#{address})
   end
