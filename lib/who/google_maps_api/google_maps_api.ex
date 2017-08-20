@@ -16,6 +16,19 @@ defmodule Who.GoogleMapsAPI.Base do
     @api_key
   end
 
+  @doc """
+  Takes in a Member's office address and returns a string used to query
+  the Google Maps Embed API and populate an <iframe> embed on the
+  Member #show page.
+
+  EX:
+    Who.GoogleMapsAPI.Base.build_embed_src_url()
+    >>> "https://www.google.com/maps/embed/v1/place?key=
+        AIzaSyAFwzUpWUl5mp_z3mnWvhfuYKh8Fg55iXU&zoom=15&center=
+        38.8898344,-77.0090765&q=2004 Rayburn House Office Building"
+  """
+  @spec build_embed_src_url(String.t) :: String.t
+  def build_embed_src_url(nil), do: nil
   def build_embed_src_url(address) do
     ~s(https://www.google.com/maps/embed/v1/place?key=#{@api_key}&zoom=15&center=38.8898344,-77.0090765&q=#{address})
   end
