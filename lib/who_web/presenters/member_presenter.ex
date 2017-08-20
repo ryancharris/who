@@ -83,7 +83,7 @@ defmodule WhoWeb.MemberPresenter do
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
-      website_url: "https://" <> MemberView.parse_member_field(member, "domain"),
+      website_url: MemberView.parse_member_field(member, "domain"),
       facebook_url: member
                     |> MemberView.parse_member_social_account("facebook")
                     |> MemberView.build_social_profile_url("facebook"),
