@@ -1,23 +1,29 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const config = {
-  entry: './js/app.js',
+const extractSass = new ExtractTextPlugin({
+  filename: path.resolve('/css/app.css'),
+  allChunks: true
+});
 
+const config = {
   devtool: 'source-map',
 
+  entry: [
+    path.resolve('js/app.js'),
+    path.resolve('scss/app.scss')
+  ],
+
   output: {
-    path: path.resolve('../priv/static/js'),
-    filename: 'app.js'
+    path: path.resolve('../priv/static'),
+    filename: 'js/app.js'
   },
 
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: [
-          path.resolve('assets/js')
-        ],
+        include: path.resolve('js'),
         use: [
           {
             loader: 'babel-loader',
@@ -29,34 +35,20 @@ const config = {
       },
 
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-
-      {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          publicPath: '../priv/static/css',
-          use: ['css-loader', 'sass-loader']
-        }),
-      }
+        use: extractSass.extract(['css-loader', 'sass-loader'])
+      },
     ]
   },
 
   plugins: [
-    new ExtractTextPlugin({
-      filename: () => {
-        return '../css/styles.css'
-      }
-    })
+    extractSass
   ],
 
   resolve: {
     extensions: ['.js', '.scss'],
     modules: [
-      'node_modules',
-      '../assets'
+      'node_modules'
     ]
   }
 };
