@@ -18,12 +18,9 @@ defmodule WhoWeb.MemberPresenter do
     member_id: String.t(),
     committees: list(String.t()),
     votes_with_party: float(),
-    votes: list(map()),
+    votes: list(map),
 
-    website_url: String.t(),
-    facebook_url: String.t(),
-    twitter_url: String.t(),
-    youtube_url: String.t(),
+    social_urls: list(map),
     phone_url: String.t(),
     office: String.t(),
     map_src_url: String.t,
@@ -46,10 +43,7 @@ defmodule WhoWeb.MemberPresenter do
     votes_with_party: nil,
     votes: [],
 
-    website_url: nil,
-    facebook_url: nil,
-    twitter_url: nil,
-    youtube_url: nil,
+    social_urls: [],
     phone_url: nil,
     office: nil,
     map_src_url: nil,
@@ -68,6 +62,17 @@ defmodule WhoWeb.MemberPresenter do
     member_id = MemberView.parse_member_field(member, "member_id")
     office = MemberView.parse_member_field(member, "roles", "office")
 
+    website_url = MemberView.parse_member_field(member, "domain")
+    facebook_url =  member
+                    |> MemberView.parse_member_social_account("facebook")
+                    |> MemberView.build_social_profile_url("facebook")
+    twitter_url =   member
+                    |> MemberView.parse_member_social_account("twitter")
+                    |> MemberView.build_social_profile_url("twitter")
+    youtube_url =   member
+                    |> MemberView.parse_member_social_account("youtube")
+                    |> MemberView.build_social_profile_url("youtube")
+
     %__MODULE__{
       name: MemberView.parse_member_name(member),
       title: MemberView.build_member_title(chamber),
@@ -83,16 +88,12 @@ defmodule WhoWeb.MemberPresenter do
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
-      website_url: MemberView.parse_member_field(member, "domain"),
-      facebook_url: member
-                    |> MemberView.parse_member_social_account("facebook")
-                    |> MemberView.build_social_profile_url("facebook"),
-      twitter_url:  member
-                    |> MemberView.parse_member_social_account("twitter")
-                    |> MemberView.build_social_profile_url("twitter"),
-      youtube_url:  member
-                    |> MemberView.parse_member_social_account("youtube")
-                    |> MemberView.build_social_profile_url("youtube"),
+      social_urls: [
+        %{ network: 'website', url: website_url },
+        %{ network: 'facebook', url: facebook_url },
+        %{ network: 'twitter', url: twitter_url },
+        %{ network: 'youtube', url: youtube_url }
+      ],
       phone_url: "tel:1" <> MemberView.parse_member_field(member, "roles", "phone"),
       office: office,
       map_src_url: Who.GoogleMapsAPI.Base.build_embed_src_url(office),

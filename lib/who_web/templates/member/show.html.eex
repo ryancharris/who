@@ -1,56 +1,90 @@
-<div>
-  <h1>Bio:</h1>
-  <img src="<%= @member_pic %>">
-  <p><%= @member.title %> <%= @member.name %></p>
-  <p>Member ID# <%= @member.member_id %></p>
-  <p>
-    <a href="<%= @member.facebook_url %>">Facebook</a>
-  </p>
-  <p>
-    <a href="<%= @member.twitter_url %>">Twitter</a>
-  </p>
-  <p>
-    <a href="<%= @member.youtube_url %>">YouTube</a>
-  </p>
-  <p>
-    <a href="<%= @member.website_url %>">Website</a>
-  </p>
-  <p>
-    <a href="<%= @member.phone_url %>">Phone</a>
-  </p>
-  <p>Office: <%= @member.office %></p>
-  <p>Party: <%= @member.party %></p>
-  <p>State: <%= @member.state %></p>
-  <p>District: <%= @member.district %></p>
-  <p>Start Date: <%= @member.start_date %></p>
-  <p>End Date: <%= @member.end_date %></p>
-  <p>Vote w/ party <%= @member.votes_with_party %>%</p>
+<div class="member-show">
+  <div class="member-show__name-wrapper">
+    <%= content_tag :h2, @member.title, class: "member-show__member-title" %>
+    <%= content_tag :h1, @member.name, class: "member-show__member-name" %>
+    <%= content_tag :h3, @member.state, class: "member-show__member-state" %>
+  </div>
+
+  <div class="member-show__profile-pic-wrapper member-show__profile-pic-wrapper--<%= String.downcase(@member.party) %>">
+    <img src="<%= @member_pic %>" class="member-show__profile-pic">
+    <%= if @member.district do %>
+      <%= content_tag :h3, @member.district, class: "member-show__member-district" %>
+    <% end %>
+  </div>
+
+  <div class="member-show__social-icons-wrapper">
+    <ul class="member-show__social-icon-list">
+      <%= for network <- @member.social_urls do %>
+        <%= if !is_nil(network.url) do %>
+          <li class="member-show__social-list-item">
+            <a href="<%= "https://" <> network.url %>" class="member-show__social-link">
+              <%= network.network %>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="member-show__stats-wrapper">
+    <div class="member-show__stat  member-show__stat--vote-pct">
+      <%= content_tag :h2, gettext("Votes With Party"), class: "member-show__stat-label" %>
+      <%= content_tag :h4, @member.votes_with_party, class: "member-show__stat-value" %>
+    </div>
+
+    <div class="member-show__stat  member-show__stat--start-date">
+      <%= content_tag :h2, gettext("Member Since"), class: "member-show__stat-label" %>
+      <%= content_tag :h4, @member.start_date, class: "member-show__stat-value" %>
+    </div>
+
+    <div class="member-show__stat  member-show__stat--end-date">
+      <%= content_tag :h2, gettext("Term Ends In"), class: "member-show__stat-label" %>
+      <%= content_tag :h4, @member.end_date, class: "member-show__stat-value" %>
+    </div>
+  </div>
 
   <iframe width="100%" height="350" frameborder="0" style="border:0" src="<%= @member.map_src_url %>">
   </iframe>
 
-  <p>
-    <h1>Committees:</h1>
-    <ul>
-      <%= for committee <- @member.committees do %>
-        <li><%= committee %></li>
-      <% end %>
-    </ul>
-  </p>
-  <p>
-    <%= unless is_nil(@member.votes) do %>
-    <h1>Votes:</h1>
-      <%= for vote <- @member.votes do %>
-        <%= if vote["number"] do %>
-          <%= link vote["title"],
-              to: WhoWeb.RoutesHelper.bill_id_path(Regex.replace(~r/\W/, vote["number"], ""))
-          %>
-        <% end %>
+  <div class="member-show__committees-wrapper">
+    <div class="member-show__committees-header">
+      <%= content_tag :h3, gettext("Committees") %>
+    </div>
 
-        <p>DESC: <%= vote["description"] %></p>
-        <p>POSITION: <%= vote["position"] %></p>
-        <p>NUMBER: <%= vote["number"] %></p>
-      <% end %>
-    <% end %>
-  </p>
+    <div class="member-show__committees-content">
+      <ul class="member-show__committees-list">
+        <%= for committee <- @member.committees do %>
+          <li class="member-show__committee-list-item">
+            <a href="" class="member-show__committee-link"><%= committee %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%= unless is_nil(@member.votes) do %>
+    <div class="member-show__votes-wrapper">
+      <div class="member-show__votes-header">
+        <%= content_tag :h3, gettext("Committees") %>
+      </div>
+
+      <div class="member-show__votes-content">
+        <ul class="member-show__votes-list">
+          <%= for vote <- @member.votes do %>
+            <li class="member-show__votes-list-item  member-show__votes-list-item--<%= String.downcase(vote["position"])%>">
+              <%= if vote["number"] do %>
+                <%= link vote["title"],
+                    to: WhoWeb.RoutesHelper.bill_id_path(Regex.replace(~r/\W/, vote["number"], "")),
+                    class: "member-show__vote-bill-link"
+                %>
+              <% else %>
+                <%= content_tag :p, vote["description"], class: "member-show__vote-desc" %>
+              <% end %>
+              <%= content_tag :p, vote["number"], class: "member-show__vote-num" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
 </div>
