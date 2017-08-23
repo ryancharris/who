@@ -26,4 +26,15 @@ defmodule WhoWeb.RoutesHelper do
     ~s(/bill/#{bill_id})
   end
 
+  @doc """
+  Creates a relative path to a Committee #show page based on the Committee's code.
+
+  EX:
+    WhoWeb.RoutesHelper.bill_id_path("HSAG")
+    >>> /committee/hsag
+  """
+  def committee_code_path(committee_code) do
+    ~s(/committee/#{committee_code})
+  end
+
 end

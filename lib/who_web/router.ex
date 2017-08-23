@@ -27,6 +27,9 @@ defmodule WhoWeb.Router do
     get "/bill", BillController, :index
     get "bill/:id", BillController, :show
 
+    get "/committee", CommitteeController, :index
+    get "/committee/:code", CommitteeController, :show
+
   end
 
   # Other scopes may use custom stacks.
