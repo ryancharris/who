@@ -46,26 +46,29 @@
   <iframe width="100%" height="350" frameborder="0" style="border:0" src="<%= @member.map_src_url %>">
   </iframe>
 
-  <div class="member-show__committees-wrapper">
-    <div class="member-show__committees-header">
-      <%= content_tag :h3, gettext("Committees") %>
-    </div>
+  <%= unless is_nil(@member.votes) do %>
+    <div class="member-show__committees-wrapper">
+      <div class="member-show__committees-header">
+        <%= content_tag :h3, gettext("Committees") %>
+      </div>
 
-    <div class="member-show__committees-content">
-      <ul class="member-show__committees-list">
-        <%= for committee <- @member.committees do %>
-          <li class="member-show__committee-list-item">
-            <a href="" class="member-show__committee-link"><%= committee %></a>
-          </li>
-        <% end %>
-      </ul>
+      <div class="member-show__committees-content">
+        <ul class="member-show__committees-list">
+          <%= for committee <- @member.committees do %>
+            <li class="member-show__committee-list-item">
+              <a href="<%= WhoWeb.RoutesHelper.committee_code_path(committee["code"]) %>"><%= committee["name"] %></a>
+            </li>
+            <p>Rank in party: <%= committee["rank_in_party"] %></p>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <%= unless is_nil(@member.votes) do %>
     <div class="member-show__votes-wrapper">
       <div class="member-show__votes-header">
-        <%= content_tag :h3, gettext("Committees") %>
+        <%= content_tag :h3, gettext("Recent Votes") %>
       </div>
 
       <div class="member-show__votes-content">

@@ -224,10 +224,6 @@ defmodule WhoWeb.MemberView do
       |> Enum.fetch(0)
       |> elem(1)
       |> Map.get("committees")
-
-    for committee <- list_of_committees do
-      committee["name"]
-    end
   end
 
   @doc """
