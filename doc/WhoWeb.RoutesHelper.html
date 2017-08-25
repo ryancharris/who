@@ -8,7 +8,7 @@
     <title>WhoWeb.RoutesHelper – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-c2afa912c1.js"></script>
+    <script src="dist/sidebar_items-24c6a77b62.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -100,6 +100,15 @@
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#committee_code_path/1">committee_code_path(committee_code)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Creates a relative path to a Committee #show page based on the Committee’s code</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#member_id_path/1">member_id_path(member_id)</a>
   </div>
   
@@ -144,6 +153,26 @@
 <p>EX:
   WhoWeb.RoutesHelper.bill_id_path(“s114”)
   &gt;&gt;&gt; /bill/S114</p>
+
+  </section>
+</div>
+<div class="detail" id="committee_code_path/1">
+  
+  <div class="detail-header">
+    <a href="#committee_code_path/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">committee_code_path(committee_code)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Creates a relative path to a Committee #show page based on the Committee’s code.</p>
+<p>EX:
+  WhoWeb.RoutesHelper.bill_id_path(“HSAG”)
+  &gt;&gt;&gt; /committee/hsag</p>
 
   </section>
 </div>

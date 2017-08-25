@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.16.2">
-    <title>Who.ProPublicaAPI.Bill – who v0.0.1</title>
+    <title>Who.ProPublicaAPI.Committee – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
     <script src="dist/sidebar_items-24c6a77b62.js"></script>
@@ -62,14 +62,14 @@
 
       <h1>
         <small class="visible-xs">who v0.0.1</small>
-        Who.ProPublicaAPI.Bill
+        Who.ProPublicaAPI.Committee
         
       </h1>
 
       
         <section id="moduledoc">
-          <p>  This module defines methods for querying the ProPublica API
-  for information on specific bills</p>
+          <p>This module defines methods for querying the ProPublica API for information
+about specific Congressional committees and/or subcommittees</p>
 
         </section>
       
@@ -92,21 +92,29 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_bill_by_id/1">get_bill_by_id(id)</a>
+    <a href="#get_commitee_info/1">get_commitee_info(chamber)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns a JSON blob representing a specific bill’s (selected by
-bill_id or “slug”) content, history, status, etc</p>
+    <div class="summary-synopsis"><p>Get a list of committees and subcommitees by Chamber</p>
 </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_recent_bills/2">get_recent_bills(chamber, type)</a>
+    <a href="#get_commitee_info/2">get_commitee_info(chamber, committee_id)</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns a JSON blob representing the last 20 votes in a given
- chamber of Congress by type</p>
+    <div class="summary-synopsis"><p>Query the API for information about a specific Committee
+in a given Chamber of Congress</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_committee_hearings/2">get_committee_hearings(chamber, committee_id)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Get information about recent hearings held by a given Committee</p>
 </div>
   
 </div>
@@ -130,57 +138,73 @@ bill_id or “slug”) content, history, status, etc</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="get_bill_by_id/1">
+          <div class="detail" id="get_commitee_info/1">
   
   <div class="detail-header">
-    <a href="#get_bill_by_id/1" class="detail-link" title="Link to this function">
+    <a href="#get_commitee_info/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_bill_by_id(id)</span>
+    <span class="signature">get_commitee_info(chamber)</span>
     
     
     
       <div class="specs">
         
-          <pre>get_bill_by_id(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: map</pre>
+          <pre>get_commitee_info(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: list</pre>
         
       </div>
     
   </div>
   <section class="docstring">
-    <p>Returns a JSON blob representing a specific bill’s (selected by
-bill_id or “slug”) content, history, status, etc.</p>
+    <p>Get a list of committees and subcommitees by Chamber.</p>
 <p>EX:
-  Who.ProPublicaAPI.Bill.get_bill_by_id(“hr21”)</p>
+  Who.ProPublicaAPI.Committee.get_commitee_info(“house”)</p>
 
   </section>
 </div>
-<div class="detail" id="get_recent_bills/2">
+<div class="detail" id="get_commitee_info/2">
   
   <div class="detail-header">
-    <a href="#get_recent_bills/2" class="detail-link" title="Link to this function">
+    <a href="#get_commitee_info/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_recent_bills(chamber, type)</span>
+    <span class="signature">get_commitee_info(chamber, committee_id)</span>
     
     
     
       <div class="specs">
         
-          <pre>get_recent_bills(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: map</pre>
+          <pre>get_commitee_info(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: list</pre>
         
       </div>
     
   </div>
   <section class="docstring">
-    <p> Returns a JSON blob representing the last 20 votes in a given
- chamber of Congress by type.</p>
-<p> EX:
-  Who.ProPublicaAPI.Bill.get_recent_bills(“both”, “enacted”)
-  Who.ProPublicaAPI.Bill.get_recent_bills(“senate”, “introduced”)
-  Who.ProPublicaAPI.Bill.get_recent_bills(“house”, “passed”)</p>
+    <p>Query the API for information about a specific Committee
+in a given Chamber of Congress.</p>
+<p>EX:
+  Who.ProPublicaAPI.Committee.get_commitee_info(“house”, “hspw”)</p>
+
+  </section>
+</div>
+<div class="detail" id="get_committee_hearings/2">
+  
+  <div class="detail-header">
+    <a href="#get_committee_hearings/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_committee_hearings(chamber, committee_id)</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Get information about recent hearings held by a given Committee.</p>
+<p>EX:
+  Who.ProPublicaAPI.Committee.get_committee_hearings(“house”, “hspw”)</p>
 
   </section>
 </div>

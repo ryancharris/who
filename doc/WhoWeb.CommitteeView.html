@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.16.2">
-    <title>Who.ProPublicaAPI.Bill – who v0.0.1</title>
+    <title>WhoWeb.CommitteeView – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
     <script src="dist/sidebar_items-24c6a77b62.js"></script>
@@ -62,16 +62,10 @@
 
       <h1>
         <small class="visible-xs">who v0.0.1</small>
-        Who.ProPublicaAPI.Bill
+        WhoWeb.CommitteeView
         
       </h1>
 
-      
-        <section id="moduledoc">
-          <p>  This module defines methods for querying the ProPublica API
-  for information on specific bills</p>
-
-        </section>
       
 
       
@@ -92,21 +86,48 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_bill_by_id/1">get_bill_by_id(id)</a>
+    <a href="#__phoenix_recompile__?/0">__phoenix_recompile__?()</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns a JSON blob representing a specific bill’s (selected by
-bill_id or “slug”) content, history, status, etc</p>
+    <div class="summary-synopsis"><p>Returns true whenever the list of templates changes in the filesystem</p>
 </div>
   
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_recent_bills/2">get_recent_bills(chamber, type)</a>
+    <a href="#__resource__/0">__resource__()</a>
   </div>
   
-    <div class="summary-synopsis"><p>Returns a JSON blob representing the last 20 votes in a given
- chamber of Congress by type</p>
+    <div class="summary-synopsis"><p>The resource name, as an atom, for this view</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#__templates__/0">__templates__()</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Returns the template root alongside all templates</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#render/2">render(template, assigns \\ %{})</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Renders the given template locally</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#template_not_found/2">template_not_found(template, assigns)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Callback invoked when no template is found.
+By default it raises but can be customized
+to render a particular template</p>
 </div>
   
 </div>
@@ -130,57 +151,98 @@ bill_id or “slug”) content, history, status, etc</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="get_bill_by_id/1">
+          <div class="detail" id="__phoenix_recompile__?/0">
   
   <div class="detail-header">
-    <a href="#get_bill_by_id/1" class="detail-link" title="Link to this function">
+    <a href="#__phoenix_recompile__?/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_bill_by_id(id)</span>
+    <span class="signature">__phoenix_recompile__?()</span>
     
     
-    
-      <div class="specs">
-        
-          <pre>get_bill_by_id(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: map</pre>
-        
-      </div>
     
   </div>
   <section class="docstring">
-    <p>Returns a JSON blob representing a specific bill’s (selected by
-bill_id or “slug”) content, history, status, etc.</p>
-<p>EX:
-  Who.ProPublicaAPI.Bill.get_bill_by_id(“hr21”)</p>
+    <p>Returns true whenever the list of templates changes in the filesystem.</p>
 
   </section>
 </div>
-<div class="detail" id="get_recent_bills/2">
+<div class="detail" id="__resource__/0">
   
   <div class="detail-header">
-    <a href="#get_recent_bills/2" class="detail-link" title="Link to this function">
+    <a href="#__resource__/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_recent_bills(chamber, type)</span>
+    <span class="signature">__resource__()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>The resource name, as an atom, for this view</p>
+
+  </section>
+</div>
+<div class="detail" id="__templates__/0">
+  
+  <div class="detail-header">
+    <a href="#__templates__/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">__templates__()</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Returns the template root alongside all templates.</p>
+
+  </section>
+</div>
+<div class="detail" id="render/2">
+  
+    <span id="render/1"></span>
+  
+  <div class="detail-header">
+    <a href="#render/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">render(template, assigns \\ %{})</span>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Renders the given template locally.</p>
+
+  </section>
+</div>
+<div class="detail" id="template_not_found/2">
+  
+  <div class="detail-header">
+    <a href="#template_not_found/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">template_not_found(template, assigns)</span>
     
     
     
       <div class="specs">
         
-          <pre>get_recent_bills(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: map</pre>
+          <pre>template_not_found(<a href="https://hexdocs.pm/phoenix/1.3.0-rc.3/Phoenix.Template.html#t:name/0">Phoenix.Template.name</a>, map) :: no_return</pre>
         
       </div>
     
   </div>
   <section class="docstring">
-    <p> Returns a JSON blob representing the last 20 votes in a given
- chamber of Congress by type.</p>
-<p> EX:
-  Who.ProPublicaAPI.Bill.get_recent_bills(“both”, “enacted”)
-  Who.ProPublicaAPI.Bill.get_recent_bills(“senate”, “introduced”)
-  Who.ProPublicaAPI.Bill.get_recent_bills(“house”, “passed”)</p>
+    <p>Callback invoked when no template is found.
+By default it raises but can be customized
+to render a particular template.</p>
 
   </section>
 </div>
