@@ -1,7 +1,6 @@
 defmodule WhoWeb.MemberController do
   use WhoWeb, :controller
 
-  alias WhoWeb.MemberView
   alias WhoWeb.MemberPresenter
 
   alias Who.ProPublicaAPI.Member

@@ -25,10 +25,10 @@ defmodule WhoWeb.Router do
     get "/chamber/:chamber", ChamberController, :show
 
     get "/bill", BillController, :index
-    get "bill/:id", BillController, :show
+    get "/bill/:id", BillController, :show
 
     get "/committee", CommitteeController, :index
-    get "/committee/:code", CommitteeController, :show
+    get "/committee/:id", CommitteeController, :show
 
   end
 

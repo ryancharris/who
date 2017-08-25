@@ -1,0 +1,4 @@
+<div>
+  <h1><%= @committee %></h1>
+  <h4><%= @chamber %></h4>
+</div>
