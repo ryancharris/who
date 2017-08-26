@@ -20,13 +20,6 @@ defmodule WhoWeb.CommitteeController do
     [ committee_hearings | _ ] = Committee.get_committee_hearings(chamber, id)
     %{"hearings" => hearings} = committee_hearings
 
-    # render  conn,
-    #         "show.html",
-    #         chamber: String.capitalize(chamber),
-    #         committee: id,
-    #         hearings: hearings,
-    #         committee_members: committee_members
-
     render  conn,
             "show.html",
             committee: CommitteePresenter.new(

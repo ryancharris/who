@@ -8,6 +8,7 @@ defmodule WhoWeb.CommitteePresenter do
   @type t :: %__MODULE__{
     id: Sting.t,
     chamber: String.t,
+    chair: map,
     members: map,
     hearings: list(map)
   }
@@ -15,6 +16,7 @@ defmodule WhoWeb.CommitteePresenter do
   defstruct [
     id: "",
     chamber: "",
+    chair: %{},
     members: %{},
     hearings: []
   ]
@@ -24,12 +26,25 @@ defmodule WhoWeb.CommitteePresenter do
   """
   def new(nil, _, _), do: nil
   def new(id, members, hearings) do
-    %{"chamber" => chamber} = members
+    %{
+      "chamber" => chamber,
+      "current_members" => current_members,
+      "chair" => chair_name,
+      "chair_id" => chair_id,
+      "chair_party" => chair_party,
+      "chair_state" => chair_state
+    } = members
 
     %__MODULE__{
       id: id,
       chamber: chamber,
-      members: members,
+      chair: %{
+        id: chair_id,
+        name: chair_name,
+        party: chair_party,
+        state: chair_state
+      },
+      members: current_members,
       hearings: hearings
     }
   end

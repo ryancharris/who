@@ -1,8 +1,23 @@
 <div>
+  <%= raise inspect @committee %>
   <h3><%= @committee.chamber %></h3>
   <h1><%= @committee.id %></h1>
 </div>
 
 <div>
+  <h3>Members</h3>
+  <%= for member <- @committee.members do %>
+    <p>
+      <%= member["name"] %> (<%= member["party"] %> - <%= member["state"] %>)
+    </p>
+  <% end %>
+</div>
+
+<div>
   <h3>Hearings</h3>
+  <%= for hearing <- @committee.hearings do %>
+    <p><%= hearing["description"] %></p>
+    <p><%= hearing["time"] %></p>
+    <p><%= hearing["location"] %></p>
+  <% end %>
 </div>
