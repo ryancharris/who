@@ -1,5 +1,4 @@
 <div>
-  <%= raise inspect @committee %>
   <h3><%= @committee.chamber %></h3>
   <h1><%= @committee.id %></h1>
 </div>
@@ -8,7 +7,9 @@
   <h3>Members</h3>
   <%= for member <- @committee.members do %>
     <p>
-      <%= member["name"] %> (<%= member["party"] %> - <%= member["state"] %>)
+      <%= link to: WhoWeb.RoutesHelper.member_id_path(member["id"]) do %>
+        <%= member["name"] %> (<%= member["party"] %> - <%= member["state"] %>)
+      <% end %>
     </p>
   <% end %>
 </div>
