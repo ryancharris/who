@@ -28,8 +28,4 @@ defmodule WhoWeb.CommitteeController do
               hearings
             )
   end
-
-  # def show(conn, %{"code" => code}) do
-  # end
-
 end

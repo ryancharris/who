@@ -43,8 +43,20 @@
 <div>
   <h3>Members</h3>
   <%= for member <- Enum.slice(@chamber_presenter.chamber_members, 0, 5) do %>
-    <a href=<%= WhoWeb.RoutesHelper.member_id_path(member["id"]) %>>
+    <a href="<%= WhoWeb.RoutesHelper.member_id_path(member["id"]) %>">
       <p><%= member["first_name"] %> <%= member["last_name"] %></p>
+    </a>
+  <% end %>
+</div>
+
+<div>
+  <h3>Committees</h3>
+  <%= for committee <- Enum.slice(@chamber_presenter.committees, 0, 5) do %>
+    <a href="<%= WhoWeb.RoutesHelper.committee_code_path(committee["id"]) %>">
+      <p><%= committee["name"] %></p>
+    </a>
+    <a href="<%= WhoWeb.RoutesHelper.member_id_path(committee["chair_id"]) %>">
+      <p><%= committee["chair"] %> (<%= committee["chair_state"] %> - <%= committee["chair_party"] %>)</p>
     </a>
   <% end %>
 </div>

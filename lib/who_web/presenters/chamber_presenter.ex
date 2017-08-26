@@ -10,7 +10,8 @@ defmodule WhoWeb.ChamberPresenter do
     chamber: String.t,
     bills_passed: list[map],
     bills_introduced: list(map),
-    floor_actions: list(map)
+    floor_actions: list(map),
+    committees: list(map)
   }
 
   defstruct [
@@ -18,21 +19,23 @@ defmodule WhoWeb.ChamberPresenter do
     chamber: "",
     bills_passed: [],
     bills_introduced: [],
-    floor_actions: []
+    floor_actions: [],
+    committees: []
   ]
 
   @doc """
     Creates a new %ChamberPresenter{} named struct.
   """
-  @spec new(String.t, map, map, map, map) :: t()
-  def new(nil, _, _, _, _), do: nil
-  def new(chamber, members, bills_passed, bills_introduced, floor_actions) do
+  @spec new(String.t, map, map, map, map, list) :: t()
+  def new(nil, _, _, _, _, _), do: nil
+  def new(chamber, members, bills_passed, bills_introduced, floor_actions, committees) do
     %__MODULE__{
       chamber_members: ChamberView.build_members_list(members),
       chamber: chamber,
       bills_passed: Map.fetch!(bills_passed, "bills"),
       bills_introduced: Map.fetch!(bills_introduced, "bills"),
-      floor_actions: Map.fetch!(floor_actions, "floor_actions")
+      floor_actions: Map.fetch!(floor_actions, "floor_actions"),
+      committees: committees
     }
   end
 end

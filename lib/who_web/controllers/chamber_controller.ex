@@ -20,6 +20,8 @@ defmodule WhoWeb.ChamberController do
         [bills_passed | _tail] = Bill.get_recent_bills(chamber, "passed")
         [bills_introduced | _tail] = Bill.get_recent_bills(chamber, "introduced")
 
+        [ %{"committees" => committees} | _ ] = Chamber.get_commitee_info(chamber)
+
         render conn,
           "show.html",
           chamber_presenter: ChamberPresenter.new(
@@ -27,7 +29,8 @@ defmodule WhoWeb.ChamberController do
             members,
             bills_passed,
             bills_introduced,
-            floor_actions
+            floor_actions,
+            committees
           )
     end
   end
