@@ -30,4 +30,13 @@
       <p>Maybe: <%= vote["total_not_voting"] %></p>
     <% end %>
   <% end %>
+
+  <p>Cosponsors</p>
+  <%= if !is_nil(@cosponsors) do %>
+    <%= for cosponsor <- @cosponsors do %>
+      <a href="<%= WhoWeb.RoutesHelper.member_id_path(cosponsor["cosponsor_id"]) %>">
+        <p><%= cosponsor["name"] %> (<%= cosponsor["cosponsor_state"] %> - <%= cosponsor["cosponsor_party"] %>)</p>
+      </a>
+    <% end %>
+  <% end %>
 </div>

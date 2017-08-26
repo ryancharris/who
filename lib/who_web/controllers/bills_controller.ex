@@ -15,7 +15,12 @@ defmodule WhoWeb.BillController do
       |> Enum.fetch!(0)
       |> BillPresenter.new
 
-    render conn, "show.html", bill: bill
+    [ %{"cosponsors" => cosponsors} | _ ] = Bill.get_bill_cosponsors_by_id(id)
+
+    render  conn,
+            "show.html",
+            bill: bill,
+            cosponsors: cosponsors
   end
 
 end
