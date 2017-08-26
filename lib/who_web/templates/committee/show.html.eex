@@ -1,4 +1,8 @@
 <div>
-  <h1><%= @committee %></h1>
-  <h4><%= @chamber %></h4>
+  <h3><%= @committee.chamber %></h3>
+  <h1><%= @committee.id %></h1>
+</div>
+
+<div>
+  <h3>Hearings</h3>
 </div>
