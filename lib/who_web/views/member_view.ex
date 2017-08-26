@@ -197,14 +197,14 @@ defmodule WhoWeb.MemberView do
   """
   @spec build_aggregate_party_vote_pct(map()) :: float()
   def build_aggregate_party_vote_pct(member) do
-    num_of_sessions =
-      Map.get(member, "roles")
-      |> Enum.count
-
     pct_by_session_list =
       for session <- Map.get(member, "roles"), do: session["votes_with_party_pct"]
 
-    Enum.sum(Enum.filter(pct_by_session_list, fn(x) -> x != nil end)) / num_of_sessions
+    filter_pct_list =
+      pct_by_session_list
+      |> Enum.filter(fn(x) -> x != nil end)
+
+    Enum.sum(filter_pct_list) / Enum.count(filter_pct_list)
     |> Float.round(2)
   end
 
