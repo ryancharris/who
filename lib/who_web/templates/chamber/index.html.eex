@@ -1,3 +1,12 @@
 <div class="jumbotron">
-  <h2>Chamber #index</h2>
+  <h2>Activity in Congress</h2>
+</div>
+
+<div>
+  <h3>Recently Passed Bills</h3>
+  <%= for bill <- @passed_bills do %>
+    <a href="<%= WhoWeb.RoutesHelper.bill_id_path(bill["bill_slug"]) %>">
+      <p><%= bill["title"] %></p>
+    </a>
+  <% end %>
 </div>

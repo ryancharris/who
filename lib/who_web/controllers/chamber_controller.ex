@@ -7,7 +7,8 @@ defmodule WhoWeb.ChamberController do
   alias WhoWeb.ChamberPresenter
 
   def index(conn, _params) do
-    render conn, "index.html"
+    [ %{"bills" => passed_bills} | _ ] = Who.ProPublicaAPI.Bill.get_recent_bills("both", "passed")
+    render conn, "index.html", passed_bills: passed_bills
   end
 
   def show(conn, %{"chamber" => chamber}) do
