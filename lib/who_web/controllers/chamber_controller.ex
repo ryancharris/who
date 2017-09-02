@@ -8,7 +8,7 @@ defmodule WhoWeb.ChamberController do
 
   def index(conn, _params) do
     [ %{"bills" => passed_bills} | _ ] = Who.ProPublicaAPI.Bill.get_recent_bills("both", "passed")
-    render conn, "index.html", passed_bills: passed_bills
+    render conn, "index.html", passed_bills: Enum.slice(passed_bills, 0, 5)
   end
 
   def show(conn, %{"chamber" => chamber}) do
