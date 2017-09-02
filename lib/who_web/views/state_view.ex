@@ -3,5 +3,4 @@ defmodule WhoWeb.StateView do
     Helper methods to parse and populate %StatePresenter{} fields.
   """
   use WhoWeb, :view
-
 end

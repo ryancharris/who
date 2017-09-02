@@ -1,4 +1,23 @@
 <div>
   <h1>State #show</h1>
-  <h4><%= @name %></h4>
+  <h3>State: <%= String.upcase(@name) %></h3>
+
+  <div>
+    <h3>Senators</h3>
+    <%= for senator <- @senators do %>
+      <p>
+        <a href="<%= WhoWeb.RoutesHelper.member_id_path(senator["id"]) %>">
+          <%= "Sen. " <> WhoWeb.MemberView.parse_member_name(senator) %>
+        </a>
+      </p>
+    <% end %>
+  </div>
+
+  <div>
+    <h3>Representatives</h3>
+    <%= for rep <- @reps do %>
+      <%= rep %>
+    <% end %>
+  </div>
+
 </div>
