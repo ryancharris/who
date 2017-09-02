@@ -10,8 +10,8 @@ defmodule WhoWeb.MemberController do
   end
 
   def show(conn, %{"id" => id}) do
-    [member | tail] = Member.get_member_by_id(id)
-    [member_votes_map | tail] = Member.get_member_votes(id)
+    [member | _] = Member.get_member_by_id(id)
+    [member_votes_map | _] = Member.get_member_votes(id)
 
     render(
       conn,
