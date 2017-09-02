@@ -8,7 +8,7 @@
     <title>WhoWeb.ChamberPresenter – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-24c6a77b62.js"></script>
+    <script src="dist/sidebar_items-0a9bd9133c.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -105,7 +105,7 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#new/5">new(chamber, members, bills_passed, bills_introduced, floor_actions)</a>
+    <a href="#new/6">new(chamber, members, bills_passed, bills_introduced, floor_actions, committees)</a>
   </div>
   
     <div class="summary-synopsis"><p>Creates a new %ChamberPresenter{} named struct</p>
@@ -144,7 +144,7 @@
     
       <div class="specs">
         
-          <pre>t() :: %WhoWeb.ChamberPresenter{bills_introduced: [map], bills_passed: <a href="https://hexdocs.pm/elixir/Access.html#t:get/2">list[map]</a>, chamber: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, chamber_members: [map], floor_actions: [map]}</pre>
+          <pre>t() :: %WhoWeb.ChamberPresenter{bills_introduced: [map], bills_passed: <a href="https://hexdocs.pm/elixir/Access.html#t:get/2">list[map]</a>, chamber: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, chamber_members: [map], committees: [map], floor_actions: [map]}</pre>
         
       </div>
     
@@ -167,20 +167,20 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="new/5">
+          <div class="detail" id="new/6">
   
   <div class="detail-header">
-    <a href="#new/5" class="detail-link" title="Link to this function">
+    <a href="#new/6" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">new(chamber, members, bills_passed, bills_introduced, floor_actions)</span>
+    <span class="signature">new(chamber, members, bills_passed, bills_introduced, floor_actions, committees)</span>
     
     
     
       <div class="specs">
         
-          <pre>new(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, map, map, map, map) :: <a href="#t:t/0">t</a></pre>
+          <pre>new(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, map, map, map, map, list) :: <a href="#t:t/0">t</a></pre>
         
       </div>
     

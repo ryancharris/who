@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.16.2">
-    <title>WhoWeb – who v0.0.1</title>
+    <title>WhoWeb.CommitteePresenter – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
     <script src="dist/sidebar_items-0a9bd9133c.js"></script>
@@ -62,23 +62,14 @@
 
       <h1>
         <small class="visible-xs">who v0.0.1</small>
-        WhoWeb
+        WhoWeb.CommitteePresenter
         
       </h1>
 
       
         <section id="moduledoc">
-          <p>The entrypoint for defining your web interface, such
-as controllers, views, channels and so on.</p>
-<p>This can be used in your application as:</p>
-<pre><code class="elixir">use WhoWeb, :controller
-use WhoWeb, :view</code></pre>
-<p>The definitions below will be executed for every view,
-controller, etc, so keep them short and clean, focused
-on imports, uses and aliases.</p>
-<p>Do NOT define functions inside the quoted expressions
-below. Instead, define any helper function in modules
-and import those modules here.</p>
+          <p>This module organizes and arranges information regarding a
+given Committee to reduce logic in the template.</p>
 
         </section>
       
@@ -93,6 +84,19 @@ and import those modules here.</p>
             Summary
           </h1>
           
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+    <div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+  
+</div>
+
+  </div>
+
 
           
   <div class="summary-functions summary">
@@ -101,35 +105,11 @@ and import those modules here.</p>
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
-    <a href="#__using__/1">__using__(which)</a>
+    <a href="#new/3">new(id, members, hearings)</a>
   </div>
   
-    <div class="summary-synopsis"><p>When used, dispatch to the appropriate controller/view/etc</p>
+    <div class="summary-synopsis"><p>Creates a new %CommitteePresenter{} named struct</p>
 </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#channel/0">channel()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#controller/0">controller()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#router/0">router()</a>
-  </div>
-  
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#view/0">view()</a>
-  </div>
   
 </div>
 
@@ -142,6 +122,41 @@ and import those modules here.</p>
       
 
       
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+            <div class="detail" id="t:t/0">
+  
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">t()</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>t() :: %WhoWeb.CommitteePresenter{chair: map, chamber: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>, hearings: [map], id: Sting.t, members: map}</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    
+  </section>
+</div>
+
+          </div>
+        </section>
+      
 
       
         <section id="functions" class="details-list">
@@ -152,87 +167,21 @@ and import those modules here.</p>
             </a>
             Functions
           </h1>
-          <div class="detail" id="__using__/1">
+          <div class="detail" id="new/3">
   
   <div class="detail-header">
-    <a href="#__using__/1" class="detail-link" title="Link to this macro">
+    <a href="#new/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this macro</span>
+      <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">__using__(which)</span>
+    <span class="signature">new(id, members, hearings)</span>
     
-    
-      <span class="note">(macro)</span>
     
     
   </div>
   <section class="docstring">
-    <p>When used, dispatch to the appropriate controller/view/etc.</p>
+    <p>Creates a new %CommitteePresenter{} named struct.</p>
 
-  </section>
-</div>
-<div class="detail" id="channel/0">
-  
-  <div class="detail-header">
-    <a href="#channel/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">channel()</span>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="controller/0">
-  
-  <div class="detail-header">
-    <a href="#controller/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">controller()</span>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="router/0">
-  
-  <div class="detail-header">
-    <a href="#router/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">router()</span>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    
-  </section>
-</div>
-<div class="detail" id="view/0">
-  
-  <div class="detail-header">
-    <a href="#view/0" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">view()</span>
-    
-    
-    
-  </div>
-  <section class="docstring">
-    
   </section>
 </div>
 

@@ -8,7 +8,7 @@
     <title>Who.ProPublicaAPI.Chamber – who v0.0.1</title>
     <link rel="stylesheet" href="dist/app-268c9dc719.css" />
     
-    <script src="dist/sidebar_items-24c6a77b62.js"></script>
+    <script src="dist/sidebar_items-0a9bd9133c.js"></script>
   </head>
   <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -92,6 +92,15 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
+    <a href="#get_commitee_info/1">get_commitee_info(chamber)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Get a list of committees and subcommitees by Chamber</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#get_members_by_chamber/1">get_members_by_chamber(chamber)</a>
   </div>
   
@@ -128,7 +137,32 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="get_members_by_chamber/1">
+          <div class="detail" id="get_commitee_info/1">
+  
+  <div class="detail-header">
+    <a href="#get_commitee_info/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_commitee_info(chamber)</span>
+    
+    
+    
+      <div class="specs">
+        
+          <pre>get_commitee_info(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>) :: list</pre>
+        
+      </div>
+    
+  </div>
+  <section class="docstring">
+    <p>Get a list of committees and subcommitees by Chamber.</p>
+<p>EX:
+  Who.ProPublicaAPI.Chamber.get_commitee_info(“house”)</p>
+
+  </section>
+</div>
+<div class="detail" id="get_members_by_chamber/1">
   
   <div class="detail-header">
     <a href="#get_members_by_chamber/1" class="detail-link" title="Link to this function">
@@ -175,8 +209,8 @@ get_members_by_chamber(&quot;senate&quot;)</code></pre>
   <section class="docstring">
     <p>  Get a list of recent floor actions by chamber</p>
 <p>  EX:</p>
-<pre><code class="elixir">get_recent_chamber_actions(&quot;house&quot;)
-get_recent_chamber_actions(&quot;senate&quot;)</code></pre>
+<pre><code class="elixir">Who.ProPublicaAPI.Chamber.get_recent_chamber_actions(&quot;house&quot;)
+Who.ProPublicaAPI.Chamber.get_recent_chamber_actions(&quot;senate&quot;)</code></pre>
 
   </section>
 </div>
