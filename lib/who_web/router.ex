@@ -30,6 +30,9 @@ defmodule WhoWeb.Router do
     get "/committee", CommitteeController, :index
     get "/committee/:id", CommitteeController, :show
 
+    get "/state", StateController, :index
+    get "/state/:name", StateController, :show
+
   end
 
   # Other scopes may use custom stacks.
