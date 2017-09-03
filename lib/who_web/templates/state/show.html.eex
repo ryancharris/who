@@ -4,19 +4,17 @@
 
   <div>
     <h3>Senators</h3>
-    <%= for senator <- @senators do %>
-      <p>
-        <a href="<%= WhoWeb.RoutesHelper.member_id_path(senator["id"]) %>">
-          <%= "Sen. " <> WhoWeb.MemberView.parse_member_name(senator) %>
-        </a>
-      </p>
-    <% end %>
+
   </div>
 
   <div>
     <h3>Representatives</h3>
     <%= for rep <- @reps do %>
-      <%= rep %>
+      <a href="<%= WhoWeb.RoutesHelper.member_id_path(rep["id"]) %>">
+        <p>
+          <%= WhoWeb.MemberView.parse_member_name(rep) %>
+        </p>
+      </a>
     <% end %>
   </div>
 
