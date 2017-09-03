@@ -11,7 +11,7 @@ defmodule WhoWeb.StateController do
   end
 
   def show(conn, %{"name" => name}) do
-    # %{ "results" => senators } = State.get_senators_by_state(name)
+    %{ "results" => senators } = State.get_senators_by_state(name)
 
     num_of_reps = RepCounts.get_state_rep_count(name)
     reps = StateView.build_reps_list(name, num_of_reps)
@@ -19,7 +19,7 @@ defmodule WhoWeb.StateController do
     render conn,
           "show.html",
           name: name,
-          # senators: senators,
+          senators: senators,
           reps: reps
   end
 end

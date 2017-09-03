@@ -15,7 +15,7 @@ defmodule WhoWeb.StateView do
   """
   @spec build_reps_list(String.t, non_neg_integer) :: list(map)
   def build_reps_list(state, num_of_reps) do
-    a =
+    reps_list =
       for district <- 1..num_of_reps do
         [head | _] = State.get_reps_by_state(state, district)
         head
