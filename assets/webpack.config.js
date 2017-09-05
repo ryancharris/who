@@ -38,6 +38,12 @@ const config = {
         test: /\.scss$/,
         use: extractSass.extract(['css-loader', 'sass-loader'])
       },
+
+      {
+        test: /\.vue$/,
+        include: path.resolve('js'),
+        use: 'vue-loader'
+      }
     ]
   },
 
@@ -47,9 +53,8 @@ const config = {
 
   resolve: {
     extensions: ['.js', '.scss'],
-    modules: [
-      'node_modules'
-    ]
+    modules: [ 'node_modules' ],
+    alias: { 'vue$': 'vue/dist/vue.esm.js'}
   }
 };
 

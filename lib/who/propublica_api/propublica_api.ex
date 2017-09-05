@@ -29,6 +29,7 @@ defmodule Who.ProPublicaAPI.Base do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         # Return map of decoded JSON blob
         res = Poison.decode!(body)
+        res["results"]
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         # When API call fails
         IO.warn "404 Error: Not found :("
