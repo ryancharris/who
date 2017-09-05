@@ -27,10 +27,10 @@ defmodule Who.ProPublicaAPI.State do
   @spec get_reps_by_state(String.t, non_neg_integer) :: map
   def get_reps_by_state(_, nil), do: nil
   def get_reps_by_state(state, district_num) do
-    member_map =
+    # member_map =
       get_api_endpoint() <> "members/house/#{state}/#{district_num}/current.json"
       |> make_request(get_api_header())
-
-      member = Map.fetch!(member_map, "results")
+      # raise inspect member_map
+      # member = Map.fetch!(member_map, "results")
   end
 end
