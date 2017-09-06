@@ -10,3 +10,24 @@ import 'phoenix_html';
 
 // import socket from "./socket"
 import Vue from 'vue';
+
+// new Vue({
+//   el: '#app',
+//   data: () => ({
+//     greeting: 'fuck you'
+//   }),
+//   render: h => {
+//     return (
+//       <div>
+//         <p>{{greeting}}</p>
+//       </div>
+//     )
+//   }
+// });
+
+new Vue({
+ el: '#app',
+ data: {
+   text: 'Hello World!'
+ }
+});

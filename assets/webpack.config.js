@@ -28,7 +28,7 @@ const config = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['latest']
+              presets: ['env']
             }
           }
         ]
@@ -52,7 +52,7 @@ const config = {
   ],
 
   resolve: {
-    extensions: ['.js', '.scss'],
+    extensions: ['.js', '.scss', '.vue'],
     modules: [ 'node_modules' ],
     alias: { 'vue$': 'vue/dist/vue.esm.js'}
   }
