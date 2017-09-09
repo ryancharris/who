@@ -19,8 +19,6 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main id="app" role="main">
-        <hello></hello>
-        <p>{{ text }}</p>
         <%= render @view_module, @view_template, assigns %>
       </main>
     </div> <!-- /container -->

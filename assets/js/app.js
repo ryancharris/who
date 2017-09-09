@@ -12,7 +12,6 @@ import 'phoenix_html';
 import Vue from 'vue';
 
 import Hello from './Hello.vue';
-
 Vue.component('hello', Hello);
 
 new Vue({
