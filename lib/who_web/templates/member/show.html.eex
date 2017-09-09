@@ -92,4 +92,4 @@
   <% end %>
 </div>
 
-<hello v-bind:member="<%= Poison.encode!(@member) %>"></hello>
+<!-- <hello v-bind:member="<%= Poison.encode!(@member) %>"></hello> -->
