@@ -92,8 +92,4 @@
   <% end %>
 </div>
 
-<hello member="<%= @member.name %>"></hello>
-
-<!-- <script type="text/javascript">
-  const message = '<%= @member.name %>';
-</script> -->
+<hello v-bind:member="<%= Poison.encode!(@member) %>"></hello>

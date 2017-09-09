@@ -1,10 +1,16 @@
 <template>
-    <h1 class="helloMessage">{{ member }}</h1>
+    <h1 class="helloMessage">{{ title }} {{ name }}</h1>
 </template>
 
 <script>
     export default {
-        props: ['member']
+        props: ['member'],
+        data() {
+          return {
+            name: this.member.name,
+            title: this.member.title
+          }
+        }
     }
 </script>
 
@@ -14,6 +20,5 @@
         color: #ac050b;
         margin: 30px 0;
         text-align: center;
-        text-transform: full-width;
     }
 </style>
