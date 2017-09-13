@@ -91,5 +91,4 @@
     </div>
   <% end %>
 </div>
-
-<!-- <hello v-bind:member="<%= Poison.encode!(@member) %>"></hello> -->
+<member-header v-bind="{member: <%= Poison.encode!(@member) %>, pic: <%= @member_pic %>}"></member-header>

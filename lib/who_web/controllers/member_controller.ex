@@ -17,7 +17,7 @@ defmodule WhoWeb.MemberController do
       conn,
       "show.html",
       member: MemberPresenter.new(member, member_votes_map),
-      member_pic: Who.UsProjectAPI.Base.get_member_picture(id, '450')
+      member_pic: Poison.encode!(Who.UsProjectAPI.Base.get_member_picture(id, '450'))
     )
   end
 end

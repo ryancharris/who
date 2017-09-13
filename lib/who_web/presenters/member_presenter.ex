@@ -89,12 +89,12 @@ defmodule WhoWeb.MemberPresenter do
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
       social_urls: [
-        %{ network: 'website', url: website_url },
-        %{ network: 'facebook', url: facebook_url },
-        %{ network: 'twitter', url: twitter_url },
-        %{ network: 'youtube', url: youtube_url }
+        %{ network: "website", url: website_url },
+        %{ network: "facebook", url: facebook_url },
+        %{ network: "twitter", url: twitter_url },
+        %{ network: "youtube", url: youtube_url }
       ],
-      phone_url: "tel:1" <> MemberView.parse_member_field(member, "roles", "phone"),
+      phone_url: "tel:1-" <> MemberView.parse_member_field(member, "roles", "phone"),
       office: office,
       map_src_url: Who.GoogleMapsAPI.Base.build_embed_src_url(office),
 
