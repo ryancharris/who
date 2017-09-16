@@ -7,6 +7,7 @@ import Vue from 'vue';
 import MemberHeader from './MemberHeader.vue';
 import MemberStats from './MemberStats.vue';
 import MemberMap from './MemberMap.vue';
+import MemberCommittees from './MemberCommittees.vue';
 
 //
 // REGISTER CUSTOM TAGS
@@ -14,6 +15,7 @@ import MemberMap from './MemberMap.vue';
 Vue.component('member-header', MemberHeader);
 Vue.component('member-stats', MemberStats);
 Vue.component('member-map', MemberMap);
+Vue.component('member-committees', MemberCommittees);
 
 //
 // DECLARE VUE INSTANCE

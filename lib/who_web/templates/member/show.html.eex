@@ -94,3 +94,4 @@
 <member-header v-bind="{member: <%= Poison.encode!(@member) %>, pic: <%= @member_pic %>}"></member-header>
 <member-stats v-bind:member="<%= Poison.encode!(@member) %>"></member-stats>
 <member-map v-bind:member="<%= Poison.encode!(@member) %>"></member-map>
+<member-committees v-bind:member="<%= Poison.encode!(@member) %>"></member-committees>
