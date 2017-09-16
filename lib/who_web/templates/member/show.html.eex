@@ -95,3 +95,4 @@
 <member-stats v-bind:member="<%= Poison.encode!(@member) %>"></member-stats>
 <member-map v-bind:member="<%= Poison.encode!(@member) %>"></member-map>
 <member-committees v-bind:member="<%= Poison.encode!(@member) %>"></member-committees>
+<member-votes v-bind:member="<%= Poison.encode!(@member) %>"></member-votes>
