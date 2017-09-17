@@ -1,16 +1,16 @@
 <template>
   <div class="member">
-    <member-header v-bind:member="member"></member-header>
-    <member-stats v-bind:member="member"></member-stats>
-    <member-map v-bind:member="member"></member-map>
-    <member-committees v-bind:member="member"></member-committees>
-    <member-votes v-bind:member="member"></member-votes>
+    <member-header :member="member" :pic="pic"></member-header>
+    <member-stats :member="member"></member-stats>
+    <member-map :member="member"></member-map>
+    <member-committees :member="member"></member-committees>
+    <member-votes :member="member"></member-votes>
   </div>
 </template>
 
 <script>
     export default {
-        props: ['member'],
+        props: ['member', 'pic'],
         data() {
           return {
           }

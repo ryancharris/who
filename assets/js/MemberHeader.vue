@@ -1,7 +1,8 @@
 <template>
-  <div class="member__header">
+  <div class="member-header">
     <h1 class="name">{{ title }} {{ name }}</h1>
     <h3 class="state">{{ state }}</h3>
+    <img :src="pic" :alt="name">
   </div>
 </template>
 
@@ -17,7 +18,8 @@
             chamber: this.member.chamber,
             district: this.member.district,
             social: this.member.social_urls,
-            phone: this.member.phone_url
+            phone: this.member.phone_url,
+            pic: this.pic
           }
         }
     }

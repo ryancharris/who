@@ -1,6 +1,6 @@
 <template>
-  <div class="member__map">
-    <iframe width="100%" height="350" frameborder="0" style="border:0" v-bind:src="url">
+  <div class="member-map">
+    <iframe width="100%" height="350" frameborder="0" style="border:0" :src="url">
     </iframe>
   </div>
 </template>

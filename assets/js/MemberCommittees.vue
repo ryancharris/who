@@ -1,5 +1,5 @@
 <template>
-  <div class="member__committees">
+  <div class="member-committees">
     <ul>
       <li v-for="committee in committees" :key="committee.code">
         {{ committee.name }} {{ committee.rank_in_party }}

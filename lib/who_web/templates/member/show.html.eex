@@ -1,1 +1,1 @@
-<member v-bind:member="<%= Poison.encode!(@member) %>"></member>
+<member :member="<%= Poison.encode!(@member) %>" :pic="<%= @member_pic %>"></member>

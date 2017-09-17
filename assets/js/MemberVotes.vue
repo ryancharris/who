@@ -1,5 +1,5 @@
 <template>
-  <div class="member__votes">
+  <div class="member-votes">
     <ul>
       <li v-for="vote in votes">
         <p v-if="vote.number">{{ vote.number }}</p>
