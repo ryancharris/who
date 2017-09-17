@@ -7,6 +7,7 @@ import Vue from 'vue';
 
 
 // Member #show components
+import MemberShow from './MemberShow.vue'
 import MemberHeader from './MemberHeader.vue';
 import MemberStats from './MemberStats.vue';
 import MemberMap from './MemberMap.vue';
@@ -16,6 +17,7 @@ import MemberVotes from './MemberVotes.vue';
 //
 // REGISTER CUSTOM TAGS
 //
+Vue.component('member', MemberShow);
 Vue.component('member-header', MemberHeader);
 Vue.component('member-stats', MemberStats);
 Vue.component('member-map', MemberMap);

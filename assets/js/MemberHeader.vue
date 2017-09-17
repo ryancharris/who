@@ -1,5 +1,5 @@
 <template>
-  <div class="member">
+  <div class="member__header">
     <h1 class="name">{{ title }} {{ name }}</h1>
     <h3 class="state">{{ state }}</h3>
   </div>
