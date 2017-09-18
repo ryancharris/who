@@ -1,8 +1,13 @@
 <template>
   <div class="member-header">
-    <h1 class="name">{{ title }} {{ name }}</h1>
-    <h3 class="state">{{ state }}</h3>
-    <img :src="pic" :alt="name">
+    <h3 class="member-header__title">{{ title }}</h3>
+    <div class="member-header__name-row">
+      <h1 class="member-header__name">{{ name }}</h1>
+      <h4 class="member-header__state">{{ state }}</h4>
+    </div>
+    <div class="member-header__pic-wrapper">
+      <img class="member-header__pic" :src="pic" :alt="name">
+    </div>
   </div>
 </template>
 
@@ -19,21 +24,10 @@
             district: this.member.district,
             social: this.member.social_urls,
             phone: this.member.phone_url,
-            pic: this.pic
           }
         }
     }
 </script>
 
 <style>
-  .name {
-    font-size: 32px;
-    color: #ac050b;
-    margin: 30px 0;
-    text-align: center;
-  }
-
-  .state {
-    color: #fadddd;
-  }
 </style>

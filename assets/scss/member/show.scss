@@ -1,17 +1,5 @@
-.member-show {
-  &__member-title {
-    font-family: $primary;
-    font-size: 16px;
-  }
+@import "./member_header";
 
-  &__member-name {
-    font-family: $display;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  &__profile-pic {
-    width: 320px;
-  }
+.member {
+  margin: 10px;
 }

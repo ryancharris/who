@@ -19,14 +19,4 @@
 </script>
 
 <style>
-  .name {
-    font-size: 32px;
-    color: #ac050b;
-    margin: 30px 0;
-    text-align: center;
-  }
-
-  .state {
-    color: #fadddd;
-  }
 </style>
