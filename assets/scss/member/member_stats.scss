@@ -1,0 +1,54 @@
+.member-stats {
+  text-align: center;
+
+  margin-bottom: 30px;
+
+  &__primary {
+    margin-bottom: 30px;
+  }
+
+  &__party-pct {
+    display: block;
+    margin: 0;
+
+    font-size: 3rem;
+    font-family: $font-display;
+    font-weight: 100;
+  }
+
+  &__primary-label {
+    margin: 0;
+
+    font-family: $font-secondary;
+    font-size: 18px;
+    font-weight: 200;
+    text-transform: lowercase;
+    letter-spacing: 0.025em;
+  }
+
+  &__dates {
+    overflow: auto;
+  }
+
+  &__date-wrapper {
+    float: left;
+
+    width: 50%;
+  }
+
+  &__label,
+  &__date {
+    margin: 0;
+  }
+
+  &__label {
+    font-family: $font-secondary;
+    font-size: 14px;
+  }
+
+  &__date {
+    font-family: $font-display;
+    font-size: 2rem;
+  }
+
+}

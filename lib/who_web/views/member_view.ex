@@ -166,10 +166,14 @@ defmodule WhoWeb.MemberView do
   @spec parse_member_start_date(map()) :: nil | String.t()
   def parse_member_start_date(nil), do: nil
   def parse_member_start_date(member) do
-    member
-    |> Map.get("roles")
-    |> Enum.fetch!(-1)
-    |> Map.get("start_date")
+    date =
+      member
+      |> Map.get("roles")
+      |> Enum.fetch!(-1)
+      |> Map.get("start_date")
+
+    String.split(date, "-")
+    |> List.first
   end
 
   @doc """
@@ -183,6 +187,8 @@ defmodule WhoWeb.MemberView do
   def parse_member_end_date(nil), do: nil
   def parse_member_end_date(member) do
     parse_member_field(member, "roles", "end_date")
+    |> String.split("-")
+    |> List.first
   end
 
   @doc """
