@@ -1,10 +1,6 @@
-@import 'variables/fonts';
-
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/variables';
-
-@import 'member/show';
+@import 'layout/*';
+@import 'member/*';
+@import 'variables/*';
 
 body {
   margin: 0;

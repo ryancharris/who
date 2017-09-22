@@ -1,10 +1,16 @@
 <template>
   <div class="member">
-    <member-header :member="member" :pic="pic"></member-header>
-    <member-stats :member="member"></member-stats>
-    <member-map :member="member"></member-map>
-    <member-committees :member="member"></member-committees>
-    <member-votes :member="member"></member-votes>
+    <div class="content--container">
+      <member-header :member="member" :pic="pic"></member-header>
+      <member-stats :member="member"></member-stats>
+    </div>
+    <div class="content--full-width">
+      <member-map :member="member"></member-map>
+    </div>
+    <div class="content--container">
+      <member-committees :member="member"></member-committees>
+      <member-votes :member="member"></member-votes>
+    </div>
   </div>
 </template>
 
