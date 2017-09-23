@@ -43,6 +43,18 @@
 
     clear: left;
     overflow: auto;
+
+    &--republican {
+      background-color: $republican;
+    }
+
+    &--democrat {
+      background-color: $democrat;
+    }
+
+    &--independent {
+      background-color: $independent;
+    }
   }
 
   &__pic {
@@ -51,5 +63,16 @@
     width: auto;
 
     margin: 0 auto;
+  }
+
+  &__social-list {
+    list-style: none;
+    overflow: auto;
+  }
+
+  &__social-item {
+    float: right;
+
+    margin-left: 10px;
   }
 }

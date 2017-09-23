@@ -5,7 +5,7 @@
       <h1 class="member-header__name">{{ name }}</h1>
       <h4 class="member-header__state">{{ state }}</h4>
     </div>
-    <div class="member-header__pic-wrapper">
+    <div class="member-header__pic-wrapper" v-bind:class="setPartyColor()">
       <img class="member-header__pic" :src="pic" :alt="name">
     </div>
     <div class="member-header__social-wrapper">
@@ -32,7 +32,12 @@
             chamber: this.member.chamber,
             district: this.member.district,
             social: this.member.social_urls,
-            phone: this.member.phone_url,
+            phone: this.member.phone_url
+          }
+        },
+        methods: {
+          setPartyColor() {
+            return `member-header__pic-wrapper--${this.party.toLowerCase()}`;
           }
         }
     }
