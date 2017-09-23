@@ -73,6 +73,13 @@ defmodule WhoWeb.MemberPresenter do
                     |> MemberView.parse_member_social_account("youtube")
                     |> MemberView.build_social_profile_url("youtube")
 
+    social_urls = [
+      %{ network: "website", url: website_url },
+      %{ network: "facebook", url: facebook_url },
+      %{ network: "twitter", url: twitter_url },
+      %{ network: "youtube", url: youtube_url }
+    ]
+
     %__MODULE__{
       name: MemberView.parse_member_name(member),
       title: MemberView.build_member_title(chamber),
@@ -88,12 +95,7 @@ defmodule WhoWeb.MemberPresenter do
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
-      social_urls: [
-        %{ network: "website", url: website_url },
-        %{ network: "facebook", url: facebook_url },
-        %{ network: "twitter", url: twitter_url },
-        %{ network: "youtube", url: youtube_url }
-      ],
+      social_urls: Enum.filter(social_urls, fn(x) -> x.url != nil end),
       phone_url: "tel:1-" <> MemberView.parse_member_field(member, "roles", "phone"),
       office: office,
       map_src_url: Who.GoogleMapsAPI.Base.build_embed_src_url(office),
