@@ -62,7 +62,7 @@ defmodule WhoWeb.MemberPresenter do
     member_id = MemberView.parse_member_field(member, "member_id")
     office = MemberView.parse_member_field(member, "roles", "office")
 
-    website_url = MemberView.parse_member_field(member, "domain")
+    website_url = MemberView.parse_member_field(member, "url")
     facebook_url =  member
                     |> MemberView.parse_member_social_account("facebook")
                     |> MemberView.build_social_profile_url("facebook")
@@ -79,6 +79,8 @@ defmodule WhoWeb.MemberPresenter do
       %{ network: "twitter", url: twitter_url },
       %{ network: "youtube", url: youtube_url }
     ]
+
+    IO.inspect social_urls
 
     %__MODULE__{
       name: MemberView.parse_member_name(member),

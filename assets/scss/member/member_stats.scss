@@ -51,10 +51,12 @@
   &__label {
     font-family: $font-secondary;
     font-size: 14px;
+    letter-spacing: 0.025em;
   }
 
   &__date {
     font-family: $font-display;
+    font-weight: 200;
     font-size: 2rem;
   }
 
