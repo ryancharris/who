@@ -8,6 +8,15 @@
     <div class="member-header__pic-wrapper">
       <img class="member-header__pic" :src="pic" :alt="name">
     </div>
+    <div class="member-header__social-wrapper">
+      <ul class="member-header__social-list">
+        <li v-for="network in social" class="member-header__social-item">
+          <a class="member-header__social-link" :href="network.url">
+            {{ network.network }}
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
