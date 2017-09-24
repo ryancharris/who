@@ -1,10 +1,11 @@
 <template>
   <div class="member-votes">
+    <h2 class="member-votes__header">Recent Votes</h2>
     <ul>
       <li v-for="vote in votes">
-        <p v-if="vote.number">{{ vote.number }}</p>
-        <p>{{ vote.description }}</p>
-        <p>{{ vote.position }}</p>
+        <span v-if="vote.number">{{ vote.number }}</span>
+        <span>{{ vote.description }}</span>
+        <span>{{ vote.position }}</span>
       </li>
     </ul>
   </div>
