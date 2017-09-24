@@ -80,8 +80,6 @@ defmodule WhoWeb.MemberPresenter do
       %{ network: "youtube", url: youtube_url }
     ]
 
-    IO.inspect social_urls
-
     %__MODULE__{
       name: MemberView.parse_member_name(member),
       title: MemberView.build_member_title(chamber),
