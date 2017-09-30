@@ -43,6 +43,28 @@ const config = {
         test: /\.vue$/,
         include: path.resolve('js'),
         use: 'vue-loader'
+      },
+
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              outputPath: '/priv/static/images/'
+            }
+          }
+        ]
+      },
+
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
+        ]
       }
     ]
   },
@@ -52,7 +74,7 @@ const config = {
   ],
 
   resolve: {
-    extensions: ['.js', '.scss', '.vue'],
+    extensions: ['.js', '.scss', '.vue', '.png', '.svg', '.jpg', '.gif'],
     modules: [ 'node_modules' ],
     alias: { 'vue$': 'vue/dist/vue.esm.js'}
   }

@@ -5,7 +5,6 @@ import 'phoenix_html';
 //
 import Vue from 'vue';
 
-
 // Member #show components
 import MemberShow from './MemberShow.vue'
 import MemberHeader from './MemberHeader.vue';

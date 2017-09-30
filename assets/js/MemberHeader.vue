@@ -1,18 +1,24 @@
 <template>
   <div class="member-header">
-    <h3 class="member-header__title">{{ title }}</h3>
+    <h3 class="member-header__title">
+      {{ title }}
+    </h3>
     <div class="member-header__name-row">
-      <h1 class="member-header__name">{{ name }}</h1>
-      <h4 class="member-header__state">{{ state }}</h4>
+      <h1 class="member-header__name">
+        {{ name }}
+      </h1>
+      <h4 class="member-header__state">
+        {{ state }}
+      </h4>
     </div>
     <div class="member-header__pic-wrapper" v-bind:class="setPartyColor()">
       <img class="member-header__pic" :src="pic" :alt="name">
     </div>
     <div class="member-header__social-wrapper">
       <ul class="member-header__social-list">
-        <li v-for="network in social" class="member-header__social-item">
+        <li v-for="network in social" :key="network.network" class="member-header__social-item">
           <a class="member-header__social-link" :href="network.url">
-            {{ network.network }}
+            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" class="member-header__social-icon">
           </a>
         </li>
       </ul>
@@ -38,6 +44,9 @@
         methods: {
           setPartyColor() {
             return `member-header__pic-wrapper--${this.party.toLowerCase()}`;
+          },
+          buildSocialIconPath(network) {
+            return `images/social_media/${network}.svg`
           }
         }
     }
