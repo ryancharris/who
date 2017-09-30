@@ -5,6 +5,12 @@ import 'phoenix_html';
 //
 import Vue from 'vue';
 
+// Import social media icons
+import facebookIcon from '../static/images/social_media/facebook.svg';
+import twitterIcon from '../static/images/social_media/twitter.svg';
+import youtubeIcon from '../static/images/social_media/youtube.svg';
+import websiteIcon from '../static/images/social_media/website.svg';
+
 // Member #show components
 import MemberShow from './MemberShow.vue'
 import MemberHeader from './MemberHeader.vue';

@@ -15,7 +15,7 @@ const config = {
   ],
 
   output: {
-    path: path.resolve('../priv/static'),
+    path: path.resolve('/priv/static'),
     filename: 'js/app.js'
   },
 
@@ -51,8 +51,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]',
-              outputPath: '/priv/static/images/'
+              name: '[name].[ext]'
             }
           }
         ]
@@ -77,7 +76,9 @@ const config = {
     extensions: ['.js', '.scss', '.vue', '.png', '.svg', '.jpg', '.gif'],
     modules: [ 'node_modules' ],
     alias: { 'vue$': 'vue/dist/vue.esm.js'}
-  }
+  },
+
+  watch: true
 };
 
 module.exports = config;

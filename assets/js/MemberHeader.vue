@@ -46,7 +46,7 @@
             return `member-header__pic-wrapper--${this.party.toLowerCase()}`;
           },
           buildSocialIconPath(network) {
-            return `images/social_media/${network}.svg`
+            return `/images/${network}.svg`
           }
         }
     }
