@@ -95,7 +95,7 @@ defmodule WhoWeb.MemberPresenter do
       votes_with_party: MemberView.build_aggregate_party_vote_pct(member),
       votes: MemberView.build_votes_list(vote_list) |> Enum.slice(1..10),
 
-      social_urls: Enum.filter(social_urls, fn(x) -> x.url != nil end),
+      social_urls: Enum.filter(social_urls, fn(x) -> x.url != nil end) |> Enum.sort,
       phone_url: "tel:1-" <> MemberView.parse_member_field(member, "roles", "phone"),
       office: office,
       map_src_url: Who.GoogleMapsAPI.Base.build_embed_src_url(office),

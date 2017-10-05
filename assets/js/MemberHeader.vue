@@ -18,9 +18,9 @@
       <ul class="member-header__social-list">
         <li v-for="network in social" :key="network.network" class="member-header__social-item">
           <a class="member-header__social-link" :href="network.url">
-            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" class="member-header__social-icon">
+            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" :class="`member-header__social-icon member-header__social-icon--${network.network}`">
           </a>
-        </li>
+       </li>
       </ul>
     </div>
   </div>

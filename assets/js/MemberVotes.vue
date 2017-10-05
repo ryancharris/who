@@ -1,8 +1,8 @@
 <template>
-  <div class="member-votes">
-    <h2 class="member-votes__header">Recent Votes</h2>
-    <ul>
-      <li v-for="vote in votes">
+  <div class="member-votes accordion">
+    <h2 class="member-votes__header accordion__header">Recent Votes</h2>
+    <ul class="accordion__list">
+      <li v-for="vote in votes" :key="vote.id" class="member-votes__item">
         <span v-if="vote.number">{{ vote.number }}</span>
         <span>{{ vote.description }}</span>
         <span>{{ vote.position }}</span>
