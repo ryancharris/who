@@ -28,5 +28,6 @@
   "scripts": {
     "config": "node_modules/.bin/webpack --config webpack.config.js",
     "watch": "node_modules/.bin/webpack --watch --colors --progress"
-  }
+  },
+  "browserslist": "last 2 versions, ie 10"
 }

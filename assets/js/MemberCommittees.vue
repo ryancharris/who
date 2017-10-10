@@ -1,7 +1,7 @@
 <template>
-  <div class="member-committees">
-    <h2 class="member-committees__header">Committees</h2>
-    <ul>
+  <div class="member-committees accordion">
+    <h2 class="member-committees__header accordion__header">Committees</h2>
+    <ul class="accordion__list">
       <li v-for="committee in committees" :key="committee.code" class="member-committees__committee">
         <span class="member-committees__committee-name">
           {{ committee.name }}

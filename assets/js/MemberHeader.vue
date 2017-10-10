@@ -13,14 +13,17 @@
     </div>
     <div class="member-header__pic-wrapper" v-bind:class="setPartyColor()">
       <img class="member-header__pic" :src="pic" :alt="name">
+      <span class="member-header__district">
+        {{ district }}
+      </span>
     </div>
     <div class="member-header__social-wrapper">
       <ul class="member-header__social-list">
         <li v-for="network in social" :key="network.network" class="member-header__social-item">
           <a class="member-header__social-link" :href="network.url">
-            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" class="member-header__social-icon">
+            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" :class="`member-header__social-icon member-header__social-icon--${network.network}`">
           </a>
-        </li>
+       </li>
       </ul>
     </div>
   </div>
@@ -46,7 +49,7 @@
             return `member-header__pic-wrapper--${this.party.toLowerCase()}`;
           },
           buildSocialIconPath(network) {
-            return `/images/${network}.svg`
+            return `/images/${network}.svg`;
           }
         }
     }

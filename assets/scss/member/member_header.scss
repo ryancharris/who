@@ -1,4 +1,8 @@
 .member-header {
+  position: relative;
+
+  margin-bottom: 15px;
+
   font-family: $font-primary;
 
   &__title {
@@ -41,20 +45,30 @@
     height: 320px;
 
     margin: 0 -10px;
+    padding: 30px 30px 60px 30px;
 
     clear: left;
     overflow: auto;
 
     &--republican {
-      background-color: $republican;
+      background-image: linear-gradient(
+        to bottom right,
+        lighten($republican, 5%), $republican, darken($republican, 15%)
+      );
     }
 
     &--democrat {
-      background-color: $democrat;
+      background-image: linear-gradient(
+        to bottom right,
+        lighten($democrat, 5%), $democrat, darken($democrat, 15%)
+      );
     }
 
     &--independent {
-      background-color: $independent;
+      background-image: linear-gradient(
+        to bottom right,
+        lighten($independent, 5%), $independent, darken($independent, 15%)
+      );
     }
   }
 
@@ -64,15 +78,23 @@
     width: auto;
 
     margin: 0 auto;
+
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.35);
   }
 
   &__social-wrapper {
-    margin-top: 8px;
-    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+
+    margin: 12px auto 20px;
   }
 
   &__social-list {
-    margin: 0;
+    width: 60%;
+
+    margin: 0 auto;
     padding: 0;
 
     list-style: none;
@@ -87,7 +109,9 @@
   }
 
   &__social-icon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
+
+    vertical-align: middle;
   }
 }

@@ -10,8 +10,8 @@ const config = {
   devtool: 'source-map',
 
   entry: [
-    path.resolve('js/app.js'),
-    path.resolve('scss/app.scss')
+    path.resolve('./js/app.js'),
+    path.resolve('./scss/app.scss')
   ],
 
   output: {
@@ -74,11 +74,9 @@ const config = {
 
   resolve: {
     extensions: ['.js', '.scss', '.vue', '.png', '.svg', '.jpg', '.gif'],
-    modules: [ 'node_modules' ],
-    alias: { 'vue$': 'vue/dist/vue.esm.js'}
-  },
-
-  watch: true
+    modules: ['node_modules'],
+    alias: { vue$: 'vue/dist/vue.esm.js'}
+  }
 };
 
 module.exports = config;

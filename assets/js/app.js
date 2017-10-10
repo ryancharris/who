@@ -6,13 +6,13 @@ import 'phoenix_html';
 import Vue from 'vue';
 
 // Import social media icons
-import facebookIcon from '../static/images/social_media/facebook.svg';
-import twitterIcon from '../static/images/social_media/twitter.svg';
-import youtubeIcon from '../static/images/social_media/youtube.svg';
-import websiteIcon from '../static/images/social_media/website.svg';
+import '../static/images/social_media/facebook.svg';
+import '../static/images/social_media/twitter.svg';
+import '../static/images/social_media/youtube.svg';
+import '../static/images/social_media/website.svg';
 
 // Member #show components
-import MemberShow from './MemberShow.vue'
+import MemberShow from './MemberShow.vue';
 import MemberHeader from './MemberHeader.vue';
 import MemberStats from './MemberStats.vue';
 import MemberMap from './MemberMap.vue';
