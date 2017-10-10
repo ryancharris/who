@@ -15,7 +15,7 @@ const config = {
   ],
 
   output: {
-    path: path.resolve('/priv/static'),
+    path: path.resolve('../priv/static'),
     filename: 'js/app.js'
   },
 
@@ -76,6 +76,15 @@ const config = {
     extensions: ['.js', '.scss', '.vue', '.png', '.svg', '.jpg', '.gif'],
     modules: ['node_modules'],
     alias: { vue$: 'vue/dist/vue.esm.js'}
+  },
+
+  stats: {
+    colors: true
+  },
+
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/
   }
 };
 
