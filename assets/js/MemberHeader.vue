@@ -7,24 +7,24 @@
       <h1 class="member-header__name">
         {{ name }}
       </h1>
-      <h4 class="member-header__state">
+      <h4 v-if="district" class="member-header__state">
+        {{ state }}-{{ district }}
+      </h4>
+      <h4 v-else class="member-header__state">
         {{ state }}
       </h4>
     </div>
     <div class="member-header__pic-wrapper" v-bind:class="setPartyColor()">
       <img class="member-header__pic" :src="pic" :alt="name">
-      <span class="member-header__district">
-        {{ district }}
-      </span>
-    </div>
-    <div class="member-header__social-wrapper">
-      <ul class="member-header__social-list">
-        <li v-for="network in social" :key="network.network" class="member-header__social-item">
-          <a class="member-header__social-link" :href="network.url">
-            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" :class="`member-header__social-icon member-header__social-icon--${network.network}`">
-          </a>
-       </li>
-      </ul>
+      <div class="member-header__social-wrapper">
+        <ul class="member-header__social-list">
+          <li v-for="network in social" :key="network.network" class="member-header__social-item">
+            <a class="member-header__social-link" :href="network.url">
+              <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" :class="`member-header__social-icon member-header__social-icon--${network.network}`">
+            </a>
+        </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
