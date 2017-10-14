@@ -2,6 +2,8 @@
   margin-bottom: 25px;
 
   &__header {
+    margin-bottom: 0;
+
     font-size: 16px;
     font-family: $font-secondary;
     font-weight: bold;
@@ -14,9 +16,17 @@
   }
 
   &__list {
+    height: 0;
+
     margin: 0;
     padding: 0;
 
     list-style: none;
+
+    overflow: hidden;
+  }
+
+  &--open &__list {
+    height: auto;
   }
 }

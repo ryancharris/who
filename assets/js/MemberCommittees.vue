@@ -1,6 +1,6 @@
 <template>
-  <div class="member-committees accordion">
-    <h2 class="member-committees__header accordion__header">Committees</h2>
+  <div class="member-committees accordion accordion--closed">
+    <h2 v-on:click="toggleAccordion" class="member-committees__header accordion__header">Committees</h2>
     <ul class="accordion__list">
       <li v-for="committee in committees" :key="committee.code" class="member-committees__committee">
         <span class="member-committees__committee-name">
@@ -20,6 +20,17 @@
         data() {
           return {
             committees: this.member.committees
+          }
+        },
+        methods: {
+          toggleAccordion(event) {
+            let parentEl = event.target.parentElement;
+
+            if (parentEl.classList.contains("accordion--closed")) {
+              parentEl.classList.replace("accordion--closed", "accordion--open");
+            } else {
+              parentEl.classList.replace("accordion--open", "accordion--closed");
+            }
           }
         }
     }
