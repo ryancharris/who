@@ -14,6 +14,8 @@ defmodule WhoWeb.CommitteeController do
         chamber = "senate"
       "h" ->
         chamber = "house"
+      "j" ->
+        chamber = "joint"
     end
 
     [ committee_members | _ ] = Committee.get_commitee_info(chamber, id)

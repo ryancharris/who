@@ -1,3 +1,47 @@
-.member-votes {
-  background: red;
+.member-votes { 
+  &__vote {
+    width: 100%;
+    
+    border-bottom: 1px solid $divider-gray;
+  }
+
+  &__position {
+    float: left;
+    width: 20%;
+
+    margin: 0;
+
+    text-align: center;
+  }
+
+  &__bill-info {
+    float: right;
+    width: 80%;
+  }
+
+  &__bill-link {
+    display: block;
+    padding: 15px 0;
+
+    color: $black;
+    text-decoration: none;
+
+    overflow: auto;
+
+    &:hover {
+      background-color: $hover-gray;
+    }
+  }
+
+  &__bill-num {
+    margin: 0 0 5px 0;
+  } 
+
+  &__bill-desc {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
 }

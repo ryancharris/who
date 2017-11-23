@@ -1,13 +1,21 @@
 .accordion {
   margin-bottom: 25px;
 
+  &__list {
+    font-family: $font-display;
+    font-size: 1rem;
+  }
+
   &__header {
-    margin-bottom: 0;
+    margin: 0;
+    padding: 10px 0;
 
     font-size: 16px;
     font-family: $font-secondary;
     font-weight: bold;
     text-transform: uppercase;
+
+    cursor: pointer;
 
     &::after {
       content: "+";
