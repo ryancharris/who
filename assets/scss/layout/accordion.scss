@@ -1,6 +1,14 @@
 .accordion {
   margin-bottom: 25px;
 
+  &--open {
+    margin-bottom: 0;
+  }
+
+  &--closed &__list {
+    height: 0;
+  }
+
   &__list {
     font-family: $font-display;
     font-size: 1rem;

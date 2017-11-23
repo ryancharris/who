@@ -1,8 +1,8 @@
 <template>
-  <div class="member-votes accordion--closed">
+  <div class="member-votes accordion accordion--closed">
     <h2 v-on:click="toggleAccordion" class="member-votes__header accordion__header">Recent Votes</h2>
     <ul class="member-votes__list accordion__list">
-      <li v-for="vote in votes" :key="vote.id" class="member-votes__vote">
+      <li v-for="vote in votes" v-if="vote.description" :key="vote.id" class="member-votes__vote">
         <a :href="buildBillLink(vote.number)" class="member-votes__bill-link">
 
           <p class="member-votes__position">
