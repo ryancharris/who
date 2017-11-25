@@ -7,10 +7,13 @@
           <h4 class="member-committees__committee-name">
             {{ committee.name }}
           </h4>
-          <p class="member-committees__rank">
+          <p v-if="committee.rank_in_party === 1" class="member-committees__rank">
+            {{ buildMemberTitle(committee) }}
+          </p>
+          <p v-else-if="committee.rank_in_party != null" class="member-committees__rank">
             Party Rank: {{ committee.rank_in_party }}
-            </p>
-          </a>
+          </p>
+        </a>
       </li>
     </ul>
   </div>
@@ -36,6 +39,9 @@
           },
           buildCommitteeLink(code) {
             return `/committee/${code.toLowerCase()}`;
+          },
+          buildMemberTitle(committee) {
+            return committee.side === 'majority' ? 'Committee Chair' : 'Ranking Member';
           }
         }
     }
