@@ -5,6 +5,10 @@
     margin-bottom: 0;
   }
 
+  &--open &__header::after {
+    content: "--";
+  }
+
   &--closed &__list {
     height: 0;
   }

@@ -25,23 +25,17 @@
 </template>
 
 <script>
+    import { Accordion } from  './util/mixins.js';
+
     export default {
         props: ['member'],
+        mixins: [Accordion],
         data() {
           return {
             votes: this.member.votes
           }
         },
         methods: {
-          toggleAccordion(event) {
-            let parentEl = event.target.parentElement;
-
-            if (parentEl.classList.contains("accordion--closed")) {
-              parentEl.classList.replace("accordion--closed", "accordion--open");
-            } else {
-              parentEl.classList.replace("accordion--open", "accordion--closed");
-            }
-          },
           buildBillLink(billNum) {
             let noSpaceString = billNum.replace(/ /g, '');
             return `/bill/${noSpaceString.toLowerCase()}`;

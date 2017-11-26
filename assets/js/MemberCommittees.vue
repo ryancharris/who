@@ -20,23 +20,17 @@
 </template>
 
 <script>
+    import { Accordion } from  './util/mixins.js';
+
     export default {
         props: ['member'],
+        mixins: [Accordion],
         data() {
           return {
             committees: this.member.committees
           }
         },
         methods: {
-          toggleAccordion(event) {
-            let parentEl = event.target.parentElement;
-
-            if (parentEl.classList.contains("accordion--closed")) {
-              parentEl.classList.replace("accordion--closed", "accordion--open");
-            } else {
-              parentEl.classList.replace("accordion--open", "accordion--closed");
-            }
-          },
           buildCommitteeLink(code) {
             return `/committee/${code.toLowerCase()}`;
           },
