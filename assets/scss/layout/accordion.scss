@@ -6,7 +6,7 @@
   }
 
   &--open &__header::after {
-    content: "--";
+    content: url("/images/minus.svg");
   }
 
   &--closed &__list {
@@ -30,8 +30,13 @@
     cursor: pointer;
 
     &::after {
-      content: "+";
+      content: url("/images/plus.svg");
+
       float: right;
+
+      display: inline-block;
+      width: 12px;
+      height: 12px;
     }
   }
 

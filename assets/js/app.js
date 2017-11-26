@@ -5,7 +5,17 @@ import 'phoenix_html';
 //
 import Vue from 'vue';
 
-// Layout / Util Components
+// Import social media icons
+import '../static/images/social_media/facebook.svg';
+import '../static/images/social_media/twitter.svg';
+import '../static/images/social_media/youtube.svg';
+import '../static/images/social_media/website.svg';
+
+import '../static/images/interface/checkmark.svg';
+import '../static/images/interface/question.svg';
+import '../static/images/interface/cross.svg';
+import '../static/images/interface/minus.svg';
+import '../static/images/interface/plus.svg';
 
 // Member #show components
 import MemberShow from './MemberShow.vue';
@@ -14,12 +24,6 @@ import MemberStats from './MemberStats.vue';
 import MemberMap from './MemberMap.vue';
 import MemberCommittees from './MemberCommittees.vue';
 import MemberVotes from './MemberVotes.vue';
-
-// Import social media icons
-import '../static/images/social_media/facebook.svg';
-import '../static/images/social_media/twitter.svg';
-import '../static/images/social_media/youtube.svg';
-import '../static/images/social_media/website.svg';
 
 //
 // REGISTER CUSTOM TAGS

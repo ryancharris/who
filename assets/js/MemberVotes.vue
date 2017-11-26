@@ -5,9 +5,7 @@
       <li v-for="vote in votes" v-if="vote.description" :key="vote.id" class="member-votes__vote">
         <a :href="buildBillLink(vote.number)" class="member-votes__bill-link">
 
-          <p class="member-votes__position">
-            {{ vote.position }}
-          </p>
+          <p class="member-votes__position" :class="addPositionClass(vote.position)"></p>
 
           <div class="member-votes__bill-info">
             <h4 class="member-votes__bill-num" v-if="vote.number">
@@ -28,24 +26,31 @@
     import { Accordion } from  './util/mixins.js';
 
     export default {
-        props: ['member'],
-        mixins: [Accordion],
-        data() {
-          return {
-            votes: this.member.votes
-          }
+      props: ['member'],
+      mixins: [Accordion],
+      data() {
+        return {
+          votes: this.member.votes
+        }
+      },
+      methods: {
+        buildBillLink(billNum) {
+          let noSpaceString = billNum.replace(/ /g, '');
+          return `/bill/${noSpaceString.toLowerCase()}`;
         },
-        methods: {
-          buildBillLink(billNum) {
-            let noSpaceString = billNum.replace(/ /g, '');
-            return `/bill/${noSpaceString.toLowerCase()}`;
-          },
-          votedYes(position) {
-            return position === 'Yes' ? true : false;
+        addPositionClass (position) {
+          switch (position.toLowerCase()) {
+            case 'yes':
+              return 'member-votes__position--yes';
+              break;
+            case 'no':
+              return 'member-votes__position--no';
+              break;
+            default:
+              return 'member-votes__position--other';
+              break; 
           }
         }
+      }
     }
 </script>
-
-<style>
-</style>

@@ -6,12 +6,36 @@
   }
 
   &__position {
-    float: left;
-    width: 20%;
-
+    position: absolute;
+    left: 15px;
+    top: 50%;
     margin: 0;
 
+    transform: translateY(-50%);
+
     text-align: center;
+
+    &::after {
+      width: 35px;
+      height: 35px;
+
+      display: block;
+      margin: 0 auto;
+
+      overflow: auto;
+    }
+
+    &--yes::after {
+      content: url("/images/checkmark.svg");
+    }
+
+    &--no::after {
+      content: url("/images/cross.svg");
+    }
+
+    &--other::after {
+      content: url("/images/question.svg");
+    }
   }
 
   &__bill-info {
@@ -20,6 +44,8 @@
   }
 
   &__bill-link {
+    position: relative;
+
     display: block;
     padding: 15px 0;
 
