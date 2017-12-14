@@ -11,6 +11,7 @@ import '../static/images/social_media/twitter.svg';
 import '../static/images/social_media/youtube.svg';
 import '../static/images/social_media/website.svg';
 
+// Import interface icons
 import '../static/images/interface/checkmark.svg';
 import '../static/images/interface/question.svg';
 import '../static/images/interface/cross.svg';
