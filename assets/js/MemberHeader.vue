@@ -14,17 +14,17 @@
         {{ state }}
       </h4>
     </div>
-    <div class="member-header__pic-wrapper" v-bind:class="setPartyColor()">
-      <img class="member-header__pic" :src="pic" :alt="name">
-      <div class="member-header__social-wrapper">
-        <ul class="member-header__social-list">
-          <li v-for="network in social" :key="network.network" class="member-header__social-item">
-            <a class="member-header__social-link" :href="network.url">
-              <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" :class="`member-header__social-icon member-header__social-icon--${network.network}`">
-            </a>
+    <div class="member-header__pic-wrapper">
+      <img class="member-header__pic" :class="setPartyColor()" :src="pic" :alt="name">
+    </div>
+    <div class="member-header__social-wrapper">
+      <ul class="member-header__social-list">
+        <li v-for="network in social" :key="network.network" class="member-header__social-item">
+          <a class="member-header__social-link" :href="network.url">
+            <img v-bind:src="buildSocialIconPath(network.network)" :alt="network.network" :class="`member-header__social-icon member-header__social-icon--${network.network}`">
+          </a>
         </li>
-        </ul>
-      </div>
+      </ul>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@
         },
         methods: {
           setPartyColor() {
-            return `member-header__pic-wrapper--${this.party.toLowerCase()}`;
+            return `member-header__pic--${this.party.toLowerCase()}`;
           },
           buildSocialIconPath(network) {
             return `/images/${network}.svg`;

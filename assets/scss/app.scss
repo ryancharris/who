@@ -8,6 +8,10 @@
 
 @import "member/member_show";
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
 }

@@ -46,31 +46,8 @@
     height: 320px;
 
     margin: 0 -10px;
-    padding: 30px 0 50px 0;
 
     clear: left;
-    overflow: hidden;
-
-    &--republican {
-      background-image: linear-gradient(
-        to bottom right,
-        lighten($republican, 5%), $republican, darken($republican, 15%)
-      );
-    }
-
-    &--democrat {
-      background-image: linear-gradient(
-        to bottom right,
-        lighten($democrat, 5%), $democrat, darken($democrat, 15%)
-      );
-    }
-
-    &--independent {
-      background-image: linear-gradient(
-        to bottom right,
-        lighten($independent, 5%), $independent, darken($independent, 15%)
-      );
-    }
   }
 
   &__pic {
@@ -81,6 +58,18 @@
     margin: 0 auto;
 
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.35);
+
+    &--republican {
+      border: 8px solid $republican;
+    }
+
+    &--democrat {
+      border: 8px solid $democrat;
+    }
+
+    &--independent {
+      border: 8px solid $independent;
+    }
   }
 
   &__social-wrapper {
