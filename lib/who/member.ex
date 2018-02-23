@@ -2,7 +2,7 @@ defmodule Who.Member do
   use Ecto.Schema
 
   schema "member" do
-    field :member_id, :integer
+    field :member_id, :string
 
     field :short_title, :string
     field :first_name, :string
@@ -13,16 +13,13 @@ defmodule Who.Member do
     field :party, :string
     field :votes_with_party, :float
     field :chamber, :string
-    field :district, :integer
+    field :district, :string
     field :office, :string
 
     field :url, :string
-    field :twitter_url, :string
-    field :facebook_url, :string
-    field :youtube_url, :string
-
-    field :start_date, :date
-    field :end_date, :date
+    field :twitter_account, :string
+    field :facebook_account, :string
+    field :youtube_account, :string
 
     timestamps()
   end
