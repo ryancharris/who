@@ -5,12 +5,15 @@ defmodule Who.Jobs do
   alias Who.ProPublicaAPI.Chamber
 
   def update_members_table do
+    # Clear current records from table
     Repo.delete_all(Who.Member)
 
+    # Make API calls for Sens. & Reps. and concat into list
     [%{"members" => senators}] = Chamber.get_members_by_chamber("senate")
     [%{"members" => reps}] = Chamber.get_members_by_chamber("house")
     members = senators ++ reps
 
+    # Create new Members and insert them into the DB
     for member <- members do
       chamber = if(member["short_title"] == "Rep.", do: "house", else: "senate")
       district = parse_district(member["district"])
