@@ -4,7 +4,9 @@ defmodule Who.Jobs do
   alias Who.Member
   alias Who.ProPublicaAPI.Chamber
 
-  def populate_members_table do
+  def update_members_table do
+    Repo.delete_all(Who.Member)
+
     [%{"members" => senators}] = Chamber.get_members_by_chamber("senate")
     [%{"members" => reps}] = Chamber.get_members_by_chamber("house")
     members = senators ++ reps
